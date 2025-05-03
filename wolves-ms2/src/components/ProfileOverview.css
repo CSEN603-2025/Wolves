@@ -1,0 +1,114 @@
+/* File: src/components/ProfileOverview.css */
+
+.profile-card {
+  background-color: var(--navy-blue);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.profile-image {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--blue-green);
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.profile-name-line {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.profile-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+}
+
+.profile-name:hover {
+  text-decoration: underline;
+}
+
+.verified-icon-inline {
+  width: 16px;
+  height: 16px;
+  margin-top: 1px;
+}
+
+.profile-major {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--baby-blue);
+}
+
+.profile-internship {
+  font-size: 0.85rem;
+  color: #d4f1f4;
+}
+
+.internship-cycle {
+  background-color: var(--blue-grotto);
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: white;
+  text-align: center;
+}
+
+.cycle-dates {
+  font-size: 0.8rem;
+  color: #e0f7fa;
+  margin-top: 0.25rem;
+}
+
+.profile-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.profile-button {
+  background-color: var(--blue-green);
+  color: var(--navy-blue);
+  border: none;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.profile-button:hover {
+  background-color: var(--baby-blue);
+}
+
+.button-icon {
+  width: 18px;
+  height: 18px;
+  filter: brightness(0) invert(1);
+}
