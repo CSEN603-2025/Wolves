@@ -1,0 +1,134 @@
+/* File: src/components/InternshipCard.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+.internship-card-row {
+  font-family: 'Inter', sans-serif;
+  width: 95%;
+  max-width: 1000px;
+  background-color: var(--navy-blue);
+  color: white;
+  border: none;
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 0 auto 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.internship-card-row:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.logo-wrapper {
+  flex-shrink: 0;
+  width: 110px;
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-bg {
+  background-color: #fdf7ee;
+  border-radius: 12px;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.logo-left {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.job-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0;
+  color: #ffffff;
+  line-height: 1.3;
+}
+
+.company-name {
+  font-size: 1rem;
+  color: var(--baby-blue);
+  font-weight: 500;
+}
+
+.early-badge {
+  background-color: #9333ea;
+  color: white;
+  font-size: 0.75rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 6px;
+  width: fit-content;
+  margin-top: 0.3rem;
+  font-weight: 600;
+}
+
+.details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+}
+
+.meta-line {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0.25rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  color: #e2e8f0;
+  font-weight: 500;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+  color: #cbd5e1;
+}
+
+.view-arrow {
+  color: var(--blue-green);
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-left: auto;
+  transition: color 0.2s ease;
+}
+
+.view-arrow:hover {
+  color: #75e6da;
+  text-decoration: underline;
+}
+
+.date-posted {
+  font-style: italic;
+}
