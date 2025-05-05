@@ -1,0 +1,132 @@
+[
+  {
+    "id": 1,
+    "name": "Yahia Hesham",
+    "email": "yahia.yahia@guc.edu.eg",
+    "password": "pass",
+    "major": "MET",
+    "status": "Pro",
+    "completedMonths": 3,
+    "profileUrl":"/",
+    "profilePicture":"pp.png"
+  },
+  {
+    "id": 2,
+    "name": "Ahmed Ibrahim",
+    "email": "ahmed.ibrahim@guc.edu.eg",
+    "password": "pass",
+    "major": "Management",
+    "status": "Basic",
+    "completedMonths": 1,
+    "profileUrl":"/",
+    "profilePicture":"bmo.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Omar Masoud",
+    "email": "omar.masoud@guc.edu.eg",
+    "password": "password123",
+    "major": "MET",
+    "status": "Basic",
+    "completedMonths": 0
+  },
+  {
+    "id": 4,
+    "name": "Ahmed Hany",
+    "email": "Ahmed Hany@guc.edu.eg",
+    "password": "password123",
+    "major": "MET",
+    "status": "Basic",
+    "completedMonths": 1
+  },
+  {
+    "id": 5,
+    "name": "Marwan Yasser",
+    "email": "marwan.yasser@guc.edu.eg",
+    "password": "password123",
+    "major": "MET",
+    "status": "Basic",
+    "completedMonths": 2
+  },
+  {
+    "id": 6,
+    "name": "Hania Samer",
+    "email": "hania.samer@guc.edu.eg",
+    "password": "password123",
+    "major": "BI",
+    "status": "Basic",
+    "completedMonths": 0
+  },
+  {
+    "id": 7,
+    "name": "Moahmed Khaled",
+    "email": "mohamed.khaled@student.guc.edu.eg",
+    "password": "password123",
+    "major": "IET",
+    "status": "Basic",
+    "completedMonths": 1
+  },
+  {
+    "id": 8,
+    "name": "Laila Tamer",
+    "email": "laila.tamer@student.guc.edu.eg",
+    "password": "password123",
+    "major": "BI",
+    "status": "Basic",
+    "completedMonths": 0
+  },
+  {
+    "id": 9,
+    "name": "Youssef Adel",
+    "email": "youssef.adel@student.guc.edu.eg",
+    "password": "password123",
+    "major": "IET",
+    "status": "Basic",
+    "completedMonths": 1
+  },
+  {
+    "id": 10,
+    "name": "Salma Amin",
+    "email": "salma.amin@student.guc.edu.eg",
+    "password": "password123",
+    "major": "MET",
+    "status": "Basic",
+    "completedMonths": 0
+  },
+  {
+    "id": 11,
+    "name": "Mariam Fathy",
+    "email": "mariam.fathy@student.guc.edu.eg",
+    "password": "password123",
+    "major": "BI",
+    "status": "Basic",
+    "completedMonths": 1
+  },
+  {
+    "id": 12,
+    "name": "Tarek Mostafa",
+    "email": "tarek.mostafa@student.guc.edu.eg",
+    "password": "password123",
+    "major": "IET",
+    "status": "Basic",
+    "completedMonths": 2
+  },
+  {
+    "id": 13,
+    "name": "Nada Sherif",
+    "email": "nada.sherif@student.guc.edu.eg",
+    "password": "password123",
+    "major": "Applied Arts",
+    "status": "Basic",
+    "completedMonths": 1
+  },
+  {
+    "id": 14,
+    "name": "Omar Atef",
+    "email": "omar.atef@student.guc.edu.eg",
+    "password": "password123",
+    "major": "Mechatronics",
+    "status": "Basic",
+    "completedMonths": 0
+  }
+]

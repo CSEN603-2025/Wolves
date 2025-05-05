@@ -1,0 +1,87 @@
+/* File: src/pages/StudentHome.css */
+
+:root {
+  --base-bg: #fdf7ee;
+  --text-color: #05445e;
+  --navy-blue: #05445e;
+  --blue-grotto: #189ab4;
+  --blue-green: #75e6da;
+  --baby-blue: #d4f1f4;
+
+  --sidebar-width: 22%;
+  --main-padding: 2rem;
+  --topbar-height: 4rem;      /* same as your TopBar height */
+  --sidebar-offset: 3.5rem;     /* extra gap you wanted */
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--base-bg);
+  color: var(--text-color);
+}
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--base-bg);
+}
+
+.main-content {
+  display: flex;
+  flex: 1;
+  padding: var(--main-padding);
+  margin-top: var(--topbar-height);
+}
+
+.sidebar {
+  position: sticky;
+  top: calc(var(--topbar-height) + var(--sidebar-offset));
+  width: var(--sidebar-width);
+  background-color: var(--navy-blue);
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  /* recalc height to account for the extra offset */
+  height: calc(
+    100vh
+    - var(--topbar-height)
+    - var(--main-padding)
+    - var(--sidebar-offset)
+  );
+  overflow-y: auto;
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+.internship-section {
+  flex: 1;
+  overflow-y: auto;
+  padding-left: 1.5rem;
+  padding-right: var(--main-padding);
+}
+
+.section-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0 0 1.5rem;
+  color: var(--navy-blue);
+  padding-left: 1.6rem;
+}
+
+.internship-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: var(--blue-grotto);
+  color: white;
+  font-size: 0.875rem;
+  margin-top: auto;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.08);
+}

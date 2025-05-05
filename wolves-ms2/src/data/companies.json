@@ -1,0 +1,86 @@
+[
+  {
+    "id": 1,
+    "name": "Deloitte",
+    "email": "contact@deloitte.com",
+    "industry": "Consulting",
+    "logo": "deloitte-logo.png"
+  },
+  {
+    "id": 2,
+    "name": "Etisalat",
+    "email": "careers@etisalat.eg",
+    "industry": "Telecommunications",
+    "logo": "etisalat-logo.png"
+  },
+  {
+    "id": 3,
+    "name": "Henkel",
+    "email": "info@henkel.com",
+    "industry": "Consumer Goods",
+    "logo": "henkel-logo.png"
+  },
+  {
+    "id": 4,
+    "name": "IBM",
+    "email": "interns@ibm.com",
+    "industry": "Technology",
+    "logo": "IBM-logo.png"
+  },
+  {
+    "id": 5,
+    "name": "Microsoft",
+    "email": "jobs@microsoft.com",
+    "industry": "Technology",
+    "logo": "microsoft-logo.png"
+  },
+  {
+    "id": 6,
+    "name": "Nestle",
+    "email": "careers@nestle.com",
+    "industry": "Food & Beverage",
+    "logo": "nestle-logo.png"
+  },
+  {
+    "id": 7,
+    "name": "Pfizer",
+    "email": "interns@pfizer.com",
+    "industry": "Pharmaceuticals",
+    "logo": "pfizer-logo.png"
+  },
+  {
+    "id": 8,
+    "name": "PwC",
+    "email": "recruit@pwc.com",
+    "industry": "Accounting",
+    "logo": "pwc-logo.png"
+  },
+  {
+    "id": 9,
+    "name": "QNB",
+    "email": "hr@qnb.com",
+    "industry": "Banking",
+    "logo": "QNB-logo.png"
+  },
+  {
+    "id": 10,
+    "name": "Schneider Electric",
+    "email": "talent@schneider.com",
+    "industry": "Energy Management",
+    "logo": "schneider-logo.png"
+  },
+  {
+    "id": 11,
+    "name": "Siemens",
+    "email": "jobs@siemens.com",
+    "industry": "Engineering",
+    "logo": "siemens-logo.png"
+  },
+  {
+    "id": 12,
+    "name": "Valeo",
+    "email": "careers@valeo.com",
+    "industry": "Automotive",
+    "logo": "valeo-logo.png"
+  }
+]
