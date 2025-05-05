@@ -1,0 +1,73 @@
+/* File: src/components/SearchBar.css */
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 50px;
+  padding: 0.5rem 1.25rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  gap: 1rem;
+  max-width: 540px;
+  width: 100%;
+  border: 1px solid #e1e1e1;
+}
+
+.search-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.25rem;
+}
+
+.icon-image {
+  width: 20px;
+  height: 20px;
+  opacity: 0.7;
+}
+
+.search-field {
+  border: none;
+  outline: none;
+  font-size: 0.95rem;
+  min-width: 120px;
+  flex: 1;
+  padding: 0.4rem 0.6rem;
+  background-color: transparent;
+  color: var(--navy-blue);
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.2px;
+}
+
+.separator {
+  width: 1px;
+  height: 24px;
+  background-color: #ddd;
+}
+
+.search-go {
+  background-color: var(--blue-green);
+  border: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  margin-right: 0.25rem;
+  flex-shrink: 0;
+}
+
+.search-go:hover {
+  background-color: var(--blue-grotto);
+  transform: scale(1.05);
+}
+
+.arrow-image {
+  width: 14px;
+  height: 14px;
+  filter: brightness(0) invert(1);
+  margin-left: 1px;
+}
