@@ -45,10 +45,6 @@ const InternshipCard = ({
             <span className="meta-line">Salary: {salary}</span>
           )}
         </div>
-
-        <div className="card-footer">
-          <span className="view-arrow">→ View</span>
-        </div>
       </div>
     </button>
   );

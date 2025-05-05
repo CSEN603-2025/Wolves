@@ -3,6 +3,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
 .internship-card-row {
+  position: relative;         /* for our ::after highlight */
+  overflow: hidden;
   font-family: 'Inter', sans-serif;
   width: 95%;
   max-width: 1000px;
@@ -17,14 +19,37 @@
   margin: 0 auto 1.5rem;
   cursor: pointer;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform   0.2s ease,
+    box-shadow  0.2s ease,
+    background  0.3s ease;
+}
+
+/* the shimmering highlight */
+.internship-card-row::after {
+  content: "";
+  position: absolute;
+  top: 0; left: -120%;
+  width: 120%;   /* a bit wider to cover diagonally */
+  height: 100%;
+  background: rgba(255,255,255,0.15);
+  transform: skewX(-25deg);
+  transition: left 0.6s ease;
+  pointer-events: none; /* so clicks still land on the button */
 }
 
 .internship-card-row:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  background-color: #054a7a; /* slight darker tint */
 }
 
+/* move that shimmer across */
+.internship-card-row:hover::after {
+  left: 120%;
+}
+
+/* rest stays the same */
 .logo-wrapper {
   flex-shrink: 0;
   width: 110px;
@@ -105,28 +130,6 @@
   font-size: 0.85rem;
   color: #e2e8f0;
   font-weight: 500;
-}
-
-.card-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 0.4rem;
-  font-size: 0.85rem;
-  color: #cbd5e1;
-}
-
-.view-arrow {
-  color: var(--blue-green);
-  font-weight: 600;
-  font-size: 0.9rem;
-  margin-left: auto;
-  transition: color 0.2s ease;
-}
-
-.view-arrow:hover {
-  color: #75e6da;
-  text-decoration: underline;
 }
 
 .date-posted {
