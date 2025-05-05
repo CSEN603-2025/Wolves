@@ -7,6 +7,11 @@
   --blue-grotto: #189ab4;
   --blue-green: #75e6da;
   --baby-blue: #d4f1f4;
+
+  --sidebar-width: 22%;
+  --main-padding: 2rem;
+  --topbar-height: 4rem;      /* same as your TopBar height */
+  --sidebar-offset: 3.5rem;     /* extra gap you wanted */
 }
 
 body {
@@ -26,37 +31,44 @@ body {
 .main-content {
   display: flex;
   flex: 1;
-  gap: 2rem;
-  padding: 2rem;
-  overflow: hidden;
+  padding: var(--main-padding);
+  margin-top: var(--topbar-height);
 }
 
 .sidebar {
-  width: 22%;
+  position: sticky;
+  top: calc(var(--topbar-height) + var(--sidebar-offset));
+  width: var(--sidebar-width);
   background-color: var(--navy-blue);
   border-radius: 12px;
   padding: 1.25rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  position: sticky;
-  top: 4rem;
-  height: calc(100vh - 4rem - 2rem);
+  /* recalc height to account for the extra offset */
+  height: calc(
+    100vh
+    - var(--topbar-height)
+    - var(--main-padding)
+    - var(--sidebar-offset)
+  );
   overflow-y: auto;
+  flex-shrink: 0;
+  z-index: 10;
 }
 
 .internship-section {
   flex: 1;
   overflow-y: auto;
-  padding-right: 1rem;
+  padding-left: 1.5rem;
+  padding-right: var(--main-padding);
 }
 
 .section-title {
   font-size: 1.4rem;
   font-weight: 600;
-  margin-bottom: 1.5rem;
+  margin: 0 0 1.5rem;
   color: var(--navy-blue);
-  padding-left: 2rem; 
+  padding-left: 1.6rem;
 }
-
 
 .internship-cards {
   display: flex;

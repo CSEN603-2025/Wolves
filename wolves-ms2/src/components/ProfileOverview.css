@@ -1,114 +1,169 @@
 /* File: src/components/ProfileOverview.css */
-
-.profile-card {
-  background-color: var(--navy-blue);
-  color: white;
+.profile-overview-new {
+  background: linear-gradient(145deg, #075b7a, #0e3d55);
+  border-radius: 20px;
   padding: 1.5rem;
-  border-radius: 14px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  font-family: 'Inter', sans-serif;
+  color: white;
+  width: 100%;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  font-family: 'Segoe UI', sans-serif;
 }
 
-.profile-header {
+/* Header */
+.po-header {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
-.profile-image {
+.po-info {
+  text-align: center;
+  margin-top: -0.99rem;  /* pull it up slightly closer to the header */
+  margin-bottom: 1rem;
+}
+
+.po-email,
+.po-major {
+  margin: 0.1rem 0;
+  font-size: 0.9rem;
+  opacity: 0.75;
+  color: #e0f7fa;  /* a soft light color to contrast on the dark bg */
+}
+
+/* Avatar shadow for depth */
+.po-avatar {
   width: 72px;
   height: 72px;
   border-radius: 50%;
+  border: 3px solid #75e6da;
   object-fit: cover;
-  border: 2px solid var(--blue-green);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
-.profile-info {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-}
-
-.profile-name-line {
+/* Name + tick container */
+.po-name-wrap {
   display: flex;
   align-items: center;
   gap: 0.4rem;
 }
 
-.profile-name {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: white;
+/* Clickable name */
+.po-name-link {
   text-decoration: none;
+  color: inherit;
 }
 
-.profile-name:hover {
-  text-decoration: underline;
+.po-name {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
-.verified-icon-inline {
-  width: 16px;
-  height: 16px;
-  margin-top: 1px;
+/* Vertically center the tick under the text baseline */
+.po-verified {
+  width: 18px;
+  height: 18px;
+  margin-bottom: -6px;
 }
 
-.profile-major {
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--baby-blue);
+/* Progress bar */
+.po-progress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.profile-internship {
-  font-size: 0.85rem;
-  color: #d4f1f4;
-}
-
-.internship-cycle {
-  background-color: var(--blue-grotto);
-  padding: 0.8rem 1rem;
+.po-progress-bar {
+  background: rgba(255,255,255,0.2);
   border-radius: 10px;
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: white;
+  width: 100%;
+  height: 8px;
+  overflow: hidden;
+  margin-bottom: 0.4rem;
+}
+
+.po-progress-fill {
+  background: #75e6da;
+  height: 100%;
+  transition: width 0.6s ease;
+}
+
+.po-progress-text {
+  font-size: 0.85rem;
+}
+
+/* Cycle info */
+.po-cycle {
+  background: rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 1rem;
   text-align: center;
 }
 
-.cycle-dates {
-  font-size: 0.8rem;
-  color: #e0f7fa;
-  margin-top: 0.25rem;
+.po-cycle-label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  opacity: 0.9;
 }
 
-.profile-buttons {
+.po-cycle-state {
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.po-cycle-state.active {
+  color: #75e6da;
+}
+
+.po-cycle-dates {
+  margin: 0;
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+/* Nav buttons */
+.po-nav {
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
 }
 
-.profile-button {
-  background-color: var(--blue-green);
-  color: var(--navy-blue);
-  border: none;
-  padding: 0.5rem 0.75rem;
-  font-size: 0.9rem;
-  font-weight: 600;
-  border-radius: 8px;
+.po-btn {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.6rem;
+  background: transparent;
+  border: 2px solid rgba(255,255,255,0.5);
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: white;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.po-btn img {
+  width: 20px;
+  height: 20px;
+  filter: invert(1);
+}
+
+.po-btn:hover {
+  background: rgba(255,255,255,0.2);
+  transform: translateY(-2px);
+}
+
+.po-avatar-link {
+  display: inline-block;
+}
+
+.po-avatar-link .po-avatar {
   cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.profile-button:hover {
-  background-color: var(--baby-blue);
-}
-
-.button-icon {
-  width: 18px;
-  height: 18px;
-  filter: brightness(0) invert(1);
 }
