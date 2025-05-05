@@ -35,6 +35,19 @@ body {
   margin-top: var(--topbar-height);
 }
 
+.filters-bar {
+  display: flex;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+  margin-left: 1.5rem;
+  flex-wrap: wrap;
+}
+.no-results {
+  color: #555;
+  padding: 1rem;
+}
+
+
 .sidebar {
   position: sticky;
   top: calc(var(--topbar-height) + var(--sidebar-offset));

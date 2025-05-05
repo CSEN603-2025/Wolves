@@ -1,0 +1,40 @@
+.filter {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .filter-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 0.4rem;
+  }
+  
+  /* Make the <select> match your frosted‐glass inputs */
+  .filter-select {
+    width: 100%;
+    max-width: 180px;
+    padding: 0.7rem 1rem;
+    border: none;
+    border-radius: 8px;
+    background: var(--baby-blue);
+    color: var(--navy-blue);
+    font-size: 0.95rem;
+    outline: none;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+    appearance: none;
+    /* add a little custom arrow */
+    background-image:
+      url("data:image/svg+xml;charset=US-ASCII,%3csvg%20width%3d%2210%22%20height%3d%227%22%20viewBox%3d%220%200%2010%207%22%20xmlns%3d%22http%3a//www.w3.org/2000/svg%22%3e%3cpolygon%20points%3d%220%2c0%2010%2c0%205%2c7%22%20fill%3d%22%2305465e%22/%3e%3c/svg%3e"),
+      linear-gradient(to right, var(--baby-blue), var(--baby-blue));
+    background-repeat: no-repeat, repeat;
+    background-position: right 1rem center, 0 0;
+    background-size: 10px 7px, 100% 100%;
+    transition: background-color 0.2s, box-shadow 0.2s;
+  }
+  
+  .filter-select:hover {
+    box-shadow: inset 0 2px 6px rgba(0,0,0,0.15);
+  }
+  
