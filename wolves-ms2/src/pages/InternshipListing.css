@@ -1,0 +1,209 @@
+/* File: src/pages/InternshipListing.css */
+
+:root {
+    --modal-text: #6ac2b9;
+  }
+  
+  .listing-page {
+    background: var(--base-bg);
+    min-height: 100vh;
+  }
+  
+  .listing-main {
+    max-width: 800px;
+    margin: 2rem auto;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(12px);
+    border-radius: 12px;
+    padding: 2rem;
+    color: var(--text-color);
+    box-shadow: 0 4px 12px var(--shadow);
+  }
+  
+  /* header with logo + title */
+  .listing-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .listing-logo {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    background: white;
+    padding: 0.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+  
+  .listing-title {
+    margin: 0;
+    font-size: 1.75rem;
+  }
+  
+  .listing-company {
+    font-size: 1rem;
+    color: rgba(5,68,94,0.8);
+    margin-top: 0.25rem;
+  }
+  
+  /* meta tags */
+  .listing-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .listing-meta span {
+    background: var(--baby);
+    padding: 0.4rem 0.8rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+  }
+  
+  /* section styling */
+  .listing-section {
+    margin-bottom: 1.5rem;
+  }
+  
+  .listing-section h3 {
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+  }
+  
+  /* skills list */
+  .skills-list {
+    list-style: disc inside;
+    line-height: 1.6;
+  }
+  
+  /* apply button */
+  .apply-btn {
+    display: inline-block;
+    background: linear-gradient(110deg, var(--grotto), var(--baby));
+    color: var(--text-color);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 10px var(--shadow);
+    transition: transform 0.2s ease;
+  }
+  
+  .apply-btn:hover {
+    transform: translateY(-2px);
+  }
+
+  /* modal overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  /* modal box */
+  .modal-content {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(12px);
+    border-radius: 12px;
+    padding: 2rem;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    color: var(--baby);
+    text-shadow: var(--shadow);
+  }
+  
+  /* close “×” */
+  .modal-close {
+    position: absolute;
+    top: 0.5rem; right: 0.5rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    cursor: pointer;
+  }
+  
+  /* form inside modal */
+  .modal-form label {
+    display: block;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+  
+  .modal-form textarea {
+    width: 100%;
+    min-height: 80px;
+    padding: 0.6rem;
+    margin-top: 0.4rem;
+    border-radius: 6px;
+    border: 1px solid rgba(0,0,0,0.1);
+  }
+  
+  .modal-form input[type="file"] {
+    margin-top: 0.4rem;
+  }
+  
+  .file-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0.5rem 0;
+  }
+  
+  .file-list li {
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  /* submit button */
+  .modal-submit {
+    background: linear-gradient(110deg, var(--grotto), var(--baby));
+    color: var(--text-color);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+  
+  .modal-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  /* feedback message */
+  .submit-message {
+    margin-top: 0.75rem;
+    color: rgb(104, 213, 104);
+    text-align: center;
+    font-weight: 600;
+  }
+  
+  /* mark required vs optional */
+.required {
+    color: #e63946;
+  }
+  .optional {
+    font-weight: 400;
+    font-size: 0.9rem;
+    opacity: 0.7;
+  }
+  .file-name {
+    margin: 0.25rem 0 0.75rem 0.5rem;
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+  

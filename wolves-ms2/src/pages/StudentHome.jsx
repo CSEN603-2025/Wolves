@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './StudentHome.css';
 
 import { useAuth } from '../context/AuthContext';
+import { useNavigate, Link } from 'react-router-dom';
 import TopBar from '../components/TopBar';
 import Filter from '../components/Filter';
 import InternshipCard from '../components/InternshipCard';
@@ -17,6 +18,7 @@ import internshipsData from '../data/internships.json';
 
 const StudentHome = () => {
   const { user } = useAuth();
+  const navigate = useNavigate();
 
   // all base internships by department
   const baseList = internshipsData.filter(i => {
@@ -72,7 +74,7 @@ const StudentHome = () => {
   return (
     <div className="dashboard-container">
       <TopBar onSearch={handleSearch}>
-        <button className="topbar-button">
+        <button className="topbar-button" onClick={()=>{navigate('/all-internships')}}>
           <img src={internshipIcon}  alt="Internships"  className="topbar-icon" />
           <span>Internships</span>
         </button>
@@ -88,7 +90,7 @@ const StudentHome = () => {
           <img src={notifIcon}       alt="Notifications" className="topbar-icon" />
           <span>Notifications</span>
         </button>
-        <button className="topbar-button">
+        <button className="topbar-button" onClick={()=>{navigate('/student-profile');}}>
           <img src={profileIcon}     alt="Profile"       className="topbar-icon" />
           <span>Profile</span>
         </button>

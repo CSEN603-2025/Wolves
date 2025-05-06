@@ -8,7 +8,9 @@ import StudentHome from './pages/StudentHome';
 import CompanyHome from './pages/CompanyHome';
 import AdminHome   from './pages/AdminHome';
 import FacultyHome from './pages/FacultyHome';
-import InternshipDetail from './pages/InternshipDetail';
+import StudentProfile from './pages/StudentProfile';
+import AllInternships from './pages/AllInternships';
+import InternshipListing from './pages/InternshipListing';
 
 function App() {
   return (
@@ -20,7 +22,9 @@ function App() {
       <Route path="/company-home" element={<CompanyHome />} />
       <Route path="/admin-home" element={<AdminHome />} />
       <Route path="/faculty-home" element={<FacultyHome />} />
-      <Route path="/internship/:id" element={<InternshipDetail />} />
+      <Route path="/student-profile" element={<StudentProfile />} />
+      <Route path="/all-internships" element={<AllInternships />} />
+      <Route path="/internship/:id" element={<InternshipListing />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );

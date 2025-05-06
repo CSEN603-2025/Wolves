@@ -1,0 +1,14 @@
+
+:root {
+    --base-bg:    #fdf7ee;
+    --text-color: #05445e;
+    --navy:       #05445e;
+    --grotto:     #189ab4;
+    --greenish:   #75e6da;
+    --baby:       #d4f1f4;
+    --glass-bg:     rgba(255,255,255,0.15);
+    --glass-border: rgba(255,255,255,0.3);
+    --shadow:       rgba(0,0,0,0.12);
+    --background: linear-gradient(145deg, #075b7a, #0e3d55);
+  }
+  

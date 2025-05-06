@@ -1,6 +1,7 @@
 // File: src/components/InternshipCard.jsx
 
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './InternshipCard.css';
 
 const InternshipCard = ({
@@ -14,13 +15,22 @@ const InternshipCard = ({
   salary,
   date,
   early,
-  logo,       // e.g. "microsoft-logo.png"
+  logo,       
 }) => {
-  // dynamic require for the logo file
+  const navigate = useNavigate();
+
   const logoSrc = require(`../assets/companies/${logo}`);
 
+  const handleClick = () => {
+    navigate(`/internship/${id}`);
+  };
+
   return (
-    <button className="internship-card-row">
+    <button
+      type="button"
+      className="internship-card-row"
+      onClick={handleClick}
+    >
       <div className="logo-wrapper">
         <img
           src={logoSrc}
