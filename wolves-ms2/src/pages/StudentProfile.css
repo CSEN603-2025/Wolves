@@ -1,0 +1,352 @@
+/* File: src/pages/StudentProfile.css */
+:root {
+    --navy: #05445e;
+    --grotto: #189ab4;
+    --greenish: #75e6da;
+    --baby: #d4f1f4;
+    --glass-bg: rgba(255,255,255,0.15);
+    --glass-border: rgba(255,255,255,0.3);
+    --shadow: rgba(0,0,0,0.15);
+    --background: linear-gradient(145deg, #075b7a, #0e3d55);
+  }
+  
+  .profile-page {
+    position: relative;
+    min-height: 100vh;
+    background: var(--glass-bg);
+    overflow-x: hidden;
+  }
+  
+  .profile-content {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem;
+  }
+  
+  .profile-sidebar {
+    width: 22%;
+    position: sticky;
+    top: 80px;
+    align-self: flex-start;
+  }
+  
+  .profile-main {
+    flex: 1;
+  }
+  
+  .profile-title {
+    color: var(--navy);
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
+  
+  .profile-form {
+    background: var(--background);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    padding: 2rem;
+    color: white;
+    margin-bottom: 5rem;
+  }
+  
+  .profile-form .form-group {
+    margin-bottom: 5rem;
+  }
+  
+  .profile-form label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  .profile-form input,
+  .profile-form select,
+  .profile-form textarea {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    border: none;
+    border-radius: 8px;
+    background: var(--baby);
+    color: var(--navy);
+    font-size: 0.95rem;
+    outline: none;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .profile-form textarea {
+    resize: vertical;
+    height: 80px;
+  }
+  
+  .profile-form .inline-group {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .profile-form .internship-entry,
+  .profile-form .activity-entry {
+    position: relative;
+    background: rgba(255,255,255,0.1);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+  
+  .profile-form .internship-entry input,
+  .profile-form .internship-entry textarea,
+  .profile-form .activity-entry input {
+    width: calc(100% - 2rem);
+    margin-bottom: 0.5rem;
+  }
+  
+  .profile-form .remove-item {
+    position: absolute;
+    top: 0.001%;
+    right: 0.01%;
+    background: none;
+    border: none;
+    color: #ff2e2e;
+    font-size: 1.25rem;
+    cursor: pointer;
+  }
+  
+  .profile-form .add-item {
+    background: var(--greenish);
+    color: var(--navy);
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 0.5rem;
+  }
+  
+  .profile-form .profile-video {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px var(--shadow);
+  }
+  
+  .profile-form .button-primary {
+    width: 100%;
+    padding: 0.8rem;
+    background: linear-gradient(110deg, var(--greenish), var(--baby));
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    color: var(--navy);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    box-shadow: 0 4px 12px var(--shadow);
+    cursor: pointer;
+    margin-top: 1rem;
+  }
+  
+  .form-message.success {
+    margin-top: 1rem;
+    padding: 0.8rem;
+    background-color: #d1e7dd;
+    color: #0f5132;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  .two-cols {
+    display: flex;
+    gap: 1rem;  
+  }
+  
+  .two-cols select {
+    flex: none;
+    width: 180px;
+  }
+  
+  
+  /* Pro-Only container */
+.pro-features {
+    background: var(--background);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    padding: 2rem;
+    color: white;
+    margin-top: 2rem;
+  }
+  
+  /* Section headings */
+  .pro-features h3 {
+    color: white;
+    margin-bottom: 3rem;
+    font-size: 1.5rem;
+  }
+  
+  /* Companies Viewed */
+  .companies-viewed {
+    margin-bottom: 2rem;
+  }
+  .companies-viewed h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+    opacity: 0.9;
+  }
+  .companies-viewed ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+  .companies-viewed li {
+    background: rgba(255,255,255,0.15);
+    padding: 0.4rem 0.8rem;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+  
+  /* Assessments */
+  .assessments {
+    margin-bottom: 0;
+  }
+  /* ---------- assessments updated styling ---------- */
+
+.assessments h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+    opacity: 0.9;
+  }
+  
+  .assessment-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.1);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+  
+  .assessment-info {
+    display: flex;
+    flex-direction: column;
+  }
+  .assessment-name {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+  }
+  .assessment-score {
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+  
+  .assessment-actions button {
+    background: var(--greenish);
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    color: var(--navy);
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  .visibility-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .visibility-toggle label {
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+  .visibility-toggle select {
+    padding: 0.4rem;
+    border: none;
+    border-radius: 6px;
+    background: var(--baby);
+    color: var(--navy);
+    font-size: 0.9rem;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+    cursor: pointer;
+  }
+
+
+
+
+/* Pro features styling */
+.pro-features {
+  background: var(--background);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-top: 2rem;
+}
+
+.assessment-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255,255,255,0.2);
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 0.75rem 0;
+}
+
+.assessment-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.assessment-name {
+  font-weight: 600;
+}
+
+.assessment-score {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.assessment-actions button,
+.assessment-actions select {
+  background: var(--greenish);
+  border: none;
+  border-radius: 6px;
+  padding: 0.4rem 0.8rem;
+  color: var(--navy);
+  cursor: pointer;
+}
+.assessment-actions select {
+  appearance: none;
+}
+
+.companies-viewed ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .company-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .company-logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+  .company-item span {
+    margin-top: 0.4rem;
+    font-size: 0.9rem;
+    color: var(--baby);
+  }
+
+  
+  
+  

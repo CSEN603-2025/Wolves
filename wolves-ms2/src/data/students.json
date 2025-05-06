@@ -8,7 +8,8 @@
     "status": "Pro",
     "completedMonths": 3,
     "profileUrl":"/",
-    "profilePicture":"pp.png"
+    "profilePicture":"pp.png",
+    "semesters": "6"
   },
   {
     "id": 2,
@@ -19,7 +20,8 @@
     "status": "Basic",
     "completedMonths": 1,
     "profileUrl":"/",
-    "profilePicture":"bmo.jpg"
+    "profilePicture":"bmo.jpg",
+    "semesters": "6"
   },
   {
     "id": 3,
@@ -29,6 +31,7 @@
     "major": "MET",
     "status": "Basic",
     "completedMonths": 0
+    ,"semester": "6"
   },
   {
     "id": 4,
@@ -38,6 +41,7 @@
     "major": "MET",
     "status": "Basic",
     "completedMonths": 1
+    ,"semester": "4"
   },
   {
     "id": 5,
@@ -47,6 +51,7 @@
     "major": "MET",
     "status": "Basic",
     "completedMonths": 2
+    ,"semester": "2"
   },
   {
     "id": 6,
@@ -56,6 +61,7 @@
     "major": "BI",
     "status": "Basic",
     "completedMonths": 0
+    ,"semester": "8"
   },
   {
     "id": 7,
@@ -65,6 +71,7 @@
     "major": "IET",
     "status": "Basic",
     "completedMonths": 1
+    ,"semester": "2"
   },
   {
     "id": 8,
@@ -74,6 +81,7 @@
     "major": "BI",
     "status": "Basic",
     "completedMonths": 0
+    ,"semester": "6"
   },
   {
     "id": 9,
@@ -83,6 +91,7 @@
     "major": "IET",
     "status": "Basic",
     "completedMonths": 1
+    ,"semester": "4"
   },
   {
     "id": 10,
@@ -92,6 +101,7 @@
     "major": "MET",
     "status": "Basic",
     "completedMonths": 0
+    ,"semester": "6"
   },
   {
     "id": 11,
@@ -101,6 +111,7 @@
     "major": "BI",
     "status": "Basic",
     "completedMonths": 1
+    ,"semester": "2"
   },
   {
     "id": 12,
@@ -110,6 +121,7 @@
     "major": "IET",
     "status": "Basic",
     "completedMonths": 2
+    ,"semester": "8"
   },
   {
     "id": 13,
@@ -119,6 +131,7 @@
     "major": "Applied Arts",
     "status": "Basic",
     "completedMonths": 1
+    ,"semester": "4"
   },
   {
     "id": 14,
@@ -128,5 +141,6 @@
     "major": "Mechatronics",
     "status": "Basic",
     "completedMonths": 0
+    ,"semester": "2"
   }
 ]

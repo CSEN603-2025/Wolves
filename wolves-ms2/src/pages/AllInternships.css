@@ -1,0 +1,76 @@
+:root {
+    --base-bg:      #fdf7ee;
+    --text-color:   #05445e;
+    --navy-blue:    #05445e;
+    --blue-grotto:  #189ab4;
+    --blue-green:   #75e6da;
+    --baby-blue:    #d4f1f4;
+  
+    --main-padding: 2rem;
+    --topbar-height: 4rem;
+  }
+  
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--base-bg);
+    color: var(--text-color);
+  }
+  
+  .dashboard-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .main-content {
+    flex: 1;
+    padding: var(--main-padding);
+    margin-top: var(--topbar-height);
+  }
+  
+  /* wrap heading+filters+cards in this exact same width as the cards */
+  .inner-container {
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .section-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--navy-blue);
+    margin-bottom: 1.5rem;
+    margin-left: 5rem;
+  }
+  
+  .filters-bar {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+    margin-left: 6.4rem;
+  }
+  
+  .no-results {
+    color: #555;
+    padding: 1rem;
+  }
+  
+  .internship-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  
+  /* footer styles (same as StudentHome) */
+  .footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: var(--blue-grotto);
+    color: white;
+    font-size: 0.875rem;
+    margin-top: auto;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.08);
+  }
+  
