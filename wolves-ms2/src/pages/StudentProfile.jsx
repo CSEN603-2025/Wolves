@@ -115,7 +115,7 @@ const StudentProfile = () => {
         <button className="topbar-button" onClick={()=>navigate('/all-internships')}>
           <img src={internshipIcon} alt="Internships" className="topbar-icon"/><span>Internships</span>
         </button>
-        <button className="topbar-button" onClick={()=>navigate('/applications')}>
+        <button className="topbar-button" onClick={()=> navigate('/student-applications')}>
           <img src={applicationIcon} alt="Applications" className="topbar-icon"/><span>Applications</span>
         </button>
         <button className="topbar-button" onClick={()=>navigate('/evaluations')}>

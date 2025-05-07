@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './StudentHome.css';
 
 import { useAuth } from '../context/AuthContext';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import TopBar from '../components/TopBar';
 import Filter from '../components/Filter';
 import InternshipCard from '../components/InternshipCard';
@@ -20,40 +20,38 @@ const StudentHome = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
 
-  // all base internships by department
+  // 1) Base list by department
   const baseList = internshipsData.filter(i => {
-    if (user.id === '1')    return i.department === 'IT';
-    if (user.id === '2') {
-      return ['Finance', 'Marketing'].includes(i.department);
-    }
+    if (user.id === '1') return i.department === 'IT';
+    if (user.id === '2') return ['Finance','Marketing'].includes(i.department);
     return false;
   });
 
-  // unique values for our dropdowns
+  // 2) Unique dropdown values
   const industries = Array.from(new Set(baseList.map(i => i.industry)));
   const durations  = Array.from(new Set(baseList.map(i => i.duration)));
-  const payOptions = ['Paid', 'Unpaid'];
+  const payOptions = ['Paid','Unpaid'];
 
-  // search + filter state
+  // 3) Search + filter state
   const [filters, setFilters] = useState({
-    title:    '',
-    company:  '',
-    industry: '',
-    duration: '',
-    paid:     ''
+    title:   '',
+    company: '',
+    industry:'',
+    duration:'',
+    paid:    ''
   });
 
   const handleSearch = (title, company) => {
-    setFilters(f => ({ ...f,
+    setFilters(f => ({
+      ...f,
       title:   title.toLowerCase(),
       company: company.toLowerCase()
     }));
   };
-
   const handleFilter = key => e =>
     setFilters(f => ({ ...f, [key]: e.target.value }));
 
-  // apply text + dropdown filters
+  // 4) Apply search & dropdown filters
   const displayed = baseList
     .filter(i => {
       const t = i.title.toLowerCase();
@@ -67,18 +65,20 @@ const StudentHome = () => {
       (!filters.industry || i.industry === filters.industry) &&
       (!filters.duration  || i.duration  === filters.duration) &&
       (!filters.paid      ||
-        (filters.paid === 'Paid'   ? i.paid === true
-                                   : i.paid === false))
-    ));
+        (filters.paid === 'Paid' ? i.paid === true
+                                : i.paid === false))
+    ))
+    // 5) ONLY show "not applied"
+    .filter(i => i.status === 'not applied');
 
   return (
     <div className="dashboard-container">
       <TopBar onSearch={handleSearch}>
-        <button className="topbar-button" onClick={()=>{navigate('/all-internships')}}>
+        <button className="topbar-button" onClick={() => navigate('/all-internships')}>
           <img src={internshipIcon}  alt="Internships"  className="topbar-icon" />
           <span>Internships</span>
         </button>
-        <button className="topbar-button">
+        <button className="topbar-button" onClick={()=> navigate('/student-applications')}>
           <img src={applicationIcon} alt="Applications"  className="topbar-icon" />
           <span>Applications</span>
         </button>
@@ -90,7 +90,7 @@ const StudentHome = () => {
           <img src={notifIcon}       alt="Notifications" className="topbar-icon" />
           <span>Notifications</span>
         </button>
-        <button className="topbar-button" onClick={()=>{navigate('/student-profile');}}>
+        <button className="topbar-button" onClick={() => navigate('/student-profile')}>
           <img src={profileIcon}     alt="Profile"       className="topbar-icon" />
           <span>Profile</span>
         </button>
@@ -105,18 +105,18 @@ const StudentHome = () => {
             status={user.status}
             completedMonths={user.completedMonths}
             totalMonths={3}
-            cycle={{ state: 'Active', start: 'March 1, 2025', end: 'June 1, 2025' }}
+            cycle={{ state:'Active', start:'March 1, 2025', end:'June 1, 2025' }}
             profileUrl={user.profileUrl}
             profilePicture={user.profilePicture}
           >
             <button className="po-btn">
-              <img src={notifIcon} alt="Notifications" /> Notifications
+              <img src={notifIcon} alt="" /> Notifications
             </button>
             <button className="po-btn">
-              <img src={applicationIcon} alt="Applications" /> Applications
+              <img src={applicationIcon} alt="" /> Applications
             </button>
             <button className="po-btn">
-              <img src={evalIcon} alt="Evaluations" /> Evaluations
+              <img src={evalIcon} alt="" /> Evaluations
             </button>
           </ProfileOverview>
         </aside>

@@ -43,6 +43,36 @@
     margin: 0;
     font-size: 1.75rem;
   }
+
+  .back-btn {
+    background: none;
+    border: none;
+    color: var(--grotto);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    padding-left: 1.25rem; /* space for our chevron */
+  }
+  
+  .back-btn:hover {
+    text-decoration: underline;
+  }
+  
+  /* CSS chevron arrow */
+  .back-btn::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-top: 2px solid var(--grotto);
+    border-right: 2px solid var(--grotto);
+    transform: rotate(-135deg);
+  }
   
   .listing-company {
     font-size: 1rem;
@@ -98,6 +128,20 @@
   .apply-btn:hover {
     transform: translateY(-2px);
   }
+
+  .status-badge {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+  /* Color‐coding by status */
+  .status-not-applied { background: gray; color: white; }
+  .status-pending     { background: #f59e0b; color: white; }
+  .status-accepted    { background: #10b981; color: white; }
+  .status-rejected    { background: #ef4444; color: white; }
+  .status-finalized    { background: #ffd75d; color: white; }
 
   /* modal overlay */
 .modal-overlay {

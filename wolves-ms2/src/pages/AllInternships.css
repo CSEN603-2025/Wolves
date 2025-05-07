@@ -23,7 +23,7 @@
     min-height: 100vh;
   }
   
-  .main-content {
+  .main-content-all {
     flex: 1;
     padding: var(--main-padding);
     margin-top: var(--topbar-height);
@@ -36,20 +36,20 @@
     margin: 0 auto;
   }
   
-  .section-title {
+  .section-title-all {
     font-size: 1.4rem;
     font-weight: 600;
     color: var(--navy-blue);
     margin-bottom: 1.5rem;
-    margin-left: 5rem;
+    margin-left: 6rem;
   }
   
-  .filters-bar {
+  .filters-bar-all {
     display: flex;
     gap: 1.5rem;
     flex-wrap: wrap;
     margin-bottom: 2rem;
-    margin-left: 6.4rem;
+    margin-left: 6rem;
   }
   
   .no-results {

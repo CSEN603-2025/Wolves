@@ -1,11 +1,11 @@
 // File: src/pages/InternshipListing.jsx
 import React, { useState } from 'react';
-import { useParams }         from 'react-router-dom';
-import TopBar                from '../components/TopBar';
-import { useAuth }           from '../context/AuthContext';
-import { useNavigate, Link } from 'react-router-dom';
-import internshipsData       from '../data/internships.json';
+import { useParams, useNavigate } from 'react-router-dom';
+import TopBar from '../components/TopBar';
+import { useAuth } from '../context/AuthContext';
+import internshipsData from '../data/internships.json';
 import './InternshipListing.css';
+
 import internshipIcon  from '../assets/icons/internships-icon.png';
 import applicationIcon from '../assets/icons/application-icon.png';
 import evalIcon        from '../assets/icons/eval-icon.png';
@@ -13,12 +13,12 @@ import notifIcon       from '../assets/icons/notif-icon.png';
 import profileIcon     from '../assets/icons/profile-icon.png';
 
 const InternshipListing = () => {
-  const { id }           = useParams();
-  const internship       = internshipsData.find(i => String(i.id) === id);
-  const { user }         = useAuth();
-  const navigate = useNavigate();
+  const { id }         = useParams();
+  const internship     = internshipsData.find(i => String(i.id) === id);
+  const { user }       = useAuth();
+  const navigate       = useNavigate();
 
-  // modal + form state
+  // modal + form state...
   const [showModal, setShowModal]         = useState(false);
   const [cvFile, setCvFile]               = useState(null);
   const [coverFile, setCoverFile]         = useState(null);
@@ -33,7 +33,8 @@ const InternshipListing = () => {
   const {
     title, company, location,
     industry, duration, paid,
-    salary, description, skills, logo
+    salary, description, skills,
+    logo, status
   } = internship;
 
   const logoSrc = require(`../assets/companies/${logo}`);
@@ -47,8 +48,8 @@ const InternshipListing = () => {
   };
   const handleCloseModal = () => setShowModal(false);
 
-  const handleCvChange = e => setCvFile(e.target.files[0]);
-  const handleCoverChange = e => setCoverFile(e.target.files[0]);
+  const handleCvChange     = e => setCvFile(e.target.files[0]);
+  const handleCoverChange  = e => setCoverFile(e.target.files[0]);
   const handleExtrasChange = e => setExtras([...e.target.files]);
 
   const handleSubmit = e => {
@@ -65,29 +66,38 @@ const InternshipListing = () => {
   return (
     <div className="listing-page">
       <TopBar showSearch={false}>
-        <button className="topbar-button" onClick={()=>{navigate('/all-internships')}}>
-            <img src={internshipIcon}  alt="Internships"  className="topbar-icon" />
-            <span>Internships</span>
+        <button className="topbar-button" onClick={() => navigate('/all-internships')}>
+          <img src={internshipIcon} alt="Internships" className="topbar-icon" />
+          <span>Internships</span>
+        </button>
+        <button className="topbar-button" onClick={() => navigate('/student-applications')}>
+          <img src={applicationIcon} alt="Applications" className="topbar-icon" />
+          <span>Applications</span>
         </button>
         <button className="topbar-button">
-            <img src={applicationIcon} alt="Applications"  className="topbar-icon" />
-            <span>Applications</span>
+          <img src={evalIcon} alt="Evaluations" className="topbar-icon" />
+          <span>Evaluations</span>
         </button>
         <button className="topbar-button">
-            <img src={evalIcon}        alt="Evaluations"   className="topbar-icon" />
-            <span>Evaluations</span>
+          <img src={notifIcon} alt="Notifications" className="topbar-icon" />
+          <span>Notifications</span>
         </button>
-        <button className="topbar-button">
-            <img src={notifIcon}       alt="Notifications" className="topbar-icon" />
-            <span>Notifications</span>
-        </button>
-        <button className="topbar-button" onClick={()=>{navigate('/student-profile');}}>
-            <img src={profileIcon}     alt="Profile"       className="topbar-icon" />
-            <span>Profile</span>
+        <button className="topbar-button" onClick={() => navigate('/student-profile')}>
+          <img src={profileIcon} alt="Profile" className="topbar-icon" />
+          <span>Profile</span>
         </button>
       </TopBar>
 
       <main className="listing-main">
+        {/* ← Back button */}
+        <button
+          type="button"
+          className="back-btn"
+          onClick={() => navigate(-1)}
+        >
+          Back
+        </button>
+
         <div className="listing-header">
           <img src={logoSrc} alt={`${company} logo`} className="listing-logo" />
           <div>
@@ -112,14 +122,18 @@ const InternshipListing = () => {
         <section className="listing-section">
           <h3>Required Skills</h3>
           <ul className="skills-list">
-            {skills.map((s,idx) => <li key={idx}>{s}</li>)}
+            {skills.map((s, idx) => <li key={idx}>{s}</li>)}
           </ul>
         </section>
 
         {user.role === 'student' && (
-          <button className="apply-btn" onClick={handleOpenModal}>
-            Apply Now
-          </button>
+          status === 'not applied'
+            ? <button className="apply-btn" onClick={handleOpenModal}>
+                Apply Now
+              </button>
+            : <div className={`status-badge status-${status.replace(' ','-')}`}>
+                {status}
+              </div>
         )}
       </main>
 
@@ -155,7 +169,7 @@ const InternshipListing = () => {
 
               {/* Extras (optional, multiple) */}
               <label>
-                Certificates / Extra Docs <span className="optional">(optional, multiple)</span>
+                Certificates / Extras <span className="optional">(optional, multiple)</span>
                 <input
                   type="file"
                   multiple
