@@ -1,5 +1,3 @@
-// File: src/components/InternshipCard.jsx
-
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './InternshipCard.css';
@@ -15,15 +13,18 @@ const InternshipCard = ({
   salary,
   date,
   early,
-  logo,       
+  logo,
+  status,       // NEW
 }) => {
   const navigate = useNavigate();
-
   const logoSrc = require(`../assets/companies/${logo}`);
 
   const handleClick = () => {
     navigate(`/internship/${id}`);
   };
+
+  // build a CSS‐friendly class from status text
+  const statusClass = status.toLowerCase().replace(/\s+/g, '-');
 
   return (
     <button
@@ -54,6 +55,13 @@ const InternshipCard = ({
           {paid && salary && (
             <span className="meta-line">Salary: {salary}</span>
           )}
+        </div>
+
+        {/* new, full-width status row */}
+        <div className="status-row">
+          <span className={`status-badge status-${statusClass}`}>
+            {status.charAt(0).toUpperCase() + status.slice(1)}
+          </span>
         </div>
       </div>
     </button>

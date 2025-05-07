@@ -1,5 +1,3 @@
-/* File: src/pages/StudentHome.css */
-
 :root {
   --base-bg: #fdf7ee;
   --text-color: #05445e;
@@ -9,7 +7,7 @@
   --baby-blue: #d4f1f4;
 
   --sidebar-width: 22%;
-  --main-padding: 2rem;
+  --main-padding: 0rem;
   --topbar-height: 4rem;      /* same as your TopBar height */
   --sidebar-offset: 3.5rem;   /* extra gap under TopBar */
 }
@@ -32,7 +30,6 @@ body {
   display: flex;
   flex: 1;
   padding: var(--main-padding);
-  margin-top: var(--topbar-height);
 }
 
 .no-results {
@@ -64,20 +61,22 @@ body {
   overflow-y: auto;
 }
 
-/* Centered container for title, filters and cards */
-.internship-section .section-title,
-.internship-section .filters-bar,
 .internship-cards {
   width: 95%;
   max-width: 1200px;
-  margin: 0 auto;
+  margin-left: 1.5rem;
+  margin-right: auto;
 }
 
 .section-title {
   font-size: 1.4rem;
   font-weight: 600;
-  margin: 1.5rem 0 1rem;
   color: var(--navy-blue);
+  margin: 1.5rem 0 1rem 0;
+  width: 95%;
+  max-width: 1200px;
+  margin-left: 3.5rem;
+  margin-right: auto;
 }
 
 .filters-bar {
@@ -85,6 +84,11 @@ body {
   gap: 1.5rem;
   margin-bottom: 2rem;
   flex-wrap: wrap;
+  width: 95%;
+  max-width: 1200px;
+  /* push content right by sidebar + gutter */
+  margin-left: 3.5rem;
+  margin-right: auto;
 }
 
 .internship-cards {

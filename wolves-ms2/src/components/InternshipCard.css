@@ -1,9 +1,7 @@
-/* File: src/components/InternshipCard.css */
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
 .internship-card-row {
-  position: relative;         /* for our ::after highlight */
+  position: relative;
   overflow: hidden;
   font-family: 'Inter', sans-serif;
   width: 95%;
@@ -25,31 +23,27 @@
     background  0.3s ease;
 }
 
-/* the shimmering highlight */
 .internship-card-row::after {
   content: "";
   position: absolute;
   top: 0; left: -120%;
-  width: 120%;   /* a bit wider to cover diagonally */
+  width: 120%;
   height: 100%;
   background: rgba(255,255,255,0.15);
   transform: skewX(-25deg);
   transition: left 0.6s ease;
-  pointer-events: none; /* so clicks still land on the button */
+  pointer-events: none;
 }
 
 .internship-card-row:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-  background-color: #054a7a; /* slight darker tint */
+  background-color: #054a7a;
 }
-
-/* move that shimmer across */
 .internship-card-row:hover::after {
   left: 120%;
 }
 
-/* rest stays the same */
 .logo-wrapper {
   flex-shrink: 0;
   width: 110px;
@@ -58,18 +52,6 @@
   align-items: center;
   justify-content: center;
 }
-
-.logo-bg {
-  background-color: #fdf7ee;
-  border-radius: 12px;
-  padding: 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-}
-
 .logo-left {
   width: 100%;
   height: auto;
@@ -132,6 +114,41 @@
   font-weight: 500;
 }
 
-.date-posted {
-  font-style: italic;
+/* ------ new status styling ------ */
+.status-row {
+  margin-top: 0.75rem;
+}
+
+.status-badge {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.4rem 0.8rem;
+  border-radius: 12px;
+}
+
+/* color variations by status */
+.status-not-applied {
+  background: rgba(255,255,255,0.15);
+  color: #e2e8f0;
+}
+
+.status-pending {
+  background: #f59e0b;
+  color: white;
+}
+
+.status-accepted {
+  background: #10b981;
+  color: white;
+}
+
+.status-rejected {
+  background: #ef4444;
+  color: white;
+}
+
+.status-finalized {
+  background: #ffd75d;
+  color: white;
 }
