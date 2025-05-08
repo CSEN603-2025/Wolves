@@ -12,6 +12,7 @@ import applicationIcon from '../assets/icons/application-icon.png';
 import evalIcon        from '../assets/icons/eval-icon.png';
 import notifIcon       from '../assets/icons/notif-icon.png';
 import profileIcon     from '../assets/icons/profile-icon.png';
+import HomeIcon        from '../assets/icons/home-icon.png';
 
 import './StudentApplications.css';
 
@@ -82,28 +83,37 @@ const StudentApplications = () => {
     <div className="dashboard-container">
       <TopBar onSearch={handleSearch}>
         <button className="topbar-button" onClick={() => navigate('/all-internships')}>
-          <img src={internshipIcon}  alt="Internships"  className="topbar-icon" /><span>Internships</span>
+          <img src={internshipIcon}  alt="Internships"  className="topbar-icon" />
+          <span>Internships</span>
         </button>
-        <button className="topbar-button" onClick={() => navigate('/applications')}>
-          <img src={applicationIcon} alt="Applications"  className="topbar-icon" /><span>Applications</span>
+        <button className="topbar-button" onClick={()=> navigate('/student-applications')}>
+          <img src={applicationIcon} alt="Applications"  className="topbar-icon" />
+          <span>Applications</span>
         </button>
-        <button className="topbar-button" onClick={() => navigate('/evaluations')}>
-          <img src={evalIcon}        alt="Evaluations"   className="topbar-icon" /><span>Evaluations</span>
+        <button className="topbar-button" onClick={() => navigate('/student-internships')}>
+          <img src={evalIcon}        alt="My Internships"   className="topbar-icon" />
+          <span>My Internships</span>
         </button>
-        <button className="topbar-button" onClick={() => navigate('/notifications')}>
-          <img src={notifIcon}       alt="Notifications" className="topbar-icon" /><span>Notifications</span>
+        <button className="topbar-button">
+          <img src={notifIcon}       alt="Notifications" className="topbar-icon" />
+          <span>Notifications</span>
         </button>
-        <button className="topbar-button" onClick={() => navigate('/profile')}>
-          <img src={profileIcon}     alt="Profile"       className="topbar-icon" /><span>Profile</span>
+        <button className="topbar-button" onClick={() => navigate('/student-profile')}>
+          <img src={profileIcon}     alt="Profile"       className="topbar-icon" />
+          <span>Profile</span>
+        </button>
+          <button className="topbar-button" onClick={() => navigate('/student-home')}>
+          <img src={HomeIcon}     alt="home"       className="topbar-icon" />
+          <span>Home</span>
         </button>
       </TopBar>
 
       <div className="main-content">
         <section className="internship-section">
           <div className="inner-container">
-            <h2 className="section-title-all">My Applications</h2>
+            <h2 className="section-title-app">My Applications</h2>
 
-            <div className="filters-bar-all">
+            <div className="filters-bar-app">
               <Filter title="Industry"  value={filters.industry} onChange={handleFilter('industry')}>
                 <option value="">All</option>
                 {industries.map(ind => <option key={ind} value={ind}>{ind}</option>)}

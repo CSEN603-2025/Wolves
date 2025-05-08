@@ -152,3 +152,11 @@
   background: #ffd75d;
   color: white;
 }
+
+.status-current-intern {
+  background-color: #38BDF8;
+}
+
+.status-internship-complete {
+background-color: #94A3B8;
+}

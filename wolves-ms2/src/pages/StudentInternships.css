@@ -1,0 +1,63 @@
+:root {
+    --si-gap: 1.5rem;
+  }
+  
+  .si-dashboard {
+    background: var(--base-bg);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .si-container {
+    width: 95%;
+    max-width: 1200px;
+    margin: 2rem auto 3rem;
+  }
+  
+  .si-title {
+    margin: 0;
+    color: var(--navy-blue);
+    border-bottom: 2px solid var(--blue-grotto);
+    padding-bottom: 0.25rem;
+    font-size: 1.5rem;
+    width:85%;
+    margin-left: 5rem;
+  }
+  
+  .si-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--si-gap);
+    margin: 1.5rem 0 2rem;
+    align-items: center;
+    margin-left:6.2rem;
+  }
+  
+  .si-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--si-gap);
+  }
+  
+  .si-no-results {
+    color: #555;
+    padding: 1rem;
+    font-style: italic;
+  }
+  
+  .si-back-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .chevron-left {
+    display: inline-block;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-left: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(45deg);
+  }
+  

@@ -1,0 +1,884 @@
+[
+    {
+      "id": 1,
+      "title": "Frontend Development Intern",
+      "company": "Microsoft",
+      "companyId": "comp001",
+      "location": "5th Settlement",
+      "duration": "3 months",
+      "paid": true,
+      "salary": "6000 EGP/month",
+      "industry": "Technology",
+      "logo": "microsoft-logo.png",
+      "department": "IT",
+      "description": "Join our team to gain hands-on experience with cutting-edge technologies and real-world development processes.",
+      "skills": [
+        "Programming",
+        "Debugging",
+        "Version Control",
+        "APIs"
+      ],
+      "status": "Internship Complete",
+      "count":5
+    },
+    {
+      "id": 2,
+      "title": "Backend Development Intern",
+      "company": "Microsoft",
+      "companyId": "comp001",
+      "location": "5th Settlement",
+      "duration": "3 months",
+      "paid": true,
+      "salary": "5000 EGP/month",
+      "industry": "Technology",
+      "logo": "microsoft-logo.png",
+      "department": "IT",
+      "description": "Join our team to gain hands-on experience with cutting-edge technologies and real-world development processes.",
+      "skills": [
+        "Programming",
+        "Debugging",
+        "Version Control",
+        "APIs"
+      ],
+      "status": "Internship Complete",
+      "count":3
+    },
+    {
+      "id": 3,
+      "title": "Data Analytics Intern",
+      "company": "Microsoft",
+      "companyId": "comp001",
+      "location": "5th Settlement",
+      "duration": "3 months",
+      "paid": true,
+      "salary": "6000 EGP/month",
+      "industry": "Technology",
+      "logo": "microsoft-logo.png",
+      "department": "IT",
+      "description": "Join our team to gain hands-on experience with cutting-edge technologies and real-world development processes.",
+      "skills": [
+        "Programming",
+        "Debugging",
+        "Version Control",
+        "APIs"
+      ],"status": "Internship Complete",
+      "count":2
+    },
+    {
+      "id": 4,
+      "title": "Network Operations Intern",
+      "company": "Microsoft",
+      "companyId": "comp001",
+      "location": "5th Settlement",
+      "duration": "3 months",
+      "paid": true,
+      "salary": "6000 EGP/month",
+      "industry": "Technology",
+      "logo": "microsoft-logo.png",
+      "department": "IT",
+      "description": "Join our team to gain hands-on experience with cutting-edge technologies and real-world development processes.",
+      "skills": [
+        "Programming",
+        "Debugging",
+        "Version Control",
+        "APIs"
+      ],"status": "Internship Complete",
+      "count":4
+    },
+    {
+      "id": 5,
+      "title": "Audit Intern",
+      "company": "Deloitte",
+      "location": "Nasr City",
+      "duration": "2 months",
+      "paid": true,
+      "salary": "5000 EGP/month",
+      "industry": "Professional Services",
+      "logo": "deloitte-logo.png",
+      "department": "Finance",
+      "description": "Support client-focused operations and contribute to strategic planning and data handling tasks.",
+      "skills": [
+        "Excel",
+        "Critical Thinking",
+        "Communication"
+      ],"status": "rejected"
+    },
+    {
+      "id": 6,
+      "title": "Tax Consulting Intern",
+      "company": "Deloitte",
+      "location": "6th October",
+      "duration": "2 months",
+      "paid": false,
+      "salary": null,
+      "industry": "Professional Services",
+      "logo": "deloitte-logo.png",
+      "department": "Finance",
+      "description": "Support client-focused operations and contribute to strategic planning and data handling tasks.",
+      "skills": [
+        "Excel",
+        "Critical Thinking",
+        "Communication"
+      ],"status": "not applied"
+    },
+    {
+      "id": 7,
+      "title": "Financial Advisory Intern",
+      "company": "Deloitte",
+      "location": "6th October",
+      "duration": "2 months",
+      "paid": true,
+      "salary": "7000 EGP/month",
+      "industry": "Professional Services",
+      "logo": "deloitte-logo.png",
+      "department": "Finance",
+      "description": "Support client-focused operations and contribute to strategic planning and data handling tasks.",
+      "skills": [
+        "Excel",
+        "Critical Thinking",
+        "Communication"
+      ],"status": "finalized"
+    },
+    {
+      "id": 8,
+      "title": "Risk Analyst Intern",
+      "company": "Deloitte",
+      "location": "6th October",
+      "duration": "2 months",
+      "paid": false,
+      "salary": null,
+      "industry": "Professional Services",
+      "logo": "deloitte-logo.png",
+      "department": "Finance",
+      "description": "Support client-focused operations and contribute to strategic planning and data handling tasks.",
+      "skills": [
+        "Excel",
+        "Critical Thinking",
+        "Communication"
+      ],"status": "not applied"
+    },
+    {
+      "id": 9,
+      "title": "Telecom Engineering Intern",
+      "company": "Etisalat",
+      "location": "Heliopolis",
+      "duration": "2 months",
+      "paid": true,
+      "salary": "6000 EGP/month",
+      "industry": "Telecommunications",
+      "logo": "etisalat-logo.png",
+      "department": "IT",
+      "description": "Work on maintaining and improving network systems that connect millions.",
+      "skills": [
+        "Signal Processing",
+        "Network Basics",
+        "Troubleshooting"
+      ],"status": "Current Intern"
+    },
+    {
+      "id": 10,
+      "title": "Network Optimization Intern",
+      "company": "Etisalat",
+      "location": "5th Settlement",
+      "duration": "2 months",
+      "paid": true,
+      "salary": "8000 EGP/month",
+      "industry": "Telecommunications",
+      "logo": "etisalat-logo.png",
+      "department": "IT",
+      "description": "Work on maintaining and improving network systems that connect millions.",
+      "skills": [
+        "Signal Processing",
+        "Network Basics",
+        "Troubleshooting"
+      ],"status": "accepted"
+    },
+    {
+      "id": 11,
+      "title": "Customer Support Intern",
+      "company": "Etisalat",
+      "location": "Maadi",
+      "duration": "2 months",
+      "paid": false,
+      "salary": null,
+      "industry": "Telecommunications",
+      "logo": "etisalat-logo.png",
+      "department": "General",
+      "description": "Work on maintaining and improving network systems that connect millions.",
+      "skills": [
+        "Signal Processing",
+        "Network Basics",
+        "Troubleshooting"
+      ],"status": "pending"
+    },
+    {
+      "id": 12,
+      "title": "IT Infrastructure Intern",
+      "company": "Etisalat",
+      "location": "6th October",
+      "duration": "2 months",
+      "paid": false,
+      "salary": null,
+      "industry": "Telecommunications",
+      "logo": "etisalat-logo.png",
+      "department": "IT",
+      "description": "Work on maintaining and improving network systems that connect millions.",
+      "skills": [
+        "Signal Processing",
+        "Network Basics",
+        "Troubleshooting"
+      ],"status": "Current Intern"
+    },
+    {
+      "id": 13,
+      "title": "Product Marketing Intern",
+      "company": "Henkel",
+      "location": "Maadi",
+      "duration": "2 months",
+      "paid": false,
+      "salary": null,
+      "industry": "Consumer Goods",
+      "logo": "henkel-logo.png",
+      "department": "Marketing",
+      "description": "Participate in projects across production, supply chain, and brand management.",
+      "skills": [
+        "Time Management",
+        "Supply Chain Knowledge",
+        "Product Insight"
+      ],"status": "not applied"
+    },
+    {
+      "id": 14,
+      "title": "Supply Chain Intern",
+      "company": "Henkel",
+      "location": "Maadi",
+      "duration": "2 months",
+      "paid": true,
+      "salary": "5000 EGP/month",
+      "industry": "Consumer Goods",
+      "logo": "henkel-logo.png",
+      "department": "General",
+      "description": "Participate in projects across production, supply chain, and brand management.",
+      "skills": [
+        "Time Management",
+        "Supply Chain Knowledge",
+        "Product Insight"
+      ],"status": "pending"
+    },
+    {
+      "id": 15,
+      "title": "Chemical Engineering Intern",
+      "company": "Henkel",
+      "location": "Nasr City",
+      "duration": "2 months",
+      "paid": true,
+      "salary": "5000 EGP/month",
+      "industry": "Consumer Goods",
+      "logo": "henkel-logo.png",
+      "department": "General",
+      "description": "Participate in projects across production, supply chain, and brand management.",
+      "skills": [
+        "Time Management",
+        "Supply Chain Knowledge",
+        "Product Insight"
+      ],"status": "pending"
+    },
+    {
+      "id": 16,
+      "title": "Brand Management Intern",
+      "company": "Henkel",
+      "location": "5th Settlement",
+      "duration": "2 months",
+      "paid": false,
+      "salary": null,
+      "industry": "Consumer Goods",
+      "logo": "henkel-logo.png",
+      "department": "Marketing",
+      "description": "Participate in projects across production, supply chain, and brand management.",
+      "skills": [
+        "Time Management",
+        "Supply Chain Knowledge",
+        "Product Insight"
+      ],"status": "pending"
+    },
+    {
+      "id": 17,
+      "title": "AI Research Intern",
+      "company": "IBM",
+      "location": "Nasr City",
+      "duration": "2 months",
+      "paid": true,
+      "salary": "5000 EGP/month",
+      "industry": "Technology",
+      "logo": "IBM-logo.png",
+      "department": "IT",
+      "description": "Join our team to gain hands-on experience with cutting-edge technologies and real-world development processes.",
+      "skills": [
+        "Programming",
+        "Debugging",
+        "Version Control",
+        "APIs"
+      ],"status": "Internship Complete"
+    },
+    {
+      "id": 18,
+      "title": "Cloud Engineering Intern",
+      "company": "IBM",
+      "location": "5th Settlement",
+      "duration": "1 months",
+      "paid": true,
+      "salary": "5000 EGP/month",
+      "industry": "Technology",
+      "logo": "IBM-logo.png",
+      "department": "IT",
+      "description": "Join our team to gain hands-on experience with cutting-edge technologies and real-world development processes.",
+      "skills": [
+        "Programming",
+        "Debugging",
+        "Version Control",
+        "APIs"
+      ],"status": "Internship Complete"
+    },
+    {
+      "id": 19,
+      "title": "DevOps Intern",
+      "company": "IBM",
+      "location": "5th Settlement",
+      "duration": "2 months",
+      "paid": false,
+      "salary": null,
+      "industry": "Technology",
+      "logo": "IBM-logo.png",
+      "department": "IT",
+      "description": "Join our team to gain hands-on experience with cutting-edge technologies and real-world development processes.",
+      "skills": [
+        "Programming",
+        "Debugging",
+        "Version Control",
+        "APIs"
+      ],"status": "not applied"
+    },
+    {
+      "id": 20,
+      "title": "Cybersecurity Intern",
+      "company": "IBM",
+      "location": "Maadi",
+      "duration": "2 months",
+      "paid": true,
+      "salary": "8000 EGP/month",
+      "industry": "Technology",
+      "logo": "IBM-logo.png",
+      "department": "IT",
+      "description": "Join our team to gain hands-on experience with cutting-edge technologies and real-world development processes.",
+      "skills": [
+        "Programming",
+        "Debugging",
+        "Version Control",
+        "APIs"
+      ],"status": "not applied"
+    },
+    {
+      "id": 21,
+      "title": "Nutrition Intern",
+      "company": "Nestle",
+      "location": "Nasr City",
+      "duration": "2 months",
+      "paid": true,
+      "salary": "6000 EGP/month",
+      "industry": "Food & Beverage",
+      "logo": "nestle-logo.png",
+      "department": "General",
+      "description": "Assist in operations, quality control, and customer satisfaction initiatives.",
+      "skills": [
+        "Attention to Detail",
+        "Research",
+        "Teamwork"
+      ],"status": "not applied"
+    },
+    {
+      "id": 22,
+      "title": "Sales & Marketing Intern",
+      "company": "Nestle",
+      "location": "Maadi",
+      "duration": "2 months",
+      "paid": false,
+      "salary": null,
+      "industry": "Food & Beverage",
+      "logo": "nestle-logo.png",
+      "department": "Marketing",
+      "description": "Assist in operations, quality control, and customer satisfaction initiatives.",
+      "skills": [
+        "Attention to Detail",
+        "Research",
+        "Teamwork"
+      ],"status": "not applied"
+    },
+    {
+      "id": 23,
+      "title": "Supply Chain Intern",
+      "company": "Nestle",
+      "location": "6th October",
+      "duration": "2 months",
+      "paid": true,
+      "salary": "8000 EGP/month",
+      "industry": "Food & Beverage",
+      "logo": "nestle-logo.png",
+      "department": "General",
+      "description": "Assist in operations, quality control, and customer satisfaction initiatives.",
+      "skills": [
+        "Attention to Detail",
+        "Research",
+        "Teamwork"
+      ],"status": "rejected"
+    },
+    {
+      "id": 24,
+      "title": "QA/QC Intern",
+      "company": "Nestle",
+      "location": "Maadi",
+      "duration": "2 months",
+      "paid": false,
+      "salary": null,
+      "industry": "Food & Beverage",
+      "logo": "nestle-logo.png",
+      "department": "General",
+      "description": "Assist in operations, quality control, and customer satisfaction initiatives.",
+      "skills": [
+        "Attention to Detail",
+        "Research",
+        "Teamwork"
+      ],"status": "not applied"
+    },
+    {
+      "id": 25,
+      "title": "Pharmaceutical Research Intern",
+      "company": "Pfizer",
+      "location": "Maadi",
+      "duration": "2 months",
+      "paid": false,
+      "salary": null,
+      "industry": "Pharmaceuticals",
+      "logo": "pfizer-logo.png",
+      "department": "General",
+      "description": "Engage in regulatory processes and contribute to scientific research and health data management.",
+      "skills": [
+        "Documentation",
+        "Research",
+        "Ethical Compliance"
+      ],"status": "not applied"
+    },
+    {
+      "id": 26,
+      "title": "Regulatory Affairs Intern",
+      "company": "Pfizer",
+      "location": "Heliopolis",
+      "duration": "2 months",
+      "paid": true,
+      "salary": "5000 EGP/month",
+      "industry": "Pharmaceuticals",
+      "logo": "pfizer-logo.png",
+      "department": "General",
+      "description": "Engage in regulatory processes and contribute to scientific research and health data management.",
+      "skills": [
+        "Documentation",
+        "Research",
+        "Ethical Compliance"
+      ],"status": "not applied"
+    },
+    {
+      "id": 27,
+      "title": "Medical Sales Intern",
+      "company": "Pfizer",
+      "location": "Heliopolis",
+      "duration": "2 months",
+      "paid": false,
+      "salary": null,
+      "industry": "Pharmaceuticals",
+      "logo": "pfizer-logo.png",
+      "department": "Marketing",
+      "description": "Engage in regulatory processes and contribute to scientific research and health data management.",
+      "skills": [
+        "Documentation",
+        "Research",
+        "Ethical Compliance"
+      ],"status": "not applied"
+    },
+    {
+      "id": 28,
+      "title": "Quality Assurance Intern",
+      "company": "Pfizer",
+      "location": "Maadi",
+      "duration": "2 months",
+      "paid": false,
+      "salary": null,
+      "industry": "Pharmaceuticals",
+      "logo": "pfizer-logo.png",
+      "department": "General",
+      "description": "Engage in regulatory processes and contribute to scientific research and health data management.",
+      "skills": [
+        "Documentation",
+        "Research",
+        "Ethical Compliance"
+      ],"status": "not applied"
+    },
+    {
+      "id": 29,
+      "title": "Assurance Intern",
+      "company": "PwC",
+      "location": "Nasr City",
+      "duration": "2 months",
+      "paid": false,
+      "salary": null,
+      "industry": "Professional Services",
+      "logo": "pwc-logo.png",
+      "department": "Finance",
+      "description": "Support client-focused operations and contribute to strategic planning and data handling tasks.",
+      "skills": [
+        "Excel",
+        "Critical Thinking",
+        "Communication"
+      ],"status": "not applied"
+    },
+    {
+      "id": 30,
+      "title": "Advisory Intern",
+      "company": "PwC",
+      "location": "Nasr City",
+      "duration": "2 months",
+      "paid": false,
+      "salary": null,
+      "industry": "Professional Services",
+      "logo": "pwc-logo.png",
+      "department": "Finance",
+      "description": "Support client-focused operations and contribute to strategic planning and data handling tasks.",
+      "skills": [
+        "Excel",
+        "Critical Thinking",
+        "Communication"
+      ],"status": "not applied"
+    },
+    {
+      "id": 31,
+      "title": "Data Analytics Intern",
+      "company": "PwC",
+      "location": "Maadi",
+      "duration": "2 months",
+      "paid": true,
+      "salary": "8000 EGP/month",
+      "industry": "Professional Services",
+      "logo": "pwc-logo.png",
+      "department": "IT",
+      "description": "Support client-focused operations and contribute to strategic planning and data handling tasks.",
+      "skills": [
+        "Excel",
+        "Critical Thinking",
+        "Communication"
+      ],"status": "accepted"
+    },
+    {
+      "id": 32,
+      "title": "Tax Compliance Intern",
+      "company": "PwC",
+      "location": "6th October",
+      "duration": "2 months",
+      "paid": false,
+      "salary": null,
+      "industry": "Professional Services",
+      "logo": "pwc-logo.png",
+      "department": "Finance",
+      "description": "Support client-focused operations and contribute to strategic planning and data handling tasks.",
+      "skills": [
+        "Excel",
+        "Critical Thinking",
+        "Communication"
+      ],"status": "not applied"
+    },
+    {
+      "id": 33,
+      "title": "Banking Operations Intern",
+      "company": "QNB",
+      "location": "Maadi",
+      "duration": "2 months",
+      "paid": true,
+      "salary": "8000 EGP/month",
+      "industry": "Financial Services",
+      "logo": "QNB-logo.png",
+      "department": "Finance",
+      "description": "Be involved in banking operations, risk analysis, and financial planning activities.",
+      "skills": [
+        "Financial Modeling",
+        "Excel",
+        "Data Analysis"
+      ],"status": "pending"
+    },
+    {
+      "id": 34,
+      "title": "Risk Management Intern",
+      "company": "QNB",
+      "location": "Nasr City",
+      "duration": "2 months",
+      "paid": false,
+      "salary": null,
+      "industry": "Financial Services",
+      "logo": "QNB-logo.png",
+      "department": "Finance",
+      "description": "Be involved in banking operations, risk analysis, and financial planning activities.",
+      "skills": [
+        "Financial Modeling",
+        "Excel",
+        "Data Analysis"
+      ],"status": "not applied"
+    },
+    {
+      "id": 35,
+      "title": "Finance Intern",
+      "company": "QNB",
+      "location": "6th October",
+      "duration": "2 months",
+      "paid": true,
+      "salary": "6000 EGP/month",
+      "industry": "Financial Services",
+      "logo": "QNB-logo.png",
+      "department": "Finance",
+      "description": "Be involved in banking operations, risk analysis, and financial planning activities.",
+      "skills": [
+        "Financial Modeling",
+        "Excel",
+        "Data Analysis"
+      ],"status": "not applied"
+    },
+    {
+      "id": 36,
+      "title": "Customer Service Intern",
+      "company": "QNB",
+      "location": "Maadi",
+      "duration": "2 months",
+      "paid": true,
+      "salary": "5000 EGP/month",
+      "industry": "Financial Services",
+      "logo": "QNB-logo.png",
+      "department": "General",
+      "description": "Be involved in banking operations, risk analysis, and financial planning activities.",
+      "skills": [
+        "Financial Modeling",
+        "Excel",
+        "Data Analysis"
+      ],"status": "not applied"
+    },
+    {
+      "id": 37,
+      "title": "Electrical Design Intern",
+      "company": "Schneider Electric",
+      "location": "Heliopolis",
+      "duration": "2 months",
+      "paid": true,
+      "salary": "8000 EGP/month",
+      "industry": "Energy & Automation",
+      "logo": "schneider-logo.png",
+      "department": "IT",
+      "description": "Learn about energy-efficient solutions and support engineering projects.",
+      "skills": [
+        "Circuit Design",
+        "Sustainability Awareness",
+        "Data Logging"
+      ],"status": "finalized"
+    },
+    {
+      "id": 38,
+      "title": "Energy Management Intern",
+      "company": "Schneider Electric",
+      "location": "5th Settlement",
+      "duration": "2 months",
+      "paid": true,
+      "salary": "7000 EGP/month",
+      "industry": "Energy & Automation",
+      "logo": "schneider-logo.png",
+      "department": "General",
+      "description": "Learn about energy-efficient solutions and support engineering projects.",
+      "skills": [
+        "Circuit Design",
+        "Sustainability Awareness",
+        "Data Logging"
+      ],"status": "rejected"
+    },
+    {
+      "id": 39,
+      "title": "Automation Intern",
+      "company": "Schneider Electric",
+      "location": "6th October",
+      "duration": "2 months",
+      "paid": false,
+      "salary": null,
+      "industry": "Energy & Automation",
+      "logo": "schneider-logo.png",
+      "department": "IT",
+      "description": "Learn about energy-efficient solutions and support engineering projects.",
+      "skills": [
+        "Circuit Design",
+        "Sustainability Awareness",
+        "Data Logging"
+      ],"status": "Internship Complete"
+    },
+    {
+      "id": 40,
+      "title": "Field Service Intern",
+      "company": "Schneider Electric",
+      "location": "Maadi",
+      "duration": "2 months",
+      "paid": true,
+      "salary": "5000 EGP/month",
+      "industry": "Energy & Automation",
+      "logo": "schneider-logo.png",
+      "department": "General",
+      "description": "Learn about energy-efficient solutions and support engineering projects.",
+      "skills": [
+        "Circuit Design",
+        "Sustainability Awareness",
+        "Data Logging"
+      ],"status": "not applied"
+    },
+    {
+      "id": 41,
+      "title": "Industrial Engineering Intern",
+      "company": "Siemens",
+      "location": "Maadi",
+      "duration": "2 months",
+      "paid": true,
+      "salary": "7000 EGP/month",
+      "industry": "Industrial & Manufacturing",
+      "logo": "siemens-logo.png",
+      "department": "General",
+      "description": "Get exposed to large-scale manufacturing and control systems integration.",
+      "skills": [
+        "CAD",
+        "System Analysis",
+        "Technical Writing"
+      ],"status": "Internship Complete"
+    },
+    {
+      "id": 42,
+      "title": "Embedded Systems Intern",
+      "company": "Siemens",
+      "location": "6th October",
+      "duration": "2 months",
+      "paid": false,
+      "salary": null,
+      "industry": "Industrial & Manufacturing",
+      "logo": "siemens-logo.png",
+      "department": "IT",
+      "description": "Get exposed to large-scale manufacturing and control systems integration.",
+      "skills": [
+        "CAD",
+        "System Analysis",
+        "Technical Writing"
+      ],"status": "accepted"
+    },
+    {
+      "id": 43,
+      "title": "Control Systems Intern",
+      "company": "Siemens",
+      "location": "Maadi",
+      "duration": "2 months",
+      "paid": false,
+      "salary": null,
+      "industry": "Industrial & Manufacturing",
+      "logo": "siemens-logo.png",
+      "department": "IT",
+      "description": "Get exposed to large-scale manufacturing and control systems integration.",
+      "skills": [
+        "CAD",
+        "System Analysis",
+        "Technical Writing"
+      ],"status": "Internship Complete"
+    },
+    {
+      "id": 44,
+      "title": "AI in Industry Intern",
+      "company": "Siemens",
+      "location": "Nasr City",
+      "duration": "2 months",
+      "paid": true,
+      "salary": "6000 EGP/month",
+      "industry": "Industrial & Manufacturing",
+      "logo": "siemens-logo.png",
+      "department": "IT",
+      "description": "Get exposed to large-scale manufacturing and control systems integration.",
+      "skills": [
+        "CAD",
+        "System Analysis",
+        "Technical Writing"
+      ],"status": "not applied"
+    },
+    {
+      "id": 45,
+      "title": "Automotive Software Intern",
+      "company": "Valeo",
+      "location": "5th Settlement",
+      "duration": "2 months",
+      "paid": true,
+      "salary": "7000 EGP/month",
+      "industry": "Automotive",
+      "logo": "valeo-logo.png",
+      "department": "IT",
+      "description": "Participate in innovative vehicle technology, testing, and software development.",
+      "skills": [
+        "Embedded Systems",
+        "Testing",
+        "C++"
+      ],"status": "rejected"
+    },
+    {
+      "id": 46,
+      "title": "Mechanical Design Intern",
+      "company": "Valeo",
+      "location": "Nasr City",
+      "duration": "2 months",
+      "paid": false,
+      "salary": null,
+      "industry": "Automotive",
+      "logo": "valeo-logo.png",
+      "department": "General",
+      "description": "Participate in innovative vehicle technology, testing, and software development.",
+      "skills": [
+        "Embedded Systems",
+        "Testing",
+        "C++"
+      ],"status": "Internship Complete"
+    },
+    {
+      "id": 47,
+      "title": "Testing & Validation Intern",
+      "company": "Valeo",
+      "location": "Maadi",
+      "duration": "2 months",
+      "paid": false,
+      "salary": null,
+      "industry": "Automotive",
+      "logo": "valeo-logo.png",
+      "department": "General",
+      "description": "Participate in innovative vehicle technology, testing, and software development.",
+      "skills": [
+        "Embedded Systems",
+        "Testing",
+        "C++"
+      ],"status": "pending"
+    },
+    {
+      "id": 48,
+      "title": "Embedded AI Intern",
+      "company": "Valeo",
+      "location": "6th October",
+      "duration": "2 months",
+      "paid": true,
+      "salary": "8000 EGP/month",
+      "industry": "Automotive",
+      "logo": "valeo-logo.png",
+      "department": "IT",
+      "description": "Participate in innovative vehicle technology, testing, and software development.",
+      "skills": [
+        "Embedded Systems",
+        "Testing",
+        "C++"
+      ],"status": "not applied"
+    }
+  ]

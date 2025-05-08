@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,useLocation } from 'react-router-dom';
 import './InternshipCard.css';
 
 const InternshipCard = ({
@@ -17,13 +17,25 @@ const InternshipCard = ({
   status,
   hideStatus =false,
   viewCount=false,
+  evaluation,
   count
 }) => {
   const navigate = useNavigate();
   const logoSrc = require(`../assets/companies/${logo}`);
+  const srcLocation = useLocation();
 
   const handleClick = () => {
-    navigate(`/internship/${id}`);
+    if (evaluation === 'Internship Complete') {
+      navigate(
+        `/student-internships/${id}`, 
+        { state: { from: srcLocation.pathname } }
+      );
+    } else {
+      navigate(
+        `/internship/${id}`,
+        { state: { from: srcLocation.pathname } }
+      );
+    }
   };
 
   // build a CSS‐friendly class from status text

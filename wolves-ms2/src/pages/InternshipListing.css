@@ -59,7 +59,8 @@
   }
   
   .back-btn:hover {
-    text-decoration: underline;
+    transform: scale(1.05);
+    color: var(--blue-green);
   }
   
   /* CSS chevron arrow */
@@ -141,7 +142,9 @@
   .status-pending     { background: #f59e0b; color: white; }
   .status-accepted    { background: #10b981; color: white; }
   .status-rejected    { background: #ef4444; color: white; }
-  .status-finalized    { background: #ffd75d; color: white; }
+  .status-finalized    { background: #C084FC; color: white; }
+  .status-current-intern { background: #38BDF8; color:white;}
+  .status-internship-complete{ background: #94A3B8; color:white;}
 
   /* modal overlay */
 .modal-overlay {
