@@ -1,0 +1,289 @@
+/* File: src/pages/InternshipEvaluation.css */
+
+/* Scope everything under our new page wrapper */
+.internship-eval-page {
+    background: var(--base-bg);
+    min-height: 100vh;
+    padding-bottom: 2rem;
+  }
+  
+  /* Glass-card container */
+  .internship-eval-page .eval-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 3rem 2rem 2rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(12px);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px var(--shadow);
+    position: relative;
+  }
+  
+  /* Move the “Back” button into the card */
+  .internship-eval-page .eval-container .iv-back-btn {
+    background: none;
+    border: none;
+    color: var(--grotto);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    padding-left: 1.25rem; /* space for our chevron */
+  }
+  .internship-eval-page .eval-container .iv-back-btn:hover {
+    transform: scale(1.05);
+    color: var(--blue-green);
+  }
+  .internship-eval-page .eval-container .iv-back-btn::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 0.6rem;
+    height: 0.6rem;
+    border-top: 2px solid var(--grotto);
+    border-right: 2px solid var(--grotto);
+    transform: translateY(-50%) rotate(-135deg);
+  }
+  
+  /* Internship details header */
+  .internship-eval-page .iv-listing-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .internship-eval-page .iv-listing-logo {
+    width: 80px;
+    height: 80px;
+    background: #fff;
+    padding: 0.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  .internship-eval-page .iv-listing-title {
+    margin: 0;
+    font-size: 1.75rem;
+  }
+  .internship-eval-page .iv-listing-company {
+    font-size: 1rem;
+    color: rgba(5, 68, 94, 0.8);
+  }
+  
+  /* Meta badges */
+  .internship-eval-page .iv-listing-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .internship-eval-page .iv-listing-meta span {
+    background: var(--baby);
+    padding: 0.4rem 0.8rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+  }
+  
+  /* Sections */
+  .internship-eval-page .iv-listing-section {
+    margin-bottom: 1.5rem;
+  }
+  .internship-eval-page .iv-listing-section h3 {
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+  }
+  .internship-eval-page .iv-skills-list {
+    list-style: disc inside;
+    line-height: 1.6;
+  }
+  
+  /* Status badge */
+  .internship-eval-page .iv-status-badge {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-transform: capitalize;
+    margin-bottom: 2rem;
+  }
+
+  .internship-eval-page .iv-status-badge.iv-status-Current-Intern {
+    background-color: #38BDF8; color:white;
+  }
+  
+  .internship-eval-page .iv-status-badge.iv-status-Internship-Complete {
+  background-color: #94A3B8; color:white;
+  }
+  
+  /* Improved Tabs */
+  .internship-eval-page .tabs {
+    display: flex;
+    gap: 1rem;
+    background: var(--baby);
+    padding: 0.5rem;
+    border-radius: 12px;
+    margin: 2rem 0 1rem;
+  }
+  .internship-eval-page .tab-item {
+    flex: 1;
+    text-align: center;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--text-color);
+    border-radius: 8px;
+    transition: background 0.2s, color 0.2s;
+  }
+  .internship-eval-page .tab-item.active {
+    background: var(--grotto);
+    color: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  }
+  .internship-eval-page .tab-item:hover:not(.active) {
+    background: rgba(24, 154, 180, 0.1);
+  }
+  
+  /* Tab content */
+  .internship-eval-page .tab-content {
+    padding-bottom: 1.5rem;
+  }
+  /* Error text */
+  .internship-eval-page .error-text {
+    color: #ef4444;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  /* Inputs & buttons */
+  .internship-eval-page .eval-input {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    background: var(--baby);
+    color: var(--text-color);
+    font-size: 1rem;
+  }
+  .internship-eval-page .checkbox-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  .internship-eval-page .checkbox-row input {
+    margin-right: 0.5rem;
+    transform: scale(1.2);
+  }
+  
+  /* Courses Section */
+  .internship-eval-page .courses-section {
+    padding: 1rem 0;
+  }
+  .internship-eval-page .courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  .internship-eval-page .course-checkbox {
+    display: flex;
+    align-items: center;
+    background: var(--baby);
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .internship-eval-page .course-checkbox input {
+    margin-right: 0.75rem;
+    transform: scale(1.2);
+  }
+  .internship-eval-page .course-checkbox:hover {
+    background: var(--glass-bg);
+  }
+  
+  /* Primary button */
+  .internship-eval-page .iv-btn.primary {
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(110deg, var(--grotto), var(--blue-green));
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 10px var(--shadow);
+    transition: transform 0.2s;
+  }
+  .internship-eval-page .iv-btn.primary:hover {
+    transform: translateY(-2px);
+  }
+  
+  /* Secondary buttons (Edit, Cancel) */
+  .internship-eval-page .iv-btn.secondary {
+    background: transparent;
+    border: 1px solid var(--grotto);
+    color: var(--grotto);
+    border-radius: 8px;
+    padding: 0.5rem 1.25rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    margin-left: 49.7rem;
+  }
+  .internship-eval-page .iv-btn.secondary:hover {
+    background: var(--grotto);
+    color: #fff;
+    transform: scale(1.05);
+  }
+  
+  /* Cards inside tabs */
+  .internship-eval-page .iv-eval-card {
+    position: relative;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    box-shadow: 0 4px 12px var(--shadow);
+  }
+  .internship-eval-page .delete-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: red;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.9rem;
+  }
+  .internship-eval-page .delete-btn:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Success message */
+  .internship-eval-page .success-text {
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    display: inline-block;
+    margin-left: 1rem;
+  }
+  .internship-eval-page .success-text.recommend {
+    background: #d1fae5;
+    color: #047857;
+  }
+  .internship-eval-page .success-text.norecommend {
+    background: #fee2e2;
+    color: #b91c1c;
+  }
+  .internship-eval-page .success-text.report {
+    background: #e0f2fe;
+    color: #0369a1;
+  }
+  

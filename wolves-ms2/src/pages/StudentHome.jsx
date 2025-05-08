@@ -13,6 +13,7 @@ import applicationIcon from '../assets/icons/application-icon.png';
 import evalIcon        from '../assets/icons/eval-icon.png';
 import notifIcon       from '../assets/icons/notif-icon.png';
 import profileIcon     from '../assets/icons/profile-icon.png';
+import HomeIcon        from '../assets/icons/home-icon.png';
 
 import internshipsData from '../data/internships.json';
 
@@ -82,9 +83,9 @@ const StudentHome = () => {
           <img src={applicationIcon} alt="Applications"  className="topbar-icon" />
           <span>Applications</span>
         </button>
-        <button className="topbar-button">
-          <img src={evalIcon}        alt="Evaluations"   className="topbar-icon" />
-          <span>Evaluations</span>
+        <button className="topbar-button" onClick={() => navigate('/student-internships')}>
+          <img src={evalIcon}        alt="My Internships"   className="topbar-icon" />
+          <span>My Internships</span>
         </button>
         <button className="topbar-button">
           <img src={notifIcon}       alt="Notifications" className="topbar-icon" />
@@ -93,6 +94,10 @@ const StudentHome = () => {
         <button className="topbar-button" onClick={() => navigate('/student-profile')}>
           <img src={profileIcon}     alt="Profile"       className="topbar-icon" />
           <span>Profile</span>
+        </button>
+         <button className="topbar-button" onClick={() => navigate('/student-home')}>
+          <img src={HomeIcon}     alt="home"       className="topbar-icon" />
+          <span>Home</span>
         </button>
       </TopBar>
 

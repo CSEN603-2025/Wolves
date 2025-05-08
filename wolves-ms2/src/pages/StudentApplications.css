@@ -37,10 +37,12 @@
   }
   
   .section-title-app {
-    font-size: 1.4rem;
-    font-weight: 600;
+    margin: 0;
     color: var(--navy-blue);
-    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--blue-grotto);
+    padding-bottom: 0.25rem;
+    font-size: 1.5rem;
+    width:85%;
     margin-left: 5rem;
   }
   
@@ -49,7 +51,8 @@
     gap: 1.5rem;
     flex-wrap: wrap;
     margin-bottom: 2rem;
-    margin-left: 6.4rem;
+    margin-left: 6rem;
+    margin-top:2rem;
   }
   
   .no-results {
