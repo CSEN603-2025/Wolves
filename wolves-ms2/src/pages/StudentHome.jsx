@@ -106,7 +106,7 @@ const StudentHome = () => {
             completedMonths={user.completedMonths}
             totalMonths={3}
             cycle={{ state:'Active', start:'March 1, 2025', end:'June 1, 2025' }}
-            profileUrl={user.profileUrl}
+            profileUrl={'/student-profile'}
             profilePicture={user.profilePicture}
           >
             <button className="po-btn">

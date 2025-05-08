@@ -1,0 +1,83 @@
+/* CompanyInterns.css */
+
+:root {
+    --ci-base-bg:    #fdf7ee;
+    --ci-panel-bg:   rgba(255,255,255,0.85);
+    --ci-border:     rgba(0,0,0,0.1);
+    --ci-primary:    #05445e;
+    --ci-accent:     #189ab4;
+    --ci-light:      #d4f1f4;
+    --ci-shadow:     rgba(0,0,0,0.05);
+  }
+  
+  .ci-container {
+    background: var(--ci-base-bg);
+    min-height: 100vh;
+  }
+  
+  .ci-main {
+    padding: 2rem;
+  }
+  
+  .ci-panel {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: var(--ci-panel-bg);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px var(--ci-shadow);
+  }
+  
+  .ci-title {
+    font-size: 1.6rem;
+    color: var(--ci-primary);
+    margin-bottom: 1.25rem;
+    border-bottom: 2px solid var(--ci-accent);
+    padding-bottom: 0.5rem;
+  }
+  
+  .ci-filters {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+  
+  .ci-search {
+    flex: 1;
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--ci-border);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    outline: none;
+  }
+  
+  .ci-filters select {
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--ci-border);
+    border-radius: 8px;
+    background: var(--ci-light);
+    font-size: 0.95rem;
+    outline: none;
+  }
+  
+  .ci-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .ci-no-results {
+    text-align: center;
+    color: #555;
+    padding: 2rem 0;
+  }
+  
+  .ci-footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: var(--ci-accent);
+    color: white;
+    margin-top: 2rem;
+  }
+  

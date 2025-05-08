@@ -44,7 +44,14 @@ const LoginPage = () => {
       return navigate('/admin-home');
     }
     if (email === 'jobs@microsoft.com' && password === 'pass') {
-      setUser({ role: 'company', name: 'Microsoft' });
+      setUser({ 
+        id:3,
+        role: 'company', 
+        name: 'Microsoft',
+        email:'jobs@microsoft.com',
+        status:'Pro',
+        viewCount:true
+         });
       return navigate('/company-home');
     }
     if (email === 'yahia.yahia@guc.edu.eg' && password === 'pass') {
@@ -58,13 +65,8 @@ const LoginPage = () => {
         status: 'Pro',
         completedMonths: 3,
         totalMonths: 3,
-        cycle: {
-          state: 'Active',
-          start: 'March 1, 2025',
-          end: 'June 1, 2025'
-        },
-        profileUrl: '/profile/stu001',
-        profilePicture: 'pp.png'
+        profilePicture: 'icons/pp.png',
+        profileUrl:'/student-profile'
       });
       return navigate('/student-home');
     }
@@ -79,13 +81,8 @@ const LoginPage = () => {
         status: 'Basic',
         completedMonths: 1,
         totalMonths: 1,
-        cycle: {
-          state: 'Active',
-          start: 'August 1, 2025',
-          end: 'September 1, 2025'
-        },
         profileUrl: '/profile/stu002',
-        profilePicture: 'bmo.jpg'
+        profilePicture: 'icons/bmo.jpg'
       });
       return navigate('/student-home');
     }

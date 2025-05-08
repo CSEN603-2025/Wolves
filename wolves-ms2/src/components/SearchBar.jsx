@@ -1,37 +1,36 @@
+// File: src/components/SearchBar.jsx
 import React, { useState } from 'react';
 import './SearchBar.css';
 import searchIcon from '../assets/icons/search-logo.png';
-import arrowIcon from '../assets/icons/search-arrow.png';
+import searchArrow from '../assets/icons/search-arrow.png';
 
 const SearchBar = ({ onSearch }) => {
-  const [title,   setTitle]   = useState('');
+  const [title, setTitle] = useState('');
   const [company, setCompany] = useState('');
+
+  const handleClear = (setter) => () => setter('');
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (onSearch) onSearch(title.trim(), company.trim());
+    if (onSearch) onSearch(title, company);
   };
 
   return (
     <form className="search-bar refined" onSubmit={handleSubmit}>
-      <div className="search-icon">
+      <div className="search-field-wrapper">
         <img src={searchIcon} alt="Search" className="icon-image" />
-      </div>
-
-      <div className="input-wrapper">
         <input
           type="text"
-          placeholder="Job title..."
-          className="search-field refined"
           value={title}
           onChange={e => setTitle(e.target.value)}
+          placeholder="Job title..."
+          className="search-field refined"
         />
         {title && (
           <button
             type="button"
             className="clear-btn"
-            onClick={() => setTitle('')}
-            aria-label="Clear title"
+            onClick={handleClear(setTitle)}
           >
             ×
           </button>
@@ -40,20 +39,19 @@ const SearchBar = ({ onSearch }) => {
 
       <div className="separator" />
 
-      <div className="input-wrapper">
+      <div className="search-field-wrapper">
         <input
           type="text"
-          placeholder="Company..."
-          className="search-field refined"
           value={company}
           onChange={e => setCompany(e.target.value)}
+          placeholder="Company..."
+          className="search-field refined"
         />
         {company && (
           <button
             type="button"
             className="clear-btn"
-            onClick={() => setCompany('')}
-            aria-label="Clear company"
+            onClick={handleClear(setCompany)}
           >
             ×
           </button>
@@ -61,7 +59,7 @@ const SearchBar = ({ onSearch }) => {
       </div>
 
       <button type="submit" className="search-go refined">
-        <img src={arrowIcon} alt="Go" className="arrow-image" />
+        <img src={searchArrow} alt="Go" className="arrow-image" />
       </button>
     </form>
   );

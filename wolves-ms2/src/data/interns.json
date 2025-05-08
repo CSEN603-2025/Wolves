@@ -1,0 +1,19 @@
+[
+    { "id": 1, "studentId": 7, "internshipId": 1, "status": "Current Intern" },
+    { "id": 2, "studentId": 8, "internshipId": 1, "status": "Internship Complete" },
+    { "id": 3, "studentId": 9, "internshipId": 1, "status": "Current Intern" },
+    { "id": 4, "studentId": 10, "internshipId": 1, "status": "Current Intern" },
+    { "id": 5, "studentId": 11, "internshipId": 1, "status": "Internship Complete" },
+  
+    { "id": 6, "studentId": 12, "internshipId": 2, "status": "Current Intern" },
+    { "id": 7, "studentId": 13, "internshipId": 2, "status": "Current Intern" },
+    { "id": 8, "studentId": 14, "internshipId": 2, "status": "Internship Complete" },
+  
+    { "id": 11, "studentId": 3, "internshipId": 3, "status": "Internship Complete" },
+    { "id": 12, "studentId": 11, "internshipId": 3, "status": "Current Intern" },
+  
+    { "id": 16, "studentId": 1, "internshipId": 4, "status": "Internship Complete" },
+    { "id": 17, "studentId": 2, "internshipId": 4, "status": "Current Intern" },
+    { "id": 18, "studentId": 4, "internshipId": 4, "status": "Current Intern" },
+    { "id": 19, "studentId": 5, "internshipId": 4, "status": "Internship Complete" }
+  ]
