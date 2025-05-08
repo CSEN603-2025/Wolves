@@ -18,7 +18,8 @@
       "Version Control",
       "APIs"
     ],
-    "status": "pending"
+    "status": "pending",
+    "count":5
   },
   {
     "id": 2,
@@ -39,7 +40,8 @@
       "Version Control",
       "APIs"
     ],
-    "status": "pending"
+    "status": "pending",
+    "count":3
   },
   {
     "id": 3,
@@ -59,7 +61,8 @@
       "Debugging",
       "Version Control",
       "APIs"
-    ],"status": "pending"
+    ],"status": "pending",
+    "count":2
   },
   {
     "id": 4,
@@ -79,7 +82,8 @@
       "Debugging",
       "Version Control",
       "APIs"
-    ],"status": "pending"
+    ],"status": "pending",
+    "count":4
   },
   {
     "id": 5,

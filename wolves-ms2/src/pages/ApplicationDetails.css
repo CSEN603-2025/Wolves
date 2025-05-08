@@ -1,0 +1,137 @@
+:root {
+    --base-bg: #fdf7ee;
+    --text-color: #05445e;
+    --navy-blue: #05445e;
+    --blue-grotto: #189ab4;
+    --baby-blue: #d4f1f4;
+    --glass-bg: rgba(255,255,255,0.15);
+    --glass-border: rgba(255,255,255,0.3);
+    --shadow: rgba(0,0,0,0.12);
+  
+    --pending-bg: #FFDD57;
+    --finalized-bg: #C084FC;
+    --accepted-bg: #4ADE80;
+    --current-intern-bg: #38BDF8;
+    --internship-complete-bg: #94A3B8;
+    --rejected-bg: #F87171;
+  }
+  
+  .ad-dashboard {
+    background: var(--base-bg);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+.ad-back {
+    flex-direction: row;
+    gap: 0.25rem;             
+  }
+  
+  .chevron-left {
+    display: inline-block;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-left: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(45deg);
+  }
+
+  .chevron-left:hover {
+    transform: scale(1.05);
+    color: var(--blue-green);
+  }
+  
+  .ad-main {
+    display: flex;
+    flex: 1;
+    padding: 2rem;
+  }
+  
+  .ad-sidebar {
+    width: 22%;
+    margin-right: 2rem;
+  }
+  
+  .ad-content {
+    flex: 1;
+  }
+  
+  .ad-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(12px);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px var(--shadow);
+  }
+  
+  .ad-heading {
+    margin-top: 0;
+    color: var(--navy-blue);
+    border-bottom: 2px solid var(--blue-grotto);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+  }
+  
+  .ad-section {
+    margin-bottom: 1.5rem;
+  }
+  
+  .ad-section h3 {
+    margin-bottom: 0.5rem;
+    color: var(--navy-blue);
+    font-size: 1.1rem;
+  }
+  
+  .ad-section p,
+  .ad-section ul {
+    margin: 0;
+    padding-left: 1rem;
+    color: var(--text-color);
+    line-height: 1.5;
+  }
+  
+  .ad-section ul {
+    list-style: disc inside;
+  }
+  
+  .ad-docs li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .ad-docs a {
+    color: var(--blue-grotto);
+    text-decoration: underline;
+  }
+  
+  .status-block {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .ad-status-select {
+    padding: 0.6rem 1rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    outline: none;
+    color: white;
+  }
+  
+  .ad-status-select.pending                { background: var(--pending-bg); }
+  .ad-status-select.finalized              { background: var(--finalized-bg); }
+  .ad-status-select.accepted               { background: var(--accepted-bg); }
+  .ad-status-select.current\-intern        { background: var(--current-intern-bg); }
+  .ad-status-select.internship\-complete   { background: var(--internship-complete-bg); }
+  .ad-status-select.rejected               { background: var(--rejected-bg); }
+  
+  .ad-notfound {
+    padding: 4rem;
+    text-align: center;
+    color: #555;
+  }
+  

@@ -1,3 +1,6 @@
+/* File: src/components/SearchBar.css */
+/* ... your existing rules ... */
+
 .search-bar.refined {
   display: flex;
   align-items: center;
@@ -9,50 +12,44 @@
   border: 1px solid #ccc;
 }
 
-.input-wrapper {
+.search-field-wrapper {
   position: relative;
-}
-
-.search-field.refined {
-  border: none;
-  padding: 0.6rem 1rem;
-  padding-right: 2.5rem; /* space for the clear button */
-  border-radius: 9999px;
-  font-size: 0.95rem;
-  background-color: transparent;
-  outline: none;
-  width: 180px;
-}
-
-.clear-btn {
-  position: absolute;
-  right: 0.8rem;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  font-size: 1.1rem;
-  color: #888;
-  cursor: pointer;
-  line-height: 1;
-  padding: 0;
-}
-
-.clear-btn:hover {
-  color: #555;
-}
-
-.search-icon {
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding-left: 0.25rem;
 }
 
 .icon-image {
   width: 24px;
   height: 24px;
   opacity: 0.6;
+  margin-right: 0.5rem;
+}
+
+.search-field.refined {
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.95rem;
+  background-color: transparent;
+  outline: none;
+  width: 180px; /* adjust to taste */
+}
+
+.clear-btn {
+  position: absolute;
+  right: 0.5rem;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  color: #888;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.clear-btn:hover {
+  color: #444;
 }
 
 .separator {

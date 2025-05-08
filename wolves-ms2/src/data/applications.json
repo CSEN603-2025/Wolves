@@ -1,26 +1,20 @@
 [
     { "id": 1, "studentId": 1, "internshipId": 1, "status": "Pending" },
     { "id": 2, "studentId": 2, "internshipId": 1, "status": "Pending" },
-    { "id": 3, "studentId": 3, "internshipId": 1, "status": "Pending" },
+    { "id": 3, "studentId": 3, "internshipId": 1, "status": "finalized" },
     { "id": 4, "studentId": 5, "internshipId": 1, "status": "Pending" },
-    { "id": 5, "studentId": 6, "internshipId": 1, "status": "Pending" },
+    { "id": 5, "studentId": 6, "internshipId": 1, "status": "rejected" },
   
-    { "id": 6, "studentId": 1, "internshipId": 2, "status": "Pending" },
+    { "id": 6, "studentId": 1, "internshipId": 2, "status": "accepted" },
     { "id": 7, "studentId": 2, "internshipId": 2, "status": "Pending" },
     { "id": 8, "studentId": 4, "internshipId": 2, "status": "Pending" },
-    { "id": 9, "studentId": 7, "internshipId": 2, "status": "Pending" },
-    { "id": 10, "studentId": 8, "internshipId": 2, "status": "Pending" },
   
     { "id": 11, "studentId": 1, "internshipId": 3, "status": "Pending" },
-    { "id": 12, "studentId": 2, "internshipId": 3, "status": "Pending" },
-    { "id": 13, "studentId": 9, "internshipId": 3, "status": "Pending" },
-    { "id": 14, "studentId": 10, "internshipId": 3, "status": "Pending" },
-    { "id": 15, "studentId": 11, "internshipId": 3, "status": "Pending" },
+    { "id": 12, "studentId": 2, "internshipId": 3, "status": "rejected" },
   
     { "id": 16, "studentId": 1, "internshipId": 4, "status": "Pending" },
-    { "id": 17, "studentId": 2, "internshipId": 4, "status": "Pending" },
-    { "id": 18, "studentId": 12, "internshipId": 4, "status": "Pending" },
-    { "id": 19, "studentId": 13, "internshipId": 4, "status": "Pending" },
-    { "id": 20, "studentId": 14, "internshipId": 4, "status": "Pending" }
+    { "id": 17, "studentId": 2, "internshipId": 4, "status": "finalized" },
+    { "id": 18, "studentId": 12, "internshipId": 4, "status": "rejected" },
+    { "id": 19, "studentId": 13, "internshipId": 4, "status": "accepted" }
   ]
   

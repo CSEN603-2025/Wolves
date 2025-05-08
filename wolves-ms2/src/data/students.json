@@ -8,7 +8,7 @@
     "status": "Pro",
     "completedMonths": 3,
     "profileUrl":"/",
-    "profilePicture":"pp.png",
+    "profilePicture":"icons/pp.png",
     "semesters": "6"
   },
   {
@@ -20,7 +20,7 @@
     "status": "Basic",
     "completedMonths": 1,
     "profileUrl":"/",
-    "profilePicture":"bmo.jpg",
+    "profilePicture":"icons/bmo.jpg",
     "semesters": "6"
   },
   {
@@ -55,8 +55,8 @@
   },
   {
     "id": 6,
-    "name": "Hania Samer",
-    "email": "hania.samer@guc.edu.eg",
+    "name": "Lamine Yamal",
+    "email": "Lamine.yamal@guc.edu.eg",
     "password": "password123",
     "major": "BI",
     "status": "Basic",
@@ -65,7 +65,7 @@
   },
   {
     "id": 7,
-    "name": "Moahmed Khaled",
+    "name": "Mohamed Khaled",
     "email": "mohamed.khaled@student.guc.edu.eg",
     "password": "password123",
     "major": "IET",

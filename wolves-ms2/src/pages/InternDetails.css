@@ -1,0 +1,176 @@
+:root {
+    --base-bg: #fdf7ee;
+    --text-color: #05445e;
+    --navy-blue: #05445e;
+    --blue-grotto: #189ab4;
+    --baby-blue: #d4f1f4;
+    --glass-bg: rgba(255,255,255,0.15);
+    --glass-border: rgba(255,255,255,0.3);
+    --shadow: rgba(0,0,0,0.12);
+  }
+  
+  .intern-details-dashboard {
+    background: var(--base-bg);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* ——— TopBar “Back” Button ——— */
+  .intern-back-btn {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: none;
+    border: none;
+    color: white;
+  }
+  .intern-back-btn .chevron-left {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-left: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(45deg);
+  }
+  
+  /* ——— Layout ——— */
+  .intern-details-main {
+    display: flex;
+    flex: 1;
+    padding: 2rem;
+    gap: 2rem;
+  }
+  .intern-details-sidebar {
+    width: 22%;
+  }
+  .intern-details-content {
+    flex: 1;
+  }
+  
+  /* ——— Headings ——— */
+  .intern-details-title {
+    margin-top: 0;
+    font-size: 1.5rem;
+    color: var(--navy-blue);
+    border-bottom: 2px solid var(--blue-grotto);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* ——— Sections ——— */
+  .intern-details-section {
+    margin-bottom: 1.5rem;
+  }
+  .intern-details-section h3 {
+    margin-bottom: 0.5rem;
+    color: var(--navy-blue);
+    font-size: 1.1rem;
+  }
+  .intern-details-section p,
+  .intern-details-section ul {
+    margin: 0.5rem 0;
+    color: var(--text-color);
+    line-height: 1.5;
+  }
+  .intern-details-docs li + li {
+    margin-top: 0.5rem;
+  }
+  .intern-details-docs a {
+    color: var(--blue-grotto);
+    text-decoration: underline;
+  }
+  
+  /* ——— Evaluation List ——— */
+  .intern-details-eval-section {
+    margin-top: 2rem;
+  }
+  .intern-details-eval-section h3 {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    color: var(--navy-blue);
+  }
+  
+  .eval-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+  }
+  
+  .eval-card {
+    background: var(--navy-blue);
+    color: white;
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    position: relative;
+  }
+  
+  .eval-text {
+    margin: 0;
+  }
+  
+  /* Edit / Delete buttons inside each card */
+  .eval-buttons {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    display: flex;
+    gap: 0.5rem;
+  }
+  .eval-buttons button {
+    background: var(--baby-blue);
+    color: var(--navy-blue);
+    border: none;
+    border-radius: 6px;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .eval-buttons button:hover {
+    background: var(--blue-grotto);
+    color: white;
+  }
+  
+  /* Inline edit form */
+  .eval-form textarea,
+  .eval-add-form textarea {
+    width: 100%;
+    min-height: 80px;
+    border: 1px solid var(--navy-blue);
+    border-radius: 6px;
+    padding: 0.6rem;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  .eval-form-buttons {
+    display: flex;
+    gap: 0.5rem;
+  }
+  .eval-form-buttons button {
+    flex: 1;
+    background: var(--blue-grotto);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 0.6rem;
+    cursor: pointer;
+  }
+  .eval-form-buttons button[type="button"] {
+    background: var(--rejected-bg, #f87171);
+  }
+  
+  /* New‐evaluation form */
+  .eval-add-form button {
+    display: block;
+    margin-left: auto;
+    background: var(--blue-grotto);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 0.6rem 1.2rem;
+    cursor: pointer;
+  }
+  
+  

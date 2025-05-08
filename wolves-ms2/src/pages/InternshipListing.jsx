@@ -34,7 +34,7 @@ const InternshipListing = () => {
     title, company, location,
     industry, duration, paid,
     salary, description, skills,
-    logo, status
+    logo, status, count
   } = internship;
 
   const logoSrc = require(`../assets/companies/${logo}`);
@@ -112,6 +112,7 @@ const InternshipListing = () => {
           <span><strong>Duration:</strong> {duration}</span>
           <span><strong>Pay:</strong> {paid ? 'Paid' : 'Unpaid'}</span>
           {paid && <span><strong>Salary:</strong> {salary}</span>}
+          {user.viewCount===true&&<span><strong>Number of applications:</strong> {count}</span>}
         </div>
 
         <section className="listing-section">

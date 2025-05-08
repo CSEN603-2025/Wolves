@@ -14,7 +14,10 @@ const InternshipCard = ({
   date,
   early,
   logo,
-  status,       // NEW
+  status,
+  hideStatus =false,
+  viewCount=false,
+  count
 }) => {
   const navigate = useNavigate();
   const logoSrc = require(`../assets/companies/${logo}`);
@@ -55,14 +58,15 @@ const InternshipCard = ({
           {paid && salary && (
             <span className="meta-line">Salary: {salary}</span>
           )}
+          {viewCount && (<span className={`status-badge status-pending`}>Applications: {count}</span>)}
         </div>
 
         {/* new, full-width status row */}
-        <div className="status-row">
+        {!hideStatus && (<div className="status-row">
           <span className={`status-badge status-${statusClass}`}>
             {status.charAt(0).toUpperCase() + status.slice(1)}
           </span>
-        </div>
+        </div>)}
       </div>
     </button>
   );
