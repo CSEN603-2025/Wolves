@@ -1,0 +1,135 @@
+.company-details-page {
+  background: var(--base-bg);
+  min-height: 100vh;
+}
+
+.company-details-main {
+  max-width: 800px;
+  margin: 2rem auto;
+}
+
+.company-details-back-btn {
+    background: none;
+    border: none;
+    color: var(--grotto);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-left: 1.25rem; 
+}
+
+.company-details-back-btn:hover {
+    transform: scale(1.01);
+    color: var(--blue-green);
+  }
+  
+  /* CSS chevron arrow */
+.company-details-back-btn::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-top: 2px solid var(--grotto);
+    border-right: 2px solid var(--grotto);
+    transform: rotate(-135deg);
+  }
+
+.company-details-card {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.13);
+  padding: 2.5rem 2.5rem 2rem 2.5rem;
+  color: #05445e;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.company-details-header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2.2rem;
+}
+
+.company-details-logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 14px;
+  background: #fff;
+  object-fit: contain;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.company-details-info {
+  flex: 1;
+}
+
+.company-details-name {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #05445e;
+}
+
+.company-details-industry {
+  font-size: 1.1rem;
+  color: #189ab4;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.company-details-meta {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 8px;
+  font-size: 1rem;
+  color: #05445e;
+}
+
+.company-details-meta-label {
+  font-weight: 600;
+}
+
+.company-details-content {
+  font-size: 1.08rem;
+  margin-bottom: 1.2rem;
+  color: #05445e;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.company-details-label {
+  color: #189ab4;
+  font-weight: 600;
+}
+
+.company-details-document {
+  margin: 1.2rem 0 2rem 0;
+}
+
+.company-details-download-btn {
+  margin-top: 0.5rem;
+  display: inline-block;
+  min-width: 180px;
+}
+
+.company-details-actions {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+.company-details-action-btn {
+  min-width: 180px;
+} 

@@ -12,7 +12,7 @@
   .listing-main {
     max-width: 800px;
     margin: 2rem auto;
-    background: var(--glass-bg);
+    background: white;
     border: 1px solid var(--glass-border);
     backdrop-filter: blur(12px);
     border-radius: 12px;
@@ -145,112 +145,100 @@
   .status-finalized    { background: #C084FC; color: white; }
   .status-current-intern { background: #38BDF8; color:white;}
   .status-internship-complete{ background: #94A3B8; color:white;}
-
-  /* modal overlay */
-.modal-overlay {
+  
+  /* Internship Application Modal Styles */
+  .internship-modal-overlay {
     position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0,0,0,0.5);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.45);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
+    overflow-y: auto;
   }
-  
-  /* modal box */
-  .modal-content {
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    backdrop-filter: blur(12px);
-    border-radius: 12px;
-    padding: 2rem;
+
+  .internship-modal-content {
+    background: linear-gradient(145deg, #075b7a 90%, #0e3d55 100%);
+    border-radius: 20px;
+    padding: 1.5rem 2rem;
     width: 90%;
     max-width: 500px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.22);
+    color: white;
+    animation: modalSlideIn 0.3s ease-out;
+    opacity: 1;
     position: relative;
-    color: var(--baby);
-    text-shadow: var(--shadow);
   }
-  
-  /* close “×” */
-  .modal-close {
-    position: absolute;
-    top: 0.5rem; right: 0.5rem;
+
+  @keyframes modalSlideIn {
+    from {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .internship-modal-close {
     background: none;
     border: none;
-    font-size: 1.5rem;
-    color: var(--text-color);
+    color: white;
+    font-size: 1.8rem;
     cursor: pointer;
+    padding: 0.5rem;
+    line-height: 1;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
   }
-  
-  /* form inside modal */
-  .modal-form label {
+
+  .internship-modal-close:hover {
+    opacity: 1;
+  }
+
+  .internship-modal-form label {
     display: block;
     margin-bottom: 1rem;
     font-weight: 600;
   }
-  
-  .modal-form textarea {
+
+  .internship-modal-form input,
+  .internship-modal-form select,
+  .internship-modal-form textarea {
     width: 100%;
-    min-height: 80px;
+    margin-top: 0.5rem;
     padding: 0.6rem;
-    margin-top: 0.4rem;
     border-radius: 6px;
     border: 1px solid rgba(0,0,0,0.1);
   }
-  
-  .modal-form input[type="file"] {
-    margin-top: 0.4rem;
+
+  .internship-modal-form textarea {
+    min-height: 80px;
   }
-  
-  .file-list {
-    list-style: none;
-    padding-left: 0;
-    margin: 0.5rem 0;
-  }
-  
-  .file-list li {
-    font-size: 0.9rem;
-    margin-bottom: 0.25rem;
-  }
-  
-  /* submit button */
-  .modal-submit {
-    background: linear-gradient(110deg, var(--grotto), var(--baby));
-    color: var(--text-color);
+
+  .internship-modal-submit {
+    width: 100%;
+    padding: 0.75rem;
+    background: linear-gradient(110deg, #189ab4, #75e6da);
+    color: #05445e;
     border: none;
-    padding: 0.75rem 1.5rem;
     border-radius: 8px;
     font-weight: 600;
+    margin-top: 1rem;
     cursor: pointer;
-    width: 100%;
-    margin-top: 0.5rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
   }
-  
-  .modal-submit:disabled {
+
+  .internship-modal-submit:disabled {
     opacity: 0.6;
     cursor: not-allowed;
-  }
-  
-  /* feedback message */
-  .submit-message {
-    margin-top: 0.75rem;
-    color: rgb(104, 213, 104);
-    text-align: center;
-    font-weight: 600;
-  }
-  
-  /* mark required vs optional */
-.required {
-    color: #e63946;
-  }
-  .optional {
-    font-weight: 400;
-    font-size: 0.9rem;
-    opacity: 0.7;
-  }
-  .file-name {
-    margin: 0.25rem 0 0.75rem 0.5rem;
-    font-size: 0.9rem;
-    opacity: 0.8;
   }
   

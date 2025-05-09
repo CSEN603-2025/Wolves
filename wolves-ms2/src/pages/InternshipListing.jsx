@@ -150,12 +150,11 @@ const InternshipListing = () => {
       </main>
 
       {showModal && (
-        <div className="modal-overlay" onClick={handleCloseModal}>
-          <div className="modal-content" onClick={e => e.stopPropagation()}>
-            <button className="modal-close" onClick={handleCloseModal}>×</button>
+        <div className="internship-modal-overlay" onClick={handleCloseModal}>
+          <div className="internship-modal-content" onClick={e => e.stopPropagation()}>
+            <button className="internship-modal-close" onClick={handleCloseModal}>×</button>
             <h3>Apply for <em>{title}</em></h3>
-
-            <form className="modal-form" onSubmit={handleSubmit}>
+            <form className="internship-modal-form" onSubmit={handleSubmit}>
               {/* CV (required) */}
               <label>
                 CV <span className="required">*</span>
@@ -167,7 +166,6 @@ const InternshipListing = () => {
                 />
               </label>
               {cvFile && <div className="file-name">• {cvFile.name}</div>}
-
               {/* Cover Letter (optional) */}
               <label>
                 Cover Letter <span className="optional">(optional)</span>
@@ -178,7 +176,6 @@ const InternshipListing = () => {
                 />
               </label>
               {coverFile && <div className="file-name">• {coverFile.name}</div>}
-
               {/* Extras (optional, multiple) */}
               <label>
                 Certificates / Extras <span className="optional">(optional, multiple)</span>
@@ -193,15 +190,13 @@ const InternshipListing = () => {
                   {extras.map((f,i) => <li key={i}>• {f.name}</li>)}
                 </ul>
               )}
-
               <button
                 type="submit"
-                className="modal-submit"
+                className="internship-modal-submit"
                 disabled={!cvFile || submitting}
               >
                 {submitting ? 'Submitting…' : 'Submit Application'}
               </button>
-
               {submitMessage && (
                 <p className="submit-message">{submitMessage}</p>
               )}

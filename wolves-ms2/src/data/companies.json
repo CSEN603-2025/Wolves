@@ -5,6 +5,7 @@
     "email": "contact@deloitte.com",
     "industry": "Consulting",
     "logo": "deloitte-logo.png"
+    ,"size":"small"
   },
   {
     "id": 2,
@@ -12,6 +13,7 @@
     "email": "careers@etisalat.eg",
     "industry": "Telecommunications",
     "logo": "etisalat-logo.png"
+    ,"size":"medium"
   },
   {
     "id": 3,
@@ -19,6 +21,7 @@
     "email": "info@henkel.com",
     "industry": "Consumer Goods",
     "logo": "henkel-logo.png"
+    ,"size":"large"
   },
   {
     "id": 4,
@@ -26,6 +29,7 @@
     "email": "interns@ibm.com",
     "industry": "Technology",
     "logo": "IBM-logo.png"
+    ,"size":"corporate"
   },
   {
     "id": 5,
@@ -33,6 +37,7 @@
     "email": "jobs@microsoft.com",
     "industry": "Technology",
     "logo": "microsoft-logo.png"
+    ,"size":"corporate"
   },
   {
     "id": 6,
@@ -40,6 +45,7 @@
     "email": "careers@nestle.com",
     "industry": "Food & Beverage",
     "logo": "nestle-logo.png"
+    ,"size":"medium"
   },
   {
     "id": 7,
@@ -47,6 +53,7 @@
     "email": "interns@pfizer.com",
     "industry": "Pharmaceuticals",
     "logo": "pfizer-logo.png"
+    ,"size":"large"
   },
   {
     "id": 8,
@@ -54,6 +61,7 @@
     "email": "recruit@pwc.com",
     "industry": "Accounting",
     "logo": "pwc-logo.png"
+    ,"size":"corporate"
   },
   {
     "id": 9,
@@ -61,6 +69,7 @@
     "email": "hr@qnb.com",
     "industry": "Banking",
     "logo": "QNB-logo.png"
+    ,"size":"small"
   },
   {
     "id": 10,
@@ -68,6 +77,7 @@
     "email": "talent@schneider.com",
     "industry": "Energy Management",
     "logo": "schneider-logo.png"
+    ,"size":"medium"
   },
   {
     "id": 11,
@@ -75,6 +85,7 @@
     "email": "jobs@siemens.com",
     "industry": "Engineering",
     "logo": "siemens-logo.png"
+    ,"size":"corporate"
   },
   {
     "id": 12,
@@ -82,5 +93,6 @@
     "email": "careers@valeo.com",
     "industry": "Automotive",
     "logo": "valeo-logo.png"
+    ,"size":"small"
   }
 ]

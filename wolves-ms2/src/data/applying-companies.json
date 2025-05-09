@@ -1,0 +1,35 @@
+[
+    {
+      "id": 1,
+      "name": "Mercedes",
+      "email": "contact@mercedes.com",
+      "industry": "Automotive",
+      "logo": "mercedes-logo.png"
+      ,"size":"corporate"
+    },
+    {
+      "id": 2,
+      "name": "Uber",
+      "email": "contact@uber.com",
+      "industry": "Ridesharing",
+      "logo": "uber-logo.png"
+      ,"size":"large"
+    },
+    {
+      "id": 3,
+      "name": "Pinterest",
+      "email": "contact@pinterest.com",
+      "industry": "Social Media",
+      "logo": "pinterest-logo.png"
+      ,"size":"medium"
+    },
+    {
+      "id": 4,
+      "name": "Apple",
+      "email": "contact@apple.com",
+      "industry": "Technology",
+      "logo": "apple-logo.png"
+      ,"size":"corporate"
+    }
+  ]
+  

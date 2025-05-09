@@ -1,7 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import TopBar from '../components/TopBar';
+import Modal from '../components/Modal';
 import './AdminHome.css';
+import scadLogo from '../assets/scad-logo.png';
+import notificationIcon from '../assets/icons/notif-icon.png';
+import homeIcon from '../assets/icons/home-icon.png';
+import logoutIcon from '../assets/icons/logout-icon.png';
+
+import studentIcon from '../assets/icons/interns-icon.png';
+import companyIcon from '../assets/icons/companies-icon.png';
+import internshipIcon from '../assets/icons/internships-icon.png';
+import workshopIcon from '../assets/icons/workshop-icon.png';
+import reportsIcon from '../assets/icons/eval-icon.png';
 
 const AdminHome = () => {
   const navigate = useNavigate();
@@ -28,6 +39,28 @@ const AdminHome = () => {
     () => sessionStorage.getItem('cycleEnd') || ''
   );
 
+  // Modal state
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalStart, setModalStart] = useState(cycleStart);
+  const [modalEnd, setModalEnd] = useState(cycleEnd);
+
+  // Cycle state (active/inactive)
+  const [cycleState, setCycleState] = useState('Inactive');
+  useEffect(() => {
+    const now = new Date();
+    const start = new Date(cycleStart);
+    const end = new Date(cycleEnd);
+    if (cycleStart && cycleEnd && now >= start && now <= end) {
+      setCycleState('Active');
+    } else {
+      setCycleState('Inactive');
+    }
+  }, [cycleStart, cycleEnd]);
+
+  // Persist cycle dates
+  useEffect(() => sessionStorage.setItem('cycleStart', cycleStart), [cycleStart]);
+  useEffect(() => sessionStorage.setItem('cycleEnd', cycleEnd), [cycleEnd]);
+
   // load static JSON once
   useEffect(() => {
     import('../data/applications.json').then(m => {
@@ -50,18 +83,37 @@ const AdminHome = () => {
     });
   }, []);
 
-  // persist cycle dates
-  useEffect(() => sessionStorage.setItem('cycleStart', cycleStart), [cycleStart]);
-  useEffect(() => sessionStorage.setItem('cycleEnd', cycleEnd), [cycleEnd]);
-
   // nav helper
   const go = path => () => navigate(path);
+
+  // Modal handlers
+  const openModal = () => {
+    setModalStart(cycleStart);
+    setModalEnd(cycleEnd);
+    setIsModalOpen(true);
+  };
+  const closeModal = () => setIsModalOpen(false);
+  const handleModalSave = e => {
+    e.preventDefault();
+    setCycleStart(modalStart);
+    setCycleEnd(modalEnd);
+    setIsModalOpen(false);
+  };
 
   return (
     <div className="admin-home-page">
       <TopBar showSearch={false}>
-        <button onClick={go('/admin/notifications')} className="topbar-button">
-          Notifications <span className="notif-count">{notifications.length}</span>
+      <button className="topbar-button" onClick={()=> navigate('/')}>
+          <img src={notificationIcon} alt="Notifications"  className="topbar-icon" />
+          <span>Notifications</span>
+        </button>
+        <button className="topbar-button" onClick={()=> navigate('/')}>
+          <img src={homeIcon} alt="Dashboard"  className="topbar-icon" />
+          <span>Dashboard</span>
+        </button>
+        <button className="topbar-button" onClick={()=> navigate('/')}>
+          <img src={logoutIcon} alt="logout"  className="topbar-icon" />
+          <span>Logout</span>
         </button>
       </TopBar>
 
@@ -70,7 +122,7 @@ const AdminHome = () => {
 
         {/* Stats Row */}
         <div className="stats-row">
-          <div className="stats-card" tabIndex={0} onClick={go('/admin/companies')}>
+          <div className="stats-card" tabIndex={0} onClick={go('/admin-home/companies')}>
             <h3>{companies.length}</h3>
             <p>Companies Pending</p>
           </div>
@@ -96,12 +148,42 @@ const AdminHome = () => {
         <section className="cycle-section">
           <h2>Current Internship Cycle</h2>
           <div className="cycle-controls">
-            <input type="date" value={cycleStart} onChange={e => setCycleStart(e.target.value)} />
-            <span>to</span>
-            <input type="date" value={cycleEnd} onChange={e => setCycleEnd(e.target.value)} />
-            <button className="iv-btn primary" onClick={go('/admin/cycle-settings')}>Manage Cycle</button>
+            <div style={{display:'flex',alignItems:'center',gap:'1rem'}}>
+              <span className={`state-badge ${cycleState.toLowerCase()}`}>{cycleState}</span>
+              <input type="date" value={cycleStart} readOnly />
+              <span>to</span>
+              <input type="date" value={cycleEnd} readOnly />
+            </div>
+            <button className="iv-btn primary" onClick={openModal}>Manage Cycle</button>
           </div>
         </section>
+
+        {/* Modal for editing cycle dates */}
+        <Modal isOpen={isModalOpen} onClose={closeModal} title="Manage Internship Cycle">
+          <form onSubmit={handleModalSave} className="cycle-form">
+            <div className="form-group">
+              <label>Start Date</label>
+              <input
+                type="date"
+                value={modalStart}
+                onChange={e => setModalStart(e.target.value)}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label>End Date</label>
+              <input
+                type="date"
+                value={modalEnd}
+                onChange={e => setModalEnd(e.target.value)}
+                required
+              />
+            </div>
+            <button type="submit" className="update-cycle-btn">
+              Update Cycle
+            </button>
+          </form>
+        </Modal>
 
         {/* Recent Notifications */}
         <section className="recent-notifs-section">
