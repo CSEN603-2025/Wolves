@@ -1,14 +1,29 @@
-
 :root {
     --base-bg:    #fdf7ee;
     --text-color: #05445e;
     --navy:       #05445e;
     --grotto:     #189ab4;
     --greenish:   #75e6da;
+    --blue-green: #2eccb9;
     --baby:       #d4f1f4;
     --glass-bg:     rgba(255,255,255,0.15);
     --glass-border: rgba(255,255,255,0.3);
     --shadow:       rgba(0,0,0,0.12);
     --background: linear-gradient(145deg, #075b7a, #0e3d55);
-  }
+    
+    /* Glass effect variables */
+    --glass-blur: 10px;
+    --glass-opacity: 0.9;
+    --glass-border-light: rgba(255,255,255,0.2);
+    --glass-border-dark: rgba(0,0,0,0.1);
+    
+    /* Shadow variables */
+    --shadow-sm: 0 4px 15px rgba(0,0,0,0.05);
+    --shadow-md: 0 8px 30px rgba(0,0,0,0.1);
+    --shadow-lg: 0 12px 40px rgba(0,0,0,0.15);
+    
+    /* Gradient variables */
+    --gradient-primary: linear-gradient(110deg, var(--grotto), var(--blue-green));
+    --gradient-hover: linear-gradient(135deg, rgba(24, 154, 180, 0.1), rgba(117, 230, 218, 0.1));
+}
   
