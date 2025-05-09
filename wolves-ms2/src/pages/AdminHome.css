@@ -278,59 +278,6 @@
   color: #fff;
 }
 
-/* TopBar Notifications Button */
-.topbar-button {
-  position: relative;
-  background: #05445e;
-  color: #fff !important;
-  font-weight: 600;
-  cursor: pointer;
-  padding: 0.75rem 1.25rem;
-  display: flex;
-  align-items: center;
-  border-radius: 16px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
-  border: none;
-  transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
-  overflow: hidden;
-  z-index: 1;
-}
-
-.topbar-button::after {
-  content: "";
-  position: absolute;
-  top: 0; left: -120%;
-  width: 120%;
-  height: 100%;
-  background: rgba(255,255,255,0.15);
-  transform: skewX(-25deg);
-  transition: left 0.6s ease;
-  pointer-events: none;
-  z-index: 2;
-}
-
-.topbar-button:hover, .topbar-button:focus {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-  background: #075b7a;
-  color: #fff !important;
-}
-
-.topbar-button:hover::after, .topbar-button:focus::after {
-  left: 120%;
-}
-
-.notif-count {
-  background: #ef4444;
-  border-radius: 12px;
-  color: #fff;
-  padding: 0.25rem 0.75rem;
-  font-size: 0.875rem;
-  margin-left: 0.75rem;
-  font-weight: 600;
-  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
-}
-
 /* Recent Notifications Section */
 .recent-notifs-section {
   background: rgba(5,68,94,0.93);
@@ -447,5 +394,216 @@
   .action-grid {
     grid-template-columns: 1fr;
   }
+}
+
+.admin-home {
+  min-height: 100vh;
+  background-color: #f5f7fa;
+}
+
+.admin-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.admin-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.admin-logo {
+  height: 60px;
+  width: auto;
+}
+
+.admin-header h1 {
+  font-size: 2rem;
+  color: var(--navy-blue);
+  margin: 0;
+}
+
+.admin-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: linear-gradient(145deg, #075b7a, #0e3d55);
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+}
+
+.stat-icon {
+  width: 48px;
+  height: 48px;
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+}
+
+.stat-info h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.stat-info p {
+  margin: 0.5rem 0 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.admin-cycle {
+  background: linear-gradient(145deg, #075b7a, #0e3d55);
+  border-radius: 16px;
+  padding: 1.5rem;
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.cycle-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.cycle-icon {
+  width: 32px;
+  height: 32px;
+  filter: brightness(0) invert(1);
+}
+
+.cycle-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.cycle-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.cycle-state {
+  display: flex;
+  justify-content: center;
+}
+
+.state-badge {
+  padding: 0.5rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.state-badge.active {
+  background-color: #10b981;
+}
+
+.state-badge.inactive {
+  background-color: #ef4444;
+}
+
+.cycle-dates {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.date-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.date-box label {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.date-box input {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 0.75rem;
+  color: white;
+  font-size: 1rem;
+  cursor: not-allowed;
+}
+
+.manage-cycle-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.manage-cycle-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Modal Form Styles */
+.cycle-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.form-group input {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 0.75rem;
+  color: white;
+  font-size: 1rem;
+}
+
+.update-cycle-btn {
+  background: #75e6da;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  color: var(--navy-blue);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.update-cycle-btn:hover {
+  background: #5cd6c9;
 }
   

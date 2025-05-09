@@ -24,6 +24,8 @@ import CompanyInterns from './pages/CompanyInterns';
 import InternDetails from './pages/InternDetails';
 import StudentInternships from './pages/StudentInternships';
 import InternshipEvaluation from './pages/InternshipEvaluation';
+import AdminCompanies from './pages/AdminCompanies';
+import CompanyDetails from './pages/CompanyDetails';
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -65,6 +67,8 @@ function App() {
         <Route path="/company-interns" element={<CompanyInterns />} />
         <Route path="/student-internships" element={<StudentInternships />} />
         <Route path="/student-internships/:id"       element={<InternshipEvaluation />} />
+        <Route path="/admin-home/companies" element={<AdminCompanies />} />
+        <Route path="/admin-home/companies/:id" element={<CompanyDetails />} />
         <Route path="*"                     element={<Navigate to="/" replace />} />
       </Routes>
     </div>

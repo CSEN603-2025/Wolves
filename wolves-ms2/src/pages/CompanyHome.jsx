@@ -52,56 +52,9 @@ const CompanyHome = () => {
         (filters.paid === 'Paid' ? i.paid : !i.paid))
     );
 
-  //
-  // -- Modal "New Post" state & handlers --
-  //
-  const [showModal,      setShowModal]      = useState(false);
-  const [jobTitle,       setJobTitle]       = useState('');
-  const [durationInput,  setDurationInput]  = useState('');
-  const [paidInput,      setPaidInput]      = useState('Paid');
-  const [salaryInput,    setSalaryInput]    = useState('');
-  const [skillsInput,    setSkillsInput]    = useState('');
-  const [descriptionInput,setDescriptionInput]=useState('');
-  const [posting,        setPosting]        = useState(false);
-  const [postMessage,    setPostMessage]    = useState(null);
-
-  const openModal = () => {
-    window.scrollTo(0,4460) 
-    setShowModal(true);
-    setPostMessage(null);
-    setJobTitle('');
-    setDurationInput('');
-    setPaidInput('Paid');
-    setSalaryInput('');
-    setSkillsInput('');
-    setDescriptionInput('');
-  };
-  const closeModal = () => setShowModal(false);
-
-  useEffect(() => {
-    if (location.state?.openNewPostModal) {
-      openModal();
-    }
-  }, [location.state]);
-
-  const handleCreate = e => {
-    e.preventDefault();
-    setPosting(true);
-    setPostMessage(null);
-    // simulate API call
-    setTimeout(() => {
-      setPosting(false);
-      setPostMessage('Internship posted successfully!');
-    }, 1200);
-  };
-
   return (
     <div className="dashboard-container">
       <TopBar onSearch={handleSearch}>
-        <button className="topbar-button" onClick={openModal}>
-          <img src={NewPost}  alt="new-post"  className="topbar-icon" />
-          <span>New Post</span>
-        </button>
         <button className="topbar-button" onClick={()=> navigate('/company-posts')}>
           <img src={MyPosts} alt="my-posts"  className="topbar-icon" />
           <span>My Posts</span>
@@ -113,10 +66,6 @@ const CompanyHome = () => {
         <button className="topbar-button" onClick={() => navigate('/company-interns')}>
           <img src={Interns}     alt="interns"       className="topbar-icon" />
           <span>Interns</span>
-        </button>
-        <button className="topbar-button">
-          <img src={notifIcon}       alt="Notifications" className="topbar-icon" />
-          <span>Notifications</span>
         </button>
         <button className="topbar-button" onClick={() => navigate('/company-home')}>
           <img src={HomeIcon}     alt="home"       className="topbar-icon" />
@@ -139,9 +88,6 @@ const CompanyHome = () => {
             hideMajor={true}
             hideProgress={true}
           >
-            <button className="po-btn" onClick={openModal}>
-              <img src={NewPost} alt="" /> New Post
-            </button>
             <button className="po-btn" onClick={()=> navigate('/')}>
               <img src={MyPosts} alt="" /> My Posts
             </button>
@@ -208,86 +154,6 @@ const CompanyHome = () => {
       <footer className="footer">
         GUC Internship Platform © 2025
       </footer>
-    {/* </div> */}
-
-      {showModal && (
-        <div className="modal-overlay" onClick={closeModal}>
-          <div className="modal-content" onClick={e=>e.stopPropagation()}>
-            <button className="modal-close" onClick={closeModal}>×</button>
-            <h3>New Internship Post</h3>
-            <form className="modal-form" onSubmit={handleCreate}>
-              <label>
-                Job Title
-                <input
-                  type="text"
-                  value={jobTitle}
-                  onChange={e=>setJobTitle(e.target.value)}
-                  required
-                />
-              </label>
-              <label>
-                Duration
-                <input
-                  type="text"
-                  value={durationInput}
-                  onChange={e=>setDurationInput(e.target.value)}
-                  placeholder="e.g. 3 months"
-                  required
-                />
-              </label>
-              <label>
-                Paid / Unpaid
-                <select
-                  value={paidInput}
-                  onChange={e=>setPaidInput(e.target.value)}
-                >
-                  <option value="Paid">Unpaid</option>
-                  <option value="Unpaid">Paid</option>
-                </select>
-              </label>
-              {paidInput === 'Unpaid' && (
-                <label>
-                  Expected Salary
-                  <input
-                    type="text"
-                    value={salaryInput}
-                    onChange={e=>setSalaryInput(e.target.value)}
-                    placeholder="e.g. 5000 EGP/month"
-                    required
-                  />
-                </label>
-              )}
-              <label>
-                Required Skills
-                <textarea
-                  value={skillsInput}
-                  onChange={e=>setSkillsInput(e.target.value)}
-                  placeholder="Comma-separated, e.g. React, Node.js"
-                  required
-                />
-              </label>
-              <label>
-                Job Description
-                <textarea
-                  value={descriptionInput}
-                  onChange={e=>setDescriptionInput(e.target.value)}
-                  required
-                />
-              </label>
-              <button
-                type="submit"
-                className="modal-submit"
-                disabled={posting}
-              >
-                {posting ? 'Posting…' : 'Post Internship'}
-              </button>
-              {postMessage && (
-                <p className="submit-message">{postMessage}</p>
-              )}
-            </form>
-          </div>
-        </div>
-      )}
     </div>
   );
 };

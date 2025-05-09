@@ -1,0 +1,43 @@
+.admin-companies-page {
+  background: var(--base-bg);
+  min-height: 100vh;
+}
+
+.admin-companies-main {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.admin-companies-title {
+  text-align: left;
+  margin-left: 0;
+}
+
+.admin-companies-tabs {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.admin-companies-section {
+  margin-bottom: 2rem;
+}
+
+.admin-companies-filters {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  align-items: center;
+  max-width: 1000px;
+}
+
+.admin-companies-search {
+  min-width: 100px;
+  flex: 1;
+  max-width: 330px;
+}
+
+.admin-companies-no-results {
+  color: #b2e0ef;
+  margin-top: 2rem;
+} 
