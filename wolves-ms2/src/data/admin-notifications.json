@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "title": "New Company Registration Pending",
+    "body": "TechNova Solutions has submitted a registration request. Review and approve or reject their application.",
+    "date": "2025-05-08 14:32"
+  },
+  {
+    "id": 2,
+    "title": "Internship Report Submitted",
+    "body": "Student Sarah Lee has submitted her final internship report for review.",
+    "date": "2025-05-08 10:15"
+  },
+  {
+    "id": 3,
+    "title": "Workshop Scheduled",
+    "body": "A new workshop on 'Resume Building' is scheduled for May 15th.",
+    "date": "2025-05-07 17:00"
+  },
+  {
+    "id": 4,
+    "title": "Internship Application Received",
+    "body": "Student Ahmed Khaled has applied for the 'Frontend Developer' internship at Webify.",
+    "date": "2025-05-07 09:45"
+  },
+  {
+    "id": 5,
+    "title": "Company Profile Updated",
+    "body": "GreenTech Ltd. has updated their company profile information.",
+    "date": "2025-05-06 16:20"
+  }
+] 
