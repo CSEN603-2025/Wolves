@@ -1,0 +1,65 @@
+.admin-students-page {
+  min-height: 100vh;
+  background: #fdf7ee;
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+}
+
+.students-header {
+  max-width: 1200px;
+  margin: 2.5rem auto 1.5rem auto;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.students-header h1 {
+  color: #05445e;
+  font-size: 2.1rem;
+  font-weight: 800;
+  margin: 0 0 0.5rem 0;
+}
+
+.students-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+.filter-btn {
+  background: linear-gradient(120deg, #05445e 80%, #189ab4 100%);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.7rem 1.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(5,68,94,0.10);
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+.filter-btn.active, .filter-btn:focus {
+  background: #75e6da;
+  color: #05445e;
+  font-weight: 800;
+  transform: translateY(-2px) scale(1.03);
+}
+.filter-btn:hover {
+  background: #189ab4;
+  color: #fff;
+}
+
+.students-list {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem 2rem 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 1.5rem;
+}
+
+.no-students {
+  color: #05445e;
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 2rem 0;
+  font-weight: 600;
+} 

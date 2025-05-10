@@ -3,6 +3,12 @@ import { useParams, useNavigate } from 'react-router-dom';
 import TopBar from '../components/TopBar';
 import './CompanyDetails.css';
 
+import applicationIcon from '../assets/icons/application-icon.png';
+import notifIcon       from '../assets/icons/notif-icon.png';
+import MyPosts     from '../assets/icons/posts-icon.png';
+import Interns     from '../assets/icons/interns-icon.png';
+import HomeIcon        from '../assets/icons/home-icon.png';
+
 const DEFAULT_DOC = require('../assets/docs/sample.pdf');
 
 const capitalize = s => s.charAt(0).toUpperCase() + s.slice(1);
@@ -75,7 +81,28 @@ const CompanyDetails = () => {
 
   return (
     <div className="company-details-page">
-      <TopBar showSearch={false} />
+      <TopBar showSearch={false}>
+      <button className="topbar-button" onClick={()=> navigate('/company-posts')}>
+          <img src={MyPosts} alt="my-posts"  className="topbar-icon" />
+          <span>My Posts</span>
+        </button>
+        <button className="topbar-button" onClick={()=> navigate('/company-applications')}>
+          <img src={applicationIcon} alt="Applications"  className="topbar-icon" />
+          <span>Applications</span>
+        </button>
+        <button className="topbar-button" onClick={() => navigate('/company-interns')}>
+          <img src={Interns}     alt="interns"       className="topbar-icon" />
+          <span>Interns</span>
+        </button>
+        <button className="topbar-button" onClick={() => navigate('/company-home')}>
+          <img src={notifIcon}     alt="notifications"       className="topbar-icon" />
+          <span>Notifications</span>
+        </button>
+        <button className="topbar-button" onClick={() => navigate('/company-home')}>
+          <img src={HomeIcon}     alt="home"       className="topbar-icon" />
+          <span>Home</span>
+        </button>
+    </TopBar>
       <main className="company-details-main">
         <div className="company-details-card">
         <button

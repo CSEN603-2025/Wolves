@@ -9,12 +9,12 @@ import applicationsData     from '../data/interns.json';
 import internshipsData      from '../data/internships.json';
 import studentsData         from '../data/students.json';
 
-import NewPost         from '../assets/icons/new-icon.png';
-import MyPosts         from '../assets/icons/posts-icon.png';
 import applicationIcon from '../assets/icons/application-icon.png';
-import Interns         from '../assets/icons/interns-icon.png';
 import notifIcon       from '../assets/icons/notif-icon.png';
+import MyPosts     from '../assets/icons/posts-icon.png';
+import Interns     from '../assets/icons/interns-icon.png';
 import HomeIcon        from '../assets/icons/home-icon.png';
+
 import './CompanyInterns.css';
 
 const CompanyInterns = () => {
@@ -56,29 +56,25 @@ const CompanyInterns = () => {
   return (
     <div className="ci-container">
       <TopBar showSearch={false}>
-        <button className="topbar-button" onClick={() => navigate('/company-home', {state: { openNewPostModal: true }})}>
-        <img src={NewPost} alt="new-post" className="topbar-icon" />
-        <span>New Post</span>
+      <button className="topbar-button" onClick={()=> navigate('/company-posts')}>
+          <img src={MyPosts} alt="my-posts"  className="topbar-icon" />
+          <span>My Posts</span>
         </button>
-        <button className="topbar-button" onClick={() => navigate('/company-posts')}>
-            <img src={MyPosts} alt="My Posts" className="topbar-icon" />
-            <span>My Posts</span>
-        </button>
-        <button className="topbar-button" onClick={() => navigate('/company-applications')}>
-            <img src={applicationIcon} alt="Applications" className="topbar-icon" />
-            <span>Applications</span>
+        <button className="topbar-button" onClick={()=> navigate('/company-applications')}>
+          <img src={applicationIcon} alt="Applications"  className="topbar-icon" />
+          <span>Applications</span>
         </button>
         <button className="topbar-button" onClick={() => navigate('/company-interns')}>
-            <img src={Interns} alt="Interns" className="topbar-icon" />
-            <span>Interns</span>
-        </button>
-        <button className="topbar-button">
-            <img src={notifIcon} alt="Notifications" className="topbar-icon" />
-            <span>Notifications</span>
+          <img src={Interns}     alt="interns"       className="topbar-icon" />
+          <span>Interns</span>
         </button>
         <button className="topbar-button" onClick={() => navigate('/company-home')}>
-            <img src={HomeIcon} alt="Home" className="topbar-icon" />
-            <span>Home</span>
+          <img src={notifIcon}     alt="notifications"       className="topbar-icon" />
+          <span>Notifications</span>
+        </button>
+        <button className="topbar-button" onClick={() => navigate('/company-home')}>
+          <img src={HomeIcon}     alt="home"       className="topbar-icon" />
+          <span>Home</span>
         </button>
       </TopBar>
 

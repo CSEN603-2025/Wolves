@@ -1,0 +1,113 @@
+.student-card-row {
+  position: relative;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+  width: 95%;
+  max-width: 900px;
+  background-color: #05445e;
+  color: white;
+  border: none;
+  border-radius: 16px;
+  padding: 1.1rem 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin: 0 auto 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10);
+  transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+}
+.student-card-row:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.13);
+  background-color: #075b7a;
+}
+
+.student-avatar-wrapper {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.student-avatar {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2.5px solid #75e6da;
+  background: #fff;
+}
+
+.student-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  text-align: left;
+  font-size: 0.97rem;
+}
+.student-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+.student-name {
+  font-size: 1.13rem;
+  font-weight: 700;
+  margin: 0;
+  color: #fff;
+  line-height: 1.2;
+}
+.student-email {
+  font-size: 0.98rem;
+  color: #d4f1f4;
+  font-weight: 500;
+}
+.student-major {
+  font-size: 0.98rem;
+  color: #75e6da;
+  font-weight: 500;
+}
+.student-status {
+  margin-top: 0.5rem;
+  display: inline-block;
+  font-size: 0.89rem;
+  font-weight: 600;
+  padding: 0.35rem 0.9rem;
+  border-radius: 12px;
+  background: #eaf6fa;
+  color: #05445e;
+}
+
+.student-status-bar-row {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  align-items: flex-start;
+}
+.student-status {
+  margin-bottom: 0.2rem;
+}
+.student-progress-bar {
+  width: 100%;
+  height: 8px;
+  background: #eaf6fa;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 0.1rem;
+}
+.student-progress-fill {
+  height: 100%;
+  background: #75e6da;
+  border-radius: 8px;
+  transition: width 0.5s;
+}
+.student-progress-label {
+  font-size: 0.85rem;
+  color: #d4f1f4;
+  font-weight: 500;
+  margin-top: 0.1rem;
+} 
