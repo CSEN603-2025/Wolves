@@ -26,13 +26,17 @@ import StudentInternships from './pages/StudentInternships';
 import InternshipEvaluation from './pages/InternshipEvaluation';
 import AdminCompanies from './pages/AdminCompanies';
 import CompanyDetails from './pages/CompanyDetails';
+import AdminInternships from './pages/AdminInternships';
+import AdminIL from './pages/AdminIL';
+import CompanyIL from './pages/CompanyIL';
+import AdminStudents from './pages/AdminStudents';
+import AdminStudentProfile from './pages/AdminStudentProfile';
 
 function App() {
   const [loading, setLoading] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
-    // whenever the URL changes, show the loading overlay for 150ms
     setLoading(true);
     const id = setTimeout(() => setLoading(false), 150);
     return () => clearTimeout(id);
@@ -61,6 +65,7 @@ function App() {
         <Route path="/internship/:id"       element={<InternshipListing />} />
         <Route path="/student-applications" element={<StudentApplications />} />
         <Route path="/company-posts"        element={<CompanyPosts />} />
+        <Route path="/company-posts/:id"    element={<CompanyIL />} />
         <Route path="/company-applications" element={<CompanyApplications />} />
         <Route path="/company-applications/:id"    element={<ApplicationDetails />} />
         <Route path="/company-interns/:id"    element={<InternDetails />} />
@@ -69,6 +74,10 @@ function App() {
         <Route path="/student-internships/:id"       element={<InternshipEvaluation />} />
         <Route path="/admin-home/companies" element={<AdminCompanies />} />
         <Route path="/admin-home/companies/:id" element={<CompanyDetails />} />
+        <Route path="/admin-home/internships" element={<AdminInternships />} />
+        <Route path="/admin-home/internships/:id" element={<AdminIL />} />
+        <Route path="/admin/students" element={<AdminStudents />} />
+        <Route path="/admin/students/:id" element={<AdminStudentProfile />} />
         <Route path="*"                     element={<Navigate to="/" replace />} />
       </Routes>
     </div>

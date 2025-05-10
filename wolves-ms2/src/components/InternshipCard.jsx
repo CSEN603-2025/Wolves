@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate,useLocation } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import './InternshipCard.css';
 
 const InternshipCard = ({
@@ -23,6 +24,7 @@ const InternshipCard = ({
   const navigate = useNavigate();
   const logoSrc = require(`../assets/companies/${logo}`);
   const srcLocation = useLocation();
+  const { user } = useAuth();
 
   const handleClick = () => {
     if (evaluation === 'Internship Complete') {
@@ -31,10 +33,22 @@ const InternshipCard = ({
         { state: { from: srcLocation.pathname } }
       );
     } else {
-      navigate(
-        `/internship/${id}`,
-        { state: { from: srcLocation.pathname } }
-      );
+      if (user?.role === 'student') {
+        navigate(
+          `/student-internships/${id}`,
+          { state: { from: srcLocation.pathname } }
+        );
+      } else if (user?.role === 'admin') {
+        navigate(
+          `/admin-home/internships/${id}`,
+          { state: { from: srcLocation.pathname } }
+        );
+      } else {
+        navigate(
+          `/company-posts/${id}`,
+          { state: { from: srcLocation.pathname } }
+        );
+      }
     }
   };
 

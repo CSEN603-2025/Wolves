@@ -33,10 +33,10 @@ const AdminHome = () => {
     () => JSON.parse(sessionStorage.getItem('admin-notifs')) || []
   );
   const [cycleStart, setCycleStart] = useState(
-    () => sessionStorage.getItem('cycleStart') || ''
+    () => sessionStorage.getItem('cycleStart') || '5-1-2025'
   );
   const [cycleEnd, setCycleEnd] = useState(
-    () => sessionStorage.getItem('cycleEnd') || ''
+    () => sessionStorage.getItem('cycleEnd') || '9-1-2025'
   );
 
   // Modal state
@@ -107,11 +107,11 @@ const AdminHome = () => {
           <img src={notificationIcon} alt="Notifications"  className="topbar-icon" />
           <span>Notifications</span>
         </button>
-        <button className="topbar-button" onClick={()=> navigate('/')}>
+        <button className="topbar-button" onClick={()=> navigate('/admin-home')}>
           <img src={homeIcon} alt="Dashboard"  className="topbar-icon" />
           <span>Dashboard</span>
         </button>
-        <button className="topbar-button" onClick={()=> navigate('/')}>
+        <button className="topbar-button" onClick={()=> navigate('/login')}>
           <img src={logoutIcon} alt="logout"  className="topbar-icon" />
           <span>Logout</span>
         </button>
@@ -126,7 +126,7 @@ const AdminHome = () => {
             <h3>{companies.length}</h3>
             <p>Companies Pending</p>
           </div>
-          <div className="stats-card" tabIndex={0} onClick={go('/admin/internships')}>
+          <div className="stats-card" tabIndex={0} onClick={go('/admin-home/internships')}>
             <h3>{internships.length}</h3>
             <p>Total Internships</p>
           </div>
