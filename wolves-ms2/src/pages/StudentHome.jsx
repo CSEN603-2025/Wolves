@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './StudentHome.css';
 
 import { useAuth } from '../context/AuthContext';
@@ -7,6 +7,7 @@ import TopBar from '../components/TopBar';
 import Filter from '../components/Filter';
 import InternshipCard from '../components/InternshipCard';
 import ProfileOverview from '../components/ProfileOverview';
+import Notifications from '../components/Notifications';
 
 import internshipIcon  from '../assets/icons/internships-icon.png';
 import applicationIcon from '../assets/icons/application-icon.png';
@@ -17,9 +18,80 @@ import HomeIcon        from '../assets/icons/home-icon.png';
 
 import internshipsData from '../data/internships.json';
 
+const MODAL_WIDTH = 340; // should match min-width in Notifications.css
+
 const StudentHome = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
+  const [notifications, setNotifications] = useState(() =>
+    JSON.parse(sessionStorage.getItem('student-notifications')) || []
+  );
+  const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
+  const [notificationsPosition, setNotificationsPosition] = useState(null);
+  const notifBtnRef = useRef(null);
+
+  useEffect(() => {
+    // Load notifications from JSON file
+    fetch('/data/student-notifications.json')
+      .then(response => response.json())
+      .then(data => {
+        // Filter notifications for current student
+        const studentNotifications = data.filter(notif => 
+          String(notif.studentId) === String(user.id)
+        );
+        setNotifications(studentNotifications);
+        // Store in sessionStorage for persistence
+        sessionStorage.setItem('student-notifications', JSON.stringify(studentNotifications));
+      })
+      .catch(error => {
+        console.error('Error loading notifications:', error);
+        // Fallback to sessionStorage if fetch fails
+        const storedNotifications = JSON.parse(sessionStorage.getItem('student-notifications')) || [];
+        setNotifications(storedNotifications);
+      });
+  }, [user.id]);
+
+  const handleNotificationClick = (event) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    setNotificationsPosition({
+      top: rect.bottom + window.scrollY + 10,
+      left: rect.left + window.scrollX
+    });
+    setIsNotificationsOpen(true);
+  };
+
+  const handleNotificationAction = (action, notification) => {
+    // Handle different notification actions
+    switch (action.type) {
+      case 'view_report':
+      case 'appeal':
+        navigate(action.link);
+        break;
+      case 'accept_call':
+        // Handle call acceptance
+        console.log('Accepting call:', notification.callId);
+        // You would typically make an API call here
+        break;
+      case 'reject_call':
+        // Handle call rejection
+        console.log('Rejecting call:', notification.callId);
+        // You would typically make an API call here
+        break;
+      case 'register':
+        navigate(action.link);
+        break;
+      case 'decline':
+        // Handle workshop decline
+        console.log('Declining workshop:', notification.workshopId);
+        // You would typically make an API call here
+        break;
+      default:
+        if (action.link && action.link !== '#') {
+          navigate(action.link);
+        }
+    }
+    setIsNotificationsOpen(false);
+  };
 
   // 1) Base list by department
   const baseList = internshipsData.filter(i => {
@@ -87,7 +159,11 @@ const StudentHome = () => {
           <img src={evalIcon}        alt="My Internships"   className="topbar-icon" />
           <span>My Internships</span>
         </button>
-        <button className="topbar-button">
+        <button 
+          className="topbar-button"
+          ref={notifBtnRef}
+          onClick={handleNotificationClick}
+        >
           <img src={notifIcon}       alt="Notifications" className="topbar-icon" />
           <span>Notifications</span>
         </button>
@@ -95,11 +171,19 @@ const StudentHome = () => {
           <img src={profileIcon}     alt="Profile"       className="topbar-icon" />
           <span>Profile</span>
         </button>
-         <button className="topbar-button" onClick={() => navigate('/student-home')}>
+        <button className="topbar-button" onClick={() => navigate('/student-appointments')}>
           <img src={HomeIcon}     alt="home"       className="topbar-icon" />
           <span>Home</span>
         </button>
       </TopBar>
+
+      <Notifications
+        isOpen={isNotificationsOpen}
+        onClose={() => setIsNotificationsOpen(false)}
+        position={notificationsPosition}
+      >
+        {notifications}
+      </Notifications>
 
       <div className="main-content">
         <aside className="overview">

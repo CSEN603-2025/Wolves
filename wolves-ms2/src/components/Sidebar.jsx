@@ -14,33 +14,19 @@ const Sidebar = ({ isOpen, onClose, children }) => {
     return null;
   }
 
-  return (
+  // Always render the sidebar for smooth transition
+  return createPortal(
     <>
-      {isOpen && createPortal(
-        <div 
-          className="sidebar-overlay" 
-          onClick={onClose}
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: 'rgba(0, 0, 0, 0.5)',
-            zIndex: 1000,
-            pointerEvents: 'auto'
-          }}
-        />,
-        document.body
-      )}
-      
-      <div className={`sidebar ${isOpen ? 'open' : ''}`}>
-        <button className="sidebar-close-btn" onClick={onClose} aria-label="Close sidebar">&times;</button>
+      {/* Overlay first */}
+      {isOpen && <div className="sidebar-overlay" onClick={onClose} />}
+      {/* Sidebar after overlay */}
+      <div className={`sidebar${isOpen ? ' open' : ''}`}>
         <div className="sidebar-content">
           {children}
         </div>
       </div>
-    </>
+    </>,
+    document.body
   );
 };
 

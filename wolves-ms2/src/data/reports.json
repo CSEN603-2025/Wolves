@@ -11,12 +11,21 @@
         "introduction": "This report discusses the key learnings and activities during my internship at QNB.",
         "body": "During the internship at QNB, I was involved in various projects and tasks under the guidance of Hossam El-Din. The experience provided practical insights and significantly improved my skills.",
         "status": "pending",
-        "major": "Computer Science"
+        "major": "MET",
+        "evaluation": {
+            "recommend": true,
+            "comment": "Great learning environment with supportive mentors. The banking projects were challenging and educational. The work-life balance was excellent, and the team was very welcoming."
+        },
+        "adminComment": "",
+        "appeal": {
+            "message": "",
+            "status": "none"
+        }
     },
     {
         "id": 2,
         "studentId": 9,
-        "studentName": "Mostafa Adel",
+        "studentName": "Youssef Adel",
         "companyName": "Nestle",
         "mainSupervisor": "Nourhan Yasser",
         "startDate": "2025-01-08",
@@ -25,12 +34,21 @@
         "introduction": "This report discusses the key learnings and activities during my internship at Nestle.",
         "body": "During the internship at Nestle, I was involved in various projects and tasks under the guidance of Nourhan Yasser. The experience provided practical insights and significantly improved my skills.",
         "status": "flagged",
-        "major": "Computer Science"
+        "major": "IET",
+        "evaluation": {
+            "recommend": false,
+            "comment": "While the company is prestigious, the internship lacked structure and clear objectives. Limited hands-on experience and minimal interaction with the main team. The learning curve was not as steep as expected."
+        },
+        "adminComment": "The report lacks specific details about the projects and learning outcomes. Please provide more concrete examples of your work and achievements.",
+        "appeal": {
+            "message": "I would like to appeal this decision as I have documented evidence of my project contributions that I can provide.",
+            "status": "pending"
+        }
     },
     {
         "id": 3,
-        "studentId": 15,
-        "studentName": "Amr Nader",
+        "studentId": 14,
+        "studentName": "Omar Atef",
         "companyName": "Microsoft",
         "mainSupervisor": "Khaled Samir",
         "startDate": "2025-07-22",
@@ -39,7 +57,11 @@
         "introduction": "This report discusses the key learnings and activities during my internship at Microsoft.",
         "body": "During the internship at Microsoft, I was involved in various projects and tasks under the guidance of Khaled Samir. The experience provided practical insights and significantly improved my skills.",
         "status": "rejected",
-        "major": "Computer Science"
+        "major": "Mechatronics",
+        "evaluation": {
+            "recommend": true,
+            "comment": "Outstanding internship program with cutting-edge technology exposure. The mentorship was exceptional, and I got to work on real projects that made an impact. The company culture is innovative and inclusive."
+        }
     },
     {
         "id": 4,
@@ -53,7 +75,11 @@
         "introduction": "This report discusses the key learnings and activities during my internship at Valeo.",
         "body": "During the internship at Valeo, I was involved in various projects and tasks under the guidance of Sara Hany. The experience provided practical insights and significantly improved my skills.",
         "status": "accepted",
-        "major": "Computer Science"
+        "major": "IET",
+        "evaluation": {
+            "recommend": true,
+            "comment": "Excellent opportunity to work on automotive software systems. The team was very supportive, and I learned a lot about embedded systems and automotive technology. Great work environment and professional development opportunities."
+        }
     },
     {
         "id": 5,
@@ -67,12 +93,16 @@
         "introduction": "This report discusses the key learnings and activities during my internship at Etisalat.",
         "body": "During the internship at Etisalat, I was involved in various projects and tasks under the guidance of Mostafa Nour. The experience provided practical insights and significantly improved my skills.",
         "status": "pending",
-        "major": "Computer Science"
+        "major": "BI",
+        "evaluation": {
+            "recommend": true,
+            "comment": "Great exposure to telecommunications technology and network infrastructure. The internship provided valuable insights into the industry. The team was knowledgeable and willing to share their expertise."
+        }
     },
     {
         "id": 6,
-        "studentId": 14,
-        "studentName": "Rania Hossam",
+        "studentId": 5,
+        "studentName": "Marwan Yasser",
         "companyName": "IBM",
         "mainSupervisor": "Omar Mahmoud",
         "startDate": "2025-06-08",
@@ -81,6 +111,10 @@
         "introduction": "This report discusses the key learnings and activities during my internship at IBM.",
         "body": "During the internship at IBM, I was involved in various projects and tasks under the guidance of Omar Mahmoud. The experience provided practical insights and significantly improved my skills.",
         "status": "flagged",
-        "major": "Computer Science"
+        "major": "MET",
+        "evaluation": {
+            "recommend": false,
+            "comment": "The internship was more theoretical than practical. Limited access to real projects and the work environment was quite rigid. The learning opportunities were not as comprehensive as advertised."
+        }
     }
 ]

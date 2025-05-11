@@ -40,22 +40,31 @@ const LoginPage = () => {
 
     // Credential routing + setting context
     if (email === 'admin@guc.edu.eg' && password === 'admin') {
-      setUser({ role: 'admin', name: 'Site Admin' });
+      const adminUser = { 
+        role: 'admin', 
+        id: 'admin1',
+        name: 'Site Admin',
+        email: 'admin@guc.edu.eg'
+      };
+      setUser(adminUser);
+      sessionStorage.setItem('user', JSON.stringify(adminUser));
       return navigate('/admin-home');
     }
     if (email === 'jobs@microsoft.com' && password === 'pass') {
-      setUser({ 
-        id:3,
+      const companyUser = { 
+        id: 3,
         role: 'company', 
         name: 'Microsoft',
-        email:'jobs@microsoft.com',
-        status:'Pro',
-        viewCount:true
-         });
+        email: 'jobs@microsoft.com',
+        status: 'Pro',
+        viewCount: true
+      };
+      setUser(companyUser);
+      sessionStorage.setItem('user', JSON.stringify(companyUser));
       return navigate('/company-home');
     }
     if (email === 'yahia.yahia@guc.edu.eg' && password === 'pass') {
-      setUser({
+      const studentUser = {
         role: 'student',
         id: '1',
         name: 'Yahia Hesham',
@@ -66,12 +75,14 @@ const LoginPage = () => {
         completedMonths: 3,
         totalMonths: 3,
         profilePicture: 'icons/pp.png',
-        profileUrl:'/student-profile'
-      });
+        profileUrl: '/student-profile'
+      };
+      setUser(studentUser);
+      sessionStorage.setItem('user', JSON.stringify(studentUser));
       return navigate('/student-home');
     }
     if (email === 'ahmed.ibrahim@guc.edu.eg' && password === 'pass') {
-      setUser({
+      const studentUser = {
         role: 'student',
         id: '2',
         name: 'Ahmed Ibrahim',
@@ -83,11 +94,19 @@ const LoginPage = () => {
         totalMonths: 1,
         profileUrl: '/profile/stu002',
         profilePicture: 'icons/bmo.jpg'
-      });
+      };
+      setUser(studentUser);
+      sessionStorage.setItem('user', JSON.stringify(studentUser));
       return navigate('/student-home');
     }
     if (email === 'faculty@guc.edu.eg' && password === 'pass') {
-      setUser({ role: 'faculty', name: 'Faculty Member' });
+      const facultyUser = { 
+        role: 'faculty', 
+        name: 'Faculty Member',
+        email: 'faculty@guc.edu.eg'
+      };
+      setUser(facultyUser);
+      sessionStorage.setItem('user', JSON.stringify(facultyUser));
       return navigate('/faculty-home');
     }
 

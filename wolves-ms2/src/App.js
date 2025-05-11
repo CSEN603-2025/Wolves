@@ -33,6 +33,9 @@ import AdminStudents from './pages/AdminStudents';
 import AdminStudentProfile from './pages/AdminStudentProfile';
 import AdminReportDetails from './pages/AdminReportDetails';
 import AdminReports from './pages/AdminReports';
+import StudentReportDetails from './pages/StudentReportDetails';
+import StudentAppointments from './pages/StudentAppointments';
+import AdminAppointments from './pages/AdminAppointments';
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -40,7 +43,6 @@ function App() {
 
   useEffect(() => {
     localStorage.clear();
-    sessionStorage.clear();
   }, []);
 
   useEffect(() => {
@@ -79,6 +81,9 @@ function App() {
         <Route path="/company-interns" element={<CompanyInterns />} />
         <Route path="/student-internships" element={<StudentInternships />} />
         <Route path="/student-internships/:id"       element={<InternshipEvaluation />} />
+        <Route path="/student-report/:id"  element={<StudentReportDetails />} />
+        <Route path="/student-appointments" element={<StudentAppointments />} />
+        <Route path="/admin-appointments" element={<AdminAppointments />} />
         <Route path="/admin-home/companies" element={<AdminCompanies />} />
         <Route path="/admin-home/companies/:id" element={<CompanyDetails />} />
         <Route path="/admin-home/internships" element={<AdminInternships />} />
