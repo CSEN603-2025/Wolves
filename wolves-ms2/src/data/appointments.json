@@ -1,0 +1,63 @@
+{
+  "appointments": [
+    {
+      "id": "1",
+      "title": "Career Guidance",
+      "status": "pending",
+      "senderId": "1",
+      "senderEmail": "yahia.yahia@guc.edu.eg",
+      "receiverId": "admin1",
+      "receiverEmail": "admin@guc.edu.eg",
+      "date": "2024-03-20",
+      "time": "10:00 AM"
+    },
+    {
+      "id": "2",
+      "title": "Final Report Discussion",
+      "description": "Review the final internship report and provide feedback.",
+      "date": "2024-03-25",
+      "time": "10:00",
+      "status": "accepted",
+      "senderId": "admin1",
+      "senderEmail": "admin@example.com",
+      "receiverId": "1",
+      "receiverEmail": "student1@example.com"
+    },
+    {
+      "id": "3",
+      "title": "Technical Interview Preparation",
+      "description": "Prepare for upcoming technical interviews with mock questions and feedback.",
+      "date": "2024-03-22",
+      "time": "15:30",
+      "status": "rejected",
+      "senderId": "2",
+      "senderEmail": "student2@example.com",
+      "receiverId": "admin1",
+      "receiverEmail": "admin@example.com"
+    },
+    {
+      "id": "4",
+      "title": "Career Guidance Session",
+      "description": "Discuss career goals and get advice on future opportunities.",
+      "date": "2024-03-28",
+      "time": "11:00",
+      "status": "scheduled",
+      "senderId": "admin1",
+      "senderEmail": "admin@example.com",
+      "receiverId": "2",
+      "receiverEmail": "student2@example.com"
+    },
+    {
+      "id": "5",
+      "title": "Project Presentation Review",
+      "description": "Review the final project presentation and provide suggestions for improvement.",
+      "date": "2024-03-21",
+      "time": "13:00",
+      "status": "pending",
+      "senderId": "1",
+      "senderEmail": "student1@example.com",
+      "receiverId": "admin1",
+      "receiverEmail": "admin@example.com"
+    }
+  ]
+} 

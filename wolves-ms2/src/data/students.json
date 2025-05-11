@@ -27,7 +27,7 @@
     "id": 3,
     "name": "Omar Masoud",
     "email": "omar.masoud@guc.edu.eg",
-    "password": "password123",
+    "password": "pass",
     "major": "MET",
     "status": "Basic",
     "completedMonths": 0
@@ -37,7 +37,7 @@
     "id": 4,
     "name": "Ahmed Hany",
     "email": "Ahmed Hany@guc.edu.eg",
-    "password": "password123",
+    "password": "pass",
     "major": "MET",
     "status": "Basic",
     "completedMonths": 1
@@ -47,7 +47,7 @@
     "id": 5,
     "name": "Marwan Yasser",
     "email": "marwan.yasser@guc.edu.eg",
-    "password": "password123",
+    "password": "pass",
     "major": "MET",
     "status": "Basic",
     "completedMonths": 2
@@ -57,7 +57,7 @@
     "id": 6,
     "name": "Lamine Yamal",
     "email": "Lamine.yamal@guc.edu.eg",
-    "password": "password123",
+    "password": "pass",
     "major": "BI",
     "status": "Basic",
     "completedMonths": 0
@@ -66,8 +66,8 @@
   {
     "id": 7,
     "name": "Mohamed Khaled",
-    "email": "mohamed.khaled@student.guc.edu.eg",
-    "password": "password123",
+    "email": "mohamed.khaled@guc.edu.eg",
+    "password": "pass",
     "major": "IET",
     "status": "Basic",
     "completedMonths": 1
@@ -76,8 +76,8 @@
   {
     "id": 8,
     "name": "Laila Tamer",
-    "email": "laila.tamer@student.guc.edu.eg",
-    "password": "password123",
+    "email": "laila.tamer@guc.edu.eg",
+    "password": "pass",
     "major": "BI",
     "status": "Basic",
     "completedMonths": 0
@@ -86,8 +86,8 @@
   {
     "id": 9,
     "name": "Youssef Adel",
-    "email": "youssef.adel@student.guc.edu.eg",
-    "password": "password123",
+    "email": "youssef.adel@guc.edu.eg",
+    "password": "pass",
     "major": "IET",
     "status": "Basic",
     "completedMonths": 1
@@ -96,8 +96,8 @@
   {
     "id": 10,
     "name": "Salma Amin",
-    "email": "salma.amin@student.guc.edu.eg",
-    "password": "password123",
+    "email": "salma.amin@guc.edu.eg",
+    "password": "pass",
     "major": "MET",
     "status": "Basic",
     "completedMonths": 0
@@ -106,8 +106,8 @@
   {
     "id": 11,
     "name": "Mariam Fathy",
-    "email": "mariam.fathy@student.guc.edu.eg",
-    "password": "password123",
+    "email": "mariam.fathy@guc.edu.eg",
+    "password": "pass",
     "major": "BI",
     "status": "Basic",
     "completedMonths": 1
@@ -116,8 +116,8 @@
   {
     "id": 12,
     "name": "Tarek Mostafa",
-    "email": "tarek.mostafa@student.guc.edu.eg",
-    "password": "password123",
+    "email": "tarek.mostafa@guc.edu.eg",
+    "password": "pass",
     "major": "IET",
     "status": "Basic",
     "completedMonths": 2
@@ -126,8 +126,8 @@
   {
     "id": 13,
     "name": "Nada Sherif",
-    "email": "nada.sherif@student.guc.edu.eg",
-    "password": "password123",
+    "email": "nada.sherif@guc.edu.eg",
+    "password": "pass",
     "major": "Applied Arts",
     "status": "Basic",
     "completedMonths": 1
@@ -136,8 +136,8 @@
   {
     "id": 14,
     "name": "Omar Atef",
-    "email": "omar.atef@student.guc.edu.eg",
-    "password": "password123",
+    "email": "omar.atef@guc.edu.eg",
+    "password": "pass",
     "major": "Mechatronics",
     "status": "Basic",
     "completedMonths": 0

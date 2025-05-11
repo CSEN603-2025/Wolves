@@ -9,7 +9,6 @@ const statusOptions = ['pending', 'flagged', 'rejected', 'accepted'];
 const AdminReportDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  // Turning Point 1: session-persisted reports
   const [reports, setReports] = useState(() =>
     JSON.parse(sessionStorage.getItem('admin-reports')) || []
   );
@@ -17,12 +16,16 @@ const AdminReportDetails = () => {
     JSON.parse(sessionStorage.getItem('admin-notifs')) || []
   );
   const [status, setStatus] = useState('');
+  const [adminComment, setAdminComment] = useState('');
   const [successMsg, setSuccessMsg] = useState('');
 
   const report = reports.find(r => String(r.id) === String(id));
 
   useEffect(() => {
-    if (report) setStatus(report.status);
+    if (report) {
+      setStatus(report.status);
+      setAdminComment(report.adminComment || '');
+    }
   }, [report]);
 
   if (!report) {
@@ -32,24 +35,44 @@ const AdminReportDetails = () => {
   const handleStatusChange = e => {
     const newStatus = e.target.value;
     setStatus(newStatus);
+    
     // Update report status in sessionStorage
     const updatedReports = reports.map(r =>
       String(r.id) === String(id) ? { ...r, status: newStatus } : r
     );
     setReports(updatedReports);
     sessionStorage.setItem('admin-reports', JSON.stringify(updatedReports));
-    // Notify student
+
+    // Create notification for student
     const notif = {
+      id: Date.now(),
+      studentId: report.studentId,
       title: 'Internship Report Status Updated',
-      body: `Your internship report "${report.title}" status is now: ${newStatus}.`,
+      body: `Your internship report "${report.title}" status has been set to: ${newStatus}.`,
       date: new Date().toISOString().slice(0, 16).replace('T', ' '),
-      email: report.studentEmail || report.studentId || 'student',
+      type: 'report_status'
     };
+
+    // Add admin comment if provided
+    if (adminComment.trim()) {
+      notif.body += `\nAdmin Comment: ${adminComment}`;
+    }
+
     const updatedNotifs = [notif, ...notifications];
     setNotifications(updatedNotifs);
     sessionStorage.setItem('admin-notifs', JSON.stringify(updatedNotifs));
     setSuccessMsg('Status updated and student notified!');
     setTimeout(() => setSuccessMsg(''), 2000);
+  };
+
+  const handleCommentChange = e => {
+    setAdminComment(e.target.value);
+    // Update report comment in sessionStorage
+    const updatedReports = reports.map(r =>
+      String(r.id) === String(id) ? { ...r, adminComment: e.target.value } : r
+    );
+    setReports(updatedReports);
+    sessionStorage.setItem('admin-reports', JSON.stringify(updatedReports));
   };
 
   const handleDownloadPDF = () => {
@@ -96,6 +119,18 @@ const AdminReportDetails = () => {
             Download PDF
           </button>
         </div>
+        {(status === 'flagged' || status === 'rejected') && (
+          <div className="admin-comment-section">
+            <label htmlFor="adminComment">Admin Comment:</label>
+            <textarea
+              id="adminComment"
+              value={adminComment}
+              onChange={handleCommentChange}
+              placeholder="Add a comment explaining the status..."
+              rows="3"
+            />
+          </div>
+        )}
         {successMsg && <div className="success-msg">{successMsg}</div>}
         <div className="admin-report-section">
           <h3>Introduction</h3>
@@ -105,6 +140,28 @@ const AdminReportDetails = () => {
           <h3>Body</h3>
           <p>{report.body}</p>
         </div>
+        {report.evaluation && (
+          <div className="admin-report-section">
+            <h3>Student Evaluation</h3>
+            <div className="evaluation-status">
+              <span className={`recommendation-badge ${report.evaluation.recommend ? 'recommended' : 'not-recommended'}`}>
+                {report.evaluation.recommend ? 'Recommended' : 'Not Recommended'}
+              </span>
+            </div>
+            <p className="evaluation-comment">{report.evaluation.comment}</p>
+          </div>
+        )}
+        {report.appeal && report.appeal.status !== 'none' && (
+          <div className="admin-report-section">
+            <h3>Appeal</h3>
+            <div className="appeal-status">
+              <span className={`appeal-badge ${report.appeal.status}`}>
+                {report.appeal.status.charAt(0).toUpperCase() + report.appeal.status.slice(1)}
+              </span>
+            </div>
+            <p className="appeal-message">{report.appeal.message}</p>
+          </div>
+        )}
       </div>
     </div>
   );

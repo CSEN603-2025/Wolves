@@ -165,7 +165,7 @@ const AdminHome = () => {
           <img src={notificationIcon} alt="Notifications" className="topbar-icon" />
           <span>Notifications</span>
         </button>
-        <button className="topbar-button" onClick={()=> navigate('/admin-home')}>
+        <button className="topbar-button" onClick={()=> navigate('/admin-appointments')}>
           <img src={homeIcon} alt="Dashboard" className="topbar-icon" />
           <span>Dashboard</span>
         </button>

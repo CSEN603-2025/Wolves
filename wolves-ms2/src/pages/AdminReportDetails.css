@@ -64,4 +64,95 @@
   border-radius: 8px;
   color: var(--text-color);
   font-size: 1.05rem;
+}
+
+.evaluation-status {
+  margin-bottom: 1rem;
+}
+
+.recommendation-badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.recommendation-badge.recommended {
+  background: #d1fae5;
+  color: #047857;
+}
+
+.recommendation-badge.not-recommended {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.evaluation-comment {
+  background: var(--baby);
+  padding: 1rem 1.2rem;
+  border-radius: 8px;
+  color: var(--text-color);
+  font-size: 1.05rem;
+  font-style: italic;
+}
+
+.admin-comment-section {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: var(--baby);
+  border-radius: 8px;
+}
+
+.admin-comment-section label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.admin-comment-section textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid var(--glass-border);
+  border-radius: 6px;
+  background: white;
+  font-size: 1rem;
+  resize: vertical;
+}
+
+.appeal-status {
+  margin-bottom: 1rem;
+}
+
+.appeal-badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.appeal-badge.pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.appeal-badge.accepted {
+  background: #d1fae5;
+  color: #047857;
+}
+
+.appeal-badge.rejected {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.appeal-message {
+  background: var(--baby);
+  padding: 1rem 1.2rem;
+  border-radius: 8px;
+  color: var(--text-color);
+  font-size: 1.05rem;
+  font-style: italic;
 } 

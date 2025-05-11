@@ -1,0 +1,128 @@
+.appointment-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.2s ease;
+}
+
+.appointment-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.appointment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.appointment-header h3 {
+  color: var(--grotto);
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.status-badge {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.status-badge.pending {
+  background: var(--baby);
+  color: var(--grotto);
+}
+
+.status-badge.accepted {
+  background: #e6f4ea;
+  color: #1e7e34;
+}
+
+.status-badge.rejected {
+  background: #fbe9e7;
+  color: #d32f2f;
+}
+
+.status-badge.scheduled {
+  background: #e3f2fd;
+  color: #1976d2;
+}
+
+.appointment-details {
+  margin-bottom: 1.5rem;
+}
+
+.description {
+  color: var(--text-color);
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.metadata {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.metadata-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.metadata-item .label {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+.metadata-item .value {
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.appointment-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.appointment-actions .iv-btn {
+  flex: 1;
+  max-width: 200px;
+}
+
+.appointment-actions .iv-btn.accept {
+  background: #e6f4ea;
+  color: #1e7e34;
+  border: 1px solid #1e7e34;
+}
+
+.appointment-actions .iv-btn.accept:hover {
+  background: #1e7e34;
+  color: white;
+}
+
+.appointment-actions .iv-btn.reject {
+  background: #fbe9e7;
+  color: #d32f2f;
+  border: 1px solid #d32f2f;
+}
+
+.appointment-actions .iv-btn.reject:hover {
+  background: #d32f2f;
+  color: white;
+}
+
+.appointment-actions .iv-btn.primary {
+  background: var(--grotto);
+  color: white;
+  border: 1px solid var(--grotto);
+}
+
+.appointment-actions .iv-btn.primary:hover {
+  background: var(--baby);
+  color: var(--grotto);
+} 
