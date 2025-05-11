@@ -102,7 +102,7 @@ const StudentHome = () => {
       </TopBar>
 
       <div className="main-content">
-        <aside className="sidebar">
+        <aside className="overview">
           <ProfileOverview
             name={user.name}
             email={user.email}

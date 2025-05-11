@@ -1,0 +1,82 @@
+.report-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px var(--shadow);
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+  transition: box-shadow 0.2s, transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.report-card:hover {
+  box-shadow: 0 4px 16px var(--shadow);
+  transform: translateY(-2px) scale(1.01);
+}
+.report-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.report-card-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--grotto);
+}
+.report-card-status {
+  padding: 0.3rem 1rem;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+.report-card-meta {
+  display: flex;
+  gap: 1.5rem;
+  color: var(--text-color);
+  font-size: 1rem;
+}
+.report-card-dates {
+  color: var(--blue-green);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.admin-reports-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.no-reports {
+  color: var(--grotto);
+  font-size: 1.1rem;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.admin-reports-page {
+  background: var(--base-bg);
+  min-height: 100vh;
+  padding-bottom: 2rem;
+}
+
+.admin-reports-filters {
+  display: flex;
+  gap: 2rem;
+  margin: 2rem 0 0 2rem;
+}
+
+.admin-reports-filters select {
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  color: var(--text-color);
+  font-size: 1rem;
+  font-weight: 500;
+} 

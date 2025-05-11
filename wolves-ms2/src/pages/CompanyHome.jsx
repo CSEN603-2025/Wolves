@@ -11,7 +11,6 @@ import ProfileOverview from '../components/ProfileOverview';
 
 import applicationIcon from '../assets/icons/application-icon.png';
 import notifIcon       from '../assets/icons/notif-icon.png';
-import NewPost     from '../assets/icons/new-icon.png';
 import MyPosts     from '../assets/icons/posts-icon.png';
 import Interns     from '../assets/icons/interns-icon.png';
 import HomeIcon        from '../assets/icons/home-icon.png';
@@ -68,13 +67,17 @@ const CompanyHome = () => {
           <span>Interns</span>
         </button>
         <button className="topbar-button" onClick={() => navigate('/company-home')}>
+          <img src={notifIcon}     alt="notifications"       className="topbar-icon" />
+          <span>Notifications</span>
+        </button>
+        <button className="topbar-button" onClick={() => navigate('/company-home')}>
           <img src={HomeIcon}     alt="home"       className="topbar-icon" />
           <span>Home</span>
         </button>
       </TopBar>
 
       <div className="main-content">
-        <aside className="sidebar">
+        <aside className="overview">
           <ProfileOverview
             name={user.name}
             email={user.email}
