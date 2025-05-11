@@ -1,30 +1,50 @@
 // File: src/components/TopBar.jsx
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './TopBar.css';
 import scadLogo from '../assets/scad-logo.png';
+import menuIcon from '../assets/icons/menu-icon.png';
 import SearchBar from './SearchBar';
+import Sidebar from './Sidebar';
 
 const TopBar = ({
   children,
   showSearch = true,
-  onSearch          // <— new prop
-}) => (
-  <nav className="topbar">
-    <div className="topbar-left">
-      <Link to="/" className="topbar-logo-link">
-        <img src={scadLogo} alt="SCAD Logo" className="site-logo" />
-      </Link>
+  onSearch,
+  menuItems
+}) => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-      {/* render SearchBar only when showSearch is true */}
-      {showSearch && <SearchBar onSearch={onSearch} />}
-    </div>
+  return (
+    <>
+      <nav className="topbar">
+        <div className="topbar-left">
+          <button 
+            className="menu-button"
+            onClick={() => setIsSidebarOpen(true)}
+          >
+            <img src={menuIcon} alt="Menu" className="menu-icon" />
+          </button>
+          <Link to="/" className="topbar-logo-link">
+            <img src={scadLogo} alt="SCAD Logo" className="site-logo" />
+          </Link>
+          {showSearch && <SearchBar onSearch={onSearch} />}
+        </div>
 
-    <div className="topbar-right">
-      {children}
-    </div>
-  </nav>
-);
+        <div className="topbar-right">
+          {children}
+        </div>
+      </nav>
+
+      <Sidebar 
+        isOpen={isSidebarOpen} 
+        onClose={() => setIsSidebarOpen(false)}
+      >
+        {menuItems}
+      </Sidebar>
+    </>
+  );
+};
 
 export default TopBar;

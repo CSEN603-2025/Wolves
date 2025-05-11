@@ -20,7 +20,7 @@
     position: relative;
   }
   
-  /* Move the “Back” button into the card */
+  /* Move the "Back" button into the card */
   .internship-eval-page .eval-container .iv-back-btn {
     background: none;
     border: none;
@@ -122,29 +122,48 @@
   /* Improved Tabs */
   .internship-eval-page .tabs {
     display: flex;
-    gap: 1rem;
-    background: var(--baby);
-    padding: 0.5rem;
-    border-radius: 12px;
-    margin: 2rem 0 1rem;
+    gap: 0;
+    background: var(--navy-blue);
+    border-radius: 16px;
+    margin: 2.5rem 0 2rem;
+    box-shadow: none;
+    overflow: hidden;
+    padding: 0;
   }
   .internship-eval-page .tab-item {
     flex: 1;
     text-align: center;
-    padding: 0.75rem 1rem;
+    padding: 1.1rem 0.5rem 1.1rem 0.5rem;
     cursor: pointer;
-    font-weight: 600;
-    color: var(--text-color);
-    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: #fff;
+    background: transparent;
+    border: none;
+    outline: none;
+    position: relative;
     transition: background 0.2s, color 0.2s;
+    z-index: 1;
   }
   .internship-eval-page .tab-item.active {
-    background: var(--grotto);
-    color: #fff;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    color: var(--grotto);
+    background: #fff;
+    z-index: 2;
   }
-  .internship-eval-page .tab-item:hover:not(.active) {
-    background: rgba(24, 154, 180, 0.1);
+  .internship-eval-page .tab-item.active::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 20%;
+    right: 20%;
+    bottom: 0;
+    height: 5px;
+    border-radius: 4px 4px 0 0;
+    background: linear-gradient(90deg, var(--grotto), var(--blue-green));
+  }
+  .internship-eval-page .tab-item:not(.active):hover {
+    background: rgba(255,255,255,0.07);
+    color: var(--blue-green);
   }
   
   /* Tab content */
@@ -285,5 +304,87 @@
   .internship-eval-page .success-text.report {
     background: #e0f2fe;
     color: #0369a1;
+  }
+  
+  .eval-card-section {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    box-shadow: 0 2px 12px var(--shadow);
+    padding: 2rem 2.5rem;
+    margin-bottom: 2rem;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .eval-card-section:hover {
+    box-shadow: 0 4px 18px var(--shadow);
+    transform: translateY(-2px) scale(1.01);
+  }
+  .eval-card-section h3, .eval-card-section h4 {
+    color: var(--grotto);
+    margin-bottom: 1rem;
+  }
+  .eval-card-section p, .eval-card-section textarea, .eval-card-section input {
+    background: var(--baby);
+    border-radius: 8px;
+    padding: 1rem;
+    color: var(--text-color);
+    font-size: 1.05rem;
+    border: none;
+    margin-bottom: 1rem;
+  }
+  .eval-card-section .iv-btn.primary {
+    margin-top: 1rem;
+  }
+  
+  /* --- NEW TABS SECTION --- */
+  .iv-tabs-bar {
+    display: flex;
+    background: var(--navy-blue);
+    border-radius: 18px 18px 0 0;
+    margin: 2.5rem 0 2rem 0;
+    padding: 0;
+    gap: 0.5rem;
+    min-height: 60px;
+    border-bottom: 0;
+  }
+  .iv-tab-btn {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 700;
+    padding: 1.2rem 0 1.1rem 0;
+    border-radius: 18px 18px 0 0;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.18s, color 0.18s;
+    z-index: 1;
+    letter-spacing: -0.5px;
+  }
+  .iv-tab-btn.active {
+    background: #fff;
+    color: var(--grotto);
+    z-index: 2;
+  }
+  .iv-tab-btn.active::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 20%;
+    right: 20%;
+    bottom: 0;
+    height: 6px;
+    border-radius: 4px 4px 0 0;
+    background: linear-gradient(90deg, var(--grotto), var(--blue-green));
+  }
+  .iv-tab-btn:not(.active):hover {
+    background: rgba(255,255,255,0.10);
+    color: var(--blue-green);
+  }
+  /* Remove all old .tabs and .tab-item styles below this line */
+  .tabs, .tab-item, .tabs .tab-item, .internship-eval-page .tabs, .internship-eval-page .tab-item {
+    all: unset;
   }
   

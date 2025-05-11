@@ -1,48 +1,6 @@
 [
     {
         "id": 1,
-        "studentId": 1,
-        "studentName": "Yahia Hesham",
-        "companyName": "Microsoft",
-        "mainSupervisor": "Sara Hany",
-        "startDate": "2025-01-22",
-        "endDate": "2025-02-20",
-        "title": "Microsoft Internship Experience",
-        "introduction": "This report discusses the key learnings and activities during my internship at Microsoft.",
-        "body": "During the internship at Microsoft, I was involved in various projects and tasks under the guidance of Sara Hany. The experience provided practical insights and significantly improved my skills.",
-        "status": "flagged",
-        "major": "Computer Science"
-    },
-    {
-        "id": 2,
-        "studentId": 1,
-        "studentName": "Yahia Hesham",
-        "companyName": "IBM",
-        "mainSupervisor": "Yasmine Khaled",
-        "startDate": "2025-07-28",
-        "endDate": "2025-09-25",
-        "title": "IBM Internship Experience",
-        "introduction": "This report discusses the key learnings and activities during my internship at IBM.",
-        "body": "During the internship at IBM, I was involved in various projects and tasks under the guidance of Yasmine Khaled. The experience provided practical insights and significantly improved my skills.",
-        "status": "rejected",
-        "major": "Computer Science"
-    },
-    {
-        "id": 3,
-        "studentId": 2,
-        "studentName": "Ahmed Ibrahim",
-        "companyName": "Henkel",
-        "mainSupervisor": "Dina Hassan",
-        "startDate": "2025-08-17",
-        "endDate": "2025-09-15",
-        "title": "Henkel Internship Experience",
-        "introduction": "This report discusses the key learnings and activities during my internship at Henkel.",
-        "body": "During the internship at Henkel, I was involved in various projects and tasks under the guidance of Dina Hassan. The experience provided practical insights and significantly improved my skills.",
-        "status": "accepted",
-        "major": "Computer Science"
-    },
-    {
-        "id": 4,
         "studentId": 4,
         "studentName": "Ahmed Hany",
         "companyName": "QNB",
@@ -56,7 +14,7 @@
         "major": "Computer Science"
     },
     {
-        "id": 5,
+        "id": 2,
         "studentId": 9,
         "studentName": "Mostafa Adel",
         "companyName": "Nestle",
@@ -70,7 +28,7 @@
         "major": "Computer Science"
     },
     {
-        "id": 6,
+        "id": 3,
         "studentId": 15,
         "studentName": "Amr Nader",
         "companyName": "Microsoft",
@@ -84,7 +42,7 @@
         "major": "Computer Science"
     },
     {
-        "id": 7,
+        "id": 4,
         "studentId": 7,
         "studentName": "Moahmed Khaled",
         "companyName": "Valeo",
@@ -98,9 +56,9 @@
         "major": "Computer Science"
     },
     {
-        "id": 8,
+        "id": 5,
         "studentId": 6,
-        "studentName": "Hania Samer",
+        "studentName": "Lamine Yamal",
         "companyName": "Etisalat",
         "mainSupervisor": "Mostafa Nour",
         "startDate": "2025-06-11",
@@ -112,7 +70,7 @@
         "major": "Computer Science"
     },
     {
-        "id": 9,
+        "id": 6,
         "studentId": 14,
         "studentName": "Rania Hossam",
         "companyName": "IBM",

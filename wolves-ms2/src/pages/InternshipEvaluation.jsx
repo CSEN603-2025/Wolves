@@ -49,6 +49,8 @@ const InternshipEvaluation = () => {
   const [reportBody, setReportBody] = useState('');
   const [isEditingReport, setIsEditingReport] = useState(false);
 
+  const [mainSupervisor, setMainSupervisor] = useState('');
+
   // feedback
   const [error, setError] = useState('');
   const [successMsg, setSuccessMsg] = useState('');
@@ -116,7 +118,7 @@ const InternshipEvaluation = () => {
 
   // Create or update report
   const handleAddOrUpdateReport = () => {
-    if (!reportTitle.trim() || !reportIntro.trim() || !reportBody.trim()) {
+    if (!reportTitle.trim() || !reportIntro.trim() || !reportBody.trim() || !mainSupervisor.trim()) {
       setError('All report fields are required.');
       return;
     }
@@ -124,7 +126,8 @@ const InternshipEvaluation = () => {
       id: reports[0]?.id || Date.now(),
       title: reportTitle,
       intro: reportIntro,
-      body: reportBody
+      body: reportBody,
+      mainSupervisor: mainSupervisor
     };
     setReports([newRpt]);
     setIsEditingReport(false);
@@ -134,6 +137,7 @@ const InternshipEvaluation = () => {
     setReportTitle('');
     setReportIntro('');
     setReportBody('');
+    setMainSupervisor('');
   };
 
   const handleEditReport = () => {
@@ -203,6 +207,48 @@ const InternshipEvaluation = () => {
     doc.save(`Internship_Report_${internship.id}.pdf`);
   };
 
+  // Submit report to admin-reports in sessionStorage
+  const handleSubmitReport = () => {
+    if (!evaluations.length || !reports.length || !selectedCourses.length) {
+      setError('Complete evaluation, report, and course selection before submitting.');
+      return;
+    }
+    const report = reports[0];
+    const evaluation = evaluations[0];
+    const adminReports = JSON.parse(sessionStorage.getItem('admin-reports')) || [];
+    // Calculate dates
+    const endDate = new Date();
+    let startDate = new Date();
+    // Parse duration (e.g., "3 months")
+    const durationMatch = internship.duration.match(/(\d+)\s*month/);
+    if (durationMatch) {
+      const months = parseInt(durationMatch[1], 10);
+      startDate.setMonth(endDate.getMonth() - months);
+    }
+    const formatDate = d => d.toISOString().slice(0, 10);
+    const newReport = {
+      id: Date.now(),
+      studentId: user?.id,
+      studentName: user?.name,
+      profilePicture: user?.profilePicture || '/assets/icons/default-pp.png',
+      companyName: internship.company,
+      mainSupervisor: report.mainSupervisor,
+      startDate: formatDate(startDate),
+      endDate: formatDate(endDate),
+      title: report.title,
+      introduction: report.intro,
+      body: report.body,
+      status: 'pending',
+      major: user?.major || '',
+      evaluation: evaluation,
+      courses: selectedCourses,
+    };
+    sessionStorage.setItem('admin-reports', JSON.stringify([newReport, ...adminReports]));
+    setSuccessMsg('Report submitted successfully!');
+    setTimeout(() => setSuccessMsg(''), 2000);
+    // Optionally, clear local data or redirect
+  };
+
   // --- Render ---------------------------------------------------------------
   return (
     <div className="internship-eval-page">
@@ -227,7 +273,7 @@ const InternshipEvaluation = () => {
             <img src={profileIcon}     alt="Profile"       className="topbar-icon" />
             <span>Profile</span>
         </button>
-            <button className="topbar-button" onClick={() => navigate('/student-home')}>
+        <button className="topbar-button" onClick={() => navigate('/student-home')}>
             <img src={HomeIcon}     alt="home"       className="topbar-icon" />
             <span>Home</span>
         </button>
@@ -238,7 +284,7 @@ const InternshipEvaluation = () => {
           Back
         </button>
 
-        {/* --- Internship Listing Card --- */}
+        {/* --- Internship Summary Card --- */}
         <div className="iv-listing-header">
           <img
             src={require(`../assets/companies/${internship.logo}`)}
@@ -269,38 +315,36 @@ const InternshipEvaluation = () => {
             {internship.skills.map((s, i) => <li key={i}>{s}</li>)}
           </ul>
         </section>
-        <div className={`iv-status-badge iv-status-${internship.status.replace(' ', '-')}`}>
-          {internship.status}
-        </div>
+        <div className={`iv-status-badge iv-status-${internship.status.replace(' ', '-')}`}>{internship.status}</div>
 
         {successMsg && (
-          <div className={`success-text ${successType}`}>
-            {successMsg}
-          </div>
+          <div className={`success-text ${successType}`}>{successMsg}</div>
         )}
         {error && <div className="error-text">{error}</div>}
 
         {/* --- Tabs --- */}
-        <ul className="tabs">
+        <nav className="iv-tabs-bar" aria-label="Evaluation Tabs">
           {TABS.map(tab => (
-            <li
+            <button
               key={tab}
-              className={`tab-item ${activeTab === tab ? 'active' : ''}`}
+              type="button"
+              className={`iv-tab-btn${activeTab === tab ? ' active' : ''}`}
               onClick={() => {
                 setActiveTab(tab);
                 setError('');
                 setSuccessMsg('');
               }}
+              aria-current={activeTab === tab ? 'page' : undefined}
             >
               {tab}
-            </li>
+            </button>
           ))}
-        </ul>
+        </nav>
 
         <div className="tab-content">
           {/* Evaluation Tab */}
           {activeTab === 'Evaluation' && (
-            <section className="eval-section">
+            <section className="eval-section eval-card-section">
               {(isEditingEval || !evaluations.length) && (
                 <>
                   <textarea
@@ -340,9 +384,8 @@ const InternshipEvaluation = () => {
                 </>
               )}
               {evaluations[0] && !isEditingEval && (
-                <div className="iv-eval-card">
+                <div className="iv-eval-card eval-card-section">
                   <p className="eval-text">{evaluations[0].comment}</p>
-
                   <button
                     className="iv-btn secondary"
                     onClick={handleEditEval}
@@ -362,7 +405,7 @@ const InternshipEvaluation = () => {
 
           {/* Report Tab */}
           {activeTab === 'Report' && (
-            <section className="report-section">
+            <section className="report-section eval-card-section">
               {(isEditingReport || !reports.length) && (
                 <>
                   <input
@@ -384,6 +427,13 @@ const InternshipEvaluation = () => {
                     onChange={e => setReportBody(e.target.value)}
                     placeholder="Body…"
                   />
+                  <input
+                    type="text"
+                    className="eval-input"
+                    value={mainSupervisor}
+                    onChange={e => setMainSupervisor(e.target.value)}
+                    placeholder="Main Supervisor"
+                  />
                   <button
                     className="iv-btn primary"
                     onClick={handleAddOrUpdateReport}
@@ -398,6 +448,7 @@ const InternshipEvaluation = () => {
                         setReportTitle('');
                         setReportIntro('');
                         setReportBody('');
+                        setMainSupervisor('');
                         setError('');
                       }}
                     >
@@ -407,10 +458,11 @@ const InternshipEvaluation = () => {
                 </>
               )}
               {reports[0] && !isEditingReport && (
-                <div className="iv-eval-card">
+                <div className="iv-eval-card eval-card-section">
                   <h4 className="report-title">{reports[0].title}</h4>
                   <p className="report-intro">{reports[0].intro}</p>
                   <p className="report-body">{reports[0].body}</p>
+                  <p className="report-supervisor"><strong>Supervisor:</strong> {reports[0].mainSupervisor}</p>
                   <button
                     className="iv-btn secondary"
                     onClick={handleEditReport}
@@ -430,7 +482,7 @@ const InternshipEvaluation = () => {
 
           {/* Courses Tab */}
           {activeTab === 'Courses' && (
-            <section className="courses-section">
+            <section className="courses-section eval-card-section">
               <div className="courses-grid">
                 {coursesData.map(c => (
                   <label key={c.id} className="course-checkbox">
@@ -448,9 +500,12 @@ const InternshipEvaluation = () => {
 
           {/* Finalize Tab */}
           {activeTab === 'Finalize' && (
-            <section className="finalize-section">
+            <section className="finalize-section eval-card-section">
               <button className="iv-btn primary" onClick={handleFinalize}>
                 Download PDF
+              </button>
+              <button className="iv-btn primary" style={{marginLeft:'1rem'}} onClick={handleSubmitReport}>
+                Submit Report
               </button>
             </section>
           )}

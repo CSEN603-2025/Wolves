@@ -31,10 +31,17 @@ import AdminIL from './pages/AdminIL';
 import CompanyIL from './pages/CompanyIL';
 import AdminStudents from './pages/AdminStudents';
 import AdminStudentProfile from './pages/AdminStudentProfile';
+import AdminReportDetails from './pages/AdminReportDetails';
+import AdminReports from './pages/AdminReports';
 
 function App() {
   const [loading, setLoading] = useState(false);
   const location = useLocation();
+
+  useEffect(() => {
+    localStorage.clear();
+    sessionStorage.clear();
+  }, []);
 
   useEffect(() => {
     setLoading(true);
@@ -78,6 +85,8 @@ function App() {
         <Route path="/admin-home/internships/:id" element={<AdminIL />} />
         <Route path="/admin/students" element={<AdminStudents />} />
         <Route path="/admin/students/:id" element={<AdminStudentProfile />} />
+        <Route path="/admin/reports" element={<AdminReports />} />
+        <Route path="/admin/reports/:id" element={<AdminReportDetails />} />
         <Route path="*"                     element={<Navigate to="/" replace />} />
       </Routes>
     </div>
