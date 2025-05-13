@@ -1,1 +1,26 @@
-[]
+{
+  "workshops": [
+    {
+      "id": "1",
+      "name": "Career Launchpad",
+      "startDate": "2024-06-01",
+      "endDate": "2024-06-01",
+      "startTime": "10:00",
+      "endTime": "12:00",
+      "shortDescription": "Kickstart your career with essential skills.",
+      "speakerBio": "Dr. Sarah Lee, Career Coach with 15+ years of experience.",
+      "agenda": "10:00 - Introduction\n10:15 - Resume Building\n11:00 - Interview Skills\n11:45 - Q&A"
+    },
+    {
+      "id": "2",
+      "name": "Networking Mastery",
+      "startDate": "2024-06-10",
+      "endDate": "2024-06-10",
+      "startTime": "14:00",
+      "endTime": "16:00",
+      "shortDescription": "Learn how to build and leverage your professional network.",
+      "speakerBio": "Mr. John Smith, LinkedIn Top Voice.",
+      "agenda": "14:00 - Welcome\n14:15 - Networking Strategies\n15:00 - Practical Session\n15:45 - Q&A"
+    }
+  ]
+} 

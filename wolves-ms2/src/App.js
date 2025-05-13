@@ -36,6 +36,11 @@ import AdminReports from './pages/AdminReports';
 import StudentReportDetails from './pages/StudentReportDetails';
 import StudentAppointments from './pages/StudentAppointments';
 import AdminAppointments from './pages/AdminAppointments';
+import AdminWorkshops from './pages/AdminWorkshops';
+import AdminWorkshop from './pages/AdminWorkshop';
+import StudentWorkshops from './pages/StudentWorkshops';
+import StudentWorkshop from './pages/StudentWorkshop';
+
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -92,6 +97,10 @@ function App() {
         <Route path="/admin/students/:id" element={<AdminStudentProfile />} />
         <Route path="/admin/reports" element={<AdminReports />} />
         <Route path="/admin/reports/:id" element={<AdminReportDetails />} />
+        <Route path="/admin/workshops" element={<AdminWorkshops />} />
+        <Route path="/admin/workshops/:id" element={<AdminWorkshop />} />
+        <Route path="/student-workshops" element={<StudentWorkshops />} />
+        <Route path="/workshop/:id" element={<StudentWorkshop />} />
         <Route path="*"                     element={<Navigate to="/" replace />} />
       </Routes>
     </div>

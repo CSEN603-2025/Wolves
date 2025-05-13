@@ -1,0 +1,359 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+.student-workshop-page {
+  min-height: 100vh;
+  background: var(--base-bg);
+  padding-bottom: 2rem;
+}
+
+.workshop-details-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+
+.workshop-details-container h1 {
+  color: var(--grotto);
+  font-size: 2rem;
+  margin-bottom: 1.2rem;
+}
+
+.workshop-meta {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  margin-bottom: 1.5rem;
+}
+
+.workshop-section {
+  margin-bottom: 1.5rem;
+}
+
+.workshop-section h3 {
+  color: var(--grotto);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.workshop-section p, .workshop-agenda {
+  color: var(--text-color);
+  font-size: 1.05rem;
+  margin: 0;
+  white-space: pre-line;
+}
+
+.workshop-agenda {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  padding: 1rem;
+  font-family: inherit;
+  font-size: 1.02rem;
+  margin-top: 0.5rem;
+}
+
+.not-found {
+  text-align: center;
+  color: #d32f2f;
+  font-size: 1.2rem;
+  margin-top: 3rem;
+}
+
+.workshop-actions-row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  justify-content: flex-end;
+}
+
+.registered-msg {
+  color: #4caf50;
+  font-weight: 600;
+  font-size: 1.1rem;
+  background: #e6f4ea;
+  border-radius: 8px;
+  padding: 0.7em 1.2em;
+  display: inline-block;
+}
+
+.feedback-section {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+@media (max-width: 900px) {
+  .workshop-details-container {
+    padding: 1.2rem 0.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .workshop-details-container {
+    padding: 0.5rem 0.2rem;
+  }
+  .workshop-section {
+    margin-bottom: 1rem;
+  }
+  .workshop-details-container h1 {
+    font-size: 1.3rem;
+  }
+}
+
+.live-modal-split {
+  display: flex;
+  flex-direction: row;
+  gap: 4rem;
+  min-width: 0;
+  max-width: 100vw;
+  min-height: 90vh;
+  width: 100vw;
+  padding: 3.5rem 3.5rem 3.5rem 3.5rem;
+  box-sizing: border-box;
+}
+
+.live-modal-left {
+  flex: 2.2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--glass-bg);
+  border-radius: 24px;
+  padding: 3rem 2rem 3rem 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  justify-content: flex-start;
+  min-width: 0;
+}
+
+.live-instructor-video {
+  width: 100%;
+  min-width: 0;
+  height: 600px;
+  min-height: 400px;
+  max-height: 70vh;
+  border-radius: 20px;
+  background: #222;
+  margin-bottom: 1.2rem;
+  object-fit: cover;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+}
+
+.instructor-left-msg {
+  color: #d32f2f;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-align: center;
+  margin: 2rem 0 1rem 0;
+}
+
+.end-call-btn-row {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-grow: 0;
+  margin-top: 0.5rem;
+}
+
+.end-call-btn {
+  width: 54px;
+  height: 54px;
+  max-width: 64px;
+  max-height: 64px;
+  border-radius: 50%;
+  background: #dc3545 !important;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(220,53,69,0.18);
+  border: none;
+  font-size: 1.2rem;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.end-call-btn:hover {
+  background: #c82333 !important;
+  transform: scale(1.08);
+}
+
+.live-modal-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  justify-content: flex-start;
+  padding: 1.5rem 1.5rem 1.5rem 1.5rem;
+  min-width: 0;
+}
+
+.live-notes-section {
+  background: #f8fafc;
+  border-radius: 10px;
+  padding: 1rem 1rem 0.7rem 1rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.live-notes-section label {
+  font-weight: 600;
+  color: var(--navy-blue);
+  margin-bottom: 0.4rem;
+  display: block;
+}
+
+.notes-input-row {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.notes-input-row input {
+  flex: 1;
+  min-width: 0;
+  border-radius: 6px;
+  border: 1px solid var(--glass-border);
+  padding: 0.5em 0.8em;
+  font-size: 1rem;
+  background: #fff;
+  color: #222;
+}
+
+.notes-list {
+  margin: 0;
+  padding-left: 1.2rem;
+  list-style: disc;
+}
+
+.notes-list li {
+  color: #333;
+  background: #e3e9ff;
+  border-radius: 6px;
+  padding: 0.3em 0.7em;
+  margin-bottom: 0.3em;
+  font-size: 1rem;
+}
+
+.live-chat-section {
+  background: #fff;
+  border: 1.5px solid var(--baby-blue);
+  border-radius: 10px;
+  padding: 1rem 1rem 0.7rem 1rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+  display: flex;
+  flex-direction: column;
+  height: 320px;
+  min-height: 220px;
+  max-height: 420px;
+}
+
+.chat-messages {
+  flex: 1 1 auto;
+  max-height: unset;
+  overflow-y: auto;
+  margin-bottom: 0.7rem;
+  padding-right: 0.2rem;
+  font-size: 1rem;
+}
+
+.chat-msg {
+  margin-bottom: 0.4em;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.4em;
+}
+
+.chat-msg .chat-name {
+  font-weight: 700;
+  color: var(--navy-blue);
+  margin-right: 0.2em;
+}
+
+.chat-msg .chat-text {
+  color: #222;
+  word-break: break-word;
+}
+
+.chat-msg.self .chat-name {
+  color: #1976d2;
+}
+
+.chat-msg.self .chat-text {
+  color: #1976d2;
+}
+
+.chat-input-row {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+.chat-input-row input {
+  flex: 1;
+  min-width: 0;
+  border-radius: 6px;
+  border: 1px solid var(--glass-border);
+  padding: 0.5em 0.8em;
+  font-size: 1rem;
+  background: #f8fafc;
+  color: #222;
+}
+
+@media (max-width: 1200px) {
+  .live-modal-split {
+    min-width: 0;
+    max-width: 100vw;
+    gap: 1.5rem;
+    padding: 1.2rem 0.2rem;
+  }
+  .live-modal-left, .live-modal-right {
+    padding: 1rem 0.2rem;
+  }
+  .live-instructor-video {
+    height: 320px;
+    min-height: 180px;
+    max-height: 40vh;
+  }
+  .end-call-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+  .live-chat-section {
+    height: 180px;
+    min-height: 120px;
+    max-height: 220px;
+  }
+}
+
+@media (max-width: 900px) {
+  .live-modal-split {
+    flex-direction: column;
+    min-width: 0;
+    max-width: 100vw;
+    gap: 1.2rem;
+    padding: 0.5rem 0.2rem;
+  }
+  .live-modal-left, .live-modal-right {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    padding: 0.5rem 0.2rem;
+  }
+  .live-instructor-video {
+    height: 180px;
+    min-height: 100px;
+    max-height: 30vh;
+  }
+  .end-call-btn {
+    width: 48px;
+    height: 48px;
+    font-size: 1rem;
+  }
+} 
