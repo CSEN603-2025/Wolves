@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+.live-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(10, 30, 60, 0.85);
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.live-modal-content {
+  background: linear-gradient(135deg, rgba(7,91,122,0.98) 80%, rgba(14,61,85,0.98) 100%);
+  border-radius: 32px;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.25);
+  color: #fff;
+  width: 98vw;
+  max-width: 1800px;
+  min-height: 90vh;
+  max-height: 98vh;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  position: relative;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  overflow: visible;
+}
+
+.live-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2.2rem 2.5rem 0.5rem 2.5rem;
+}
+
+.live-modal-title {
+  margin: 0;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.01em;
+}
+
+.live-modal-close {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2.5rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  line-height: 1;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+.live-modal-close:hover {
+  opacity: 1;
+}
+
+.live-modal-body {
+  flex: 1;
+  padding: 0 2.5rem 2.5rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  min-height: 0;
+  min-width: 0;
+}
+
+@media (max-width: 900px) {
+  .live-modal-content {
+    width: 100vw;
+    min-height: 98vh;
+    border-radius: 0;
+    padding: 0;
+  }
+  .live-modal-header, .live-modal-body {
+    padding-left: 0.7rem;
+    padding-right: 0.7rem;
+  }
+  .live-modal-title {
+    font-size: 1.3rem;
+  }
+} 

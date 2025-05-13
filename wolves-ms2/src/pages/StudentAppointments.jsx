@@ -14,75 +14,35 @@ const StudentAppointments = () => {
     title: 'Career Guidance'
   });
 
-  // Get user from session storage
-  const [user, setUser] = useState(() => {
-    const storedUser = sessionStorage.getItem('user');
-    if (storedUser) {
-      try {
-        return JSON.parse(storedUser);
-      } catch (e) {
-        console.error('Error parsing user from session storage:', e);
-      }
-    }
-    // Default user if none found
-    return { id: '1', email: 'student@example.com' };
-  });
+  // Mock user data
+  const user = { id: '1', email: 'student@example.com' };
 
   useEffect(() => {
-    // Load appointments from JSON file
-    fetch('/data/appointments.json')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
+    // Load appointments from mock data
+    fetch('/data/student-appointments.json')
+      .then(response => response.json())
       .then(data => {
         console.log('Loaded appointments:', data.appointments);
-        if (Array.isArray(data.appointments)) {
-          setAppointments(data.appointments);
-          sessionStorage.setItem('appointments', JSON.stringify(data.appointments));
-        } else {
-          console.error('Invalid appointments data structure:', data);
-          setAppointments([]);
-        }
+        setAppointments(data.appointments);
       })
       .catch(error => {
         console.error('Error loading appointments:', error);
-        // Try to load from session storage
-        const storedAppointments = sessionStorage.getItem('appointments');
-        if (storedAppointments) {
-          try {
-            const parsedAppointments = JSON.parse(storedAppointments);
-            setAppointments(parsedAppointments);
-          } catch (e) {
-            console.error('Error parsing stored appointments:', e);
-            setAppointments([]);
-          }
-        } else {
-          setAppointments([]);
-        }
+        setAppointments([]);
       });
   }, []);
 
   const filteredAppointments = appointments.filter(appointment => {
-    // Check if the appointment is for this student (either as sender or receiver)
-    const isStudentAppointment = appointment.senderEmail === user.email || 
-                               appointment.receiverEmail === user.email;
-
-    if (!isStudentAppointment) return false;
-
     const isSender = appointment.senderEmail === user.email;
     const isReceiver = appointment.receiverEmail === user.email;
+    const isScheduledOrWaiting = appointment.status === 'scheduled' || appointment.status === 'waiting';
 
     switch (activeTab) {
       case 'sent':
-        return isSender;
+        return isSender && !isScheduledOrWaiting;
       case 'received':
-        return isReceiver;
+        return isReceiver && !isScheduledOrWaiting;
       case 'scheduled':
-        return (isSender || isReceiver) && 
-               (appointment.status === 'scheduled' || appointment.status === 'accepted');
+        return (isSender || isReceiver) && isScheduledOrWaiting;
       default:
         return false;
     }
@@ -91,11 +51,10 @@ const StudentAppointments = () => {
   const handleAccept = (appointmentId) => {
     const updatedAppointments = appointments.map(appointment =>
       appointment.id === appointmentId
-        ? { ...appointment, status: 'accepted' }
+        ? { ...appointment, status: 'scheduled' }
         : appointment
     );
     setAppointments(updatedAppointments);
-    sessionStorage.setItem('appointments', JSON.stringify(updatedAppointments));
   };
 
   const handleReject = (appointmentId) => {
@@ -105,17 +64,26 @@ const StudentAppointments = () => {
         : appointment
     );
     setAppointments(updatedAppointments);
-    sessionStorage.setItem('appointments', JSON.stringify(updatedAppointments));
   };
 
   const handleStartCall = (appointmentId) => {
-    // Will be implemented when we add the video call functionality
-    console.log('Starting call for appointment:', appointmentId);
+    console.log('Student starting call for appointment:', appointmentId);
+    const updatedAppointments = appointments.map(appointment =>
+      appointment.id === appointmentId
+        ? { ...appointment, status: 'waiting' }
+        : appointment
+    );
+    setAppointments(updatedAppointments);
   };
 
   const handleAcceptCall = (appointmentId) => {
-    // Will be implemented when we add the video call functionality
-    console.log('Accepting call for appointment:', appointmentId);
+    console.log('Student accepting call for appointment:', appointmentId);
+    const updatedAppointments = appointments.map(appointment =>
+      appointment.id === appointmentId
+        ? { ...appointment, status: 'scheduled' }
+        : appointment
+    );
+    setAppointments(updatedAppointments);
   };
 
   const handleNewAppointmentSubmit = (e) => {
@@ -140,7 +108,6 @@ const StudentAppointments = () => {
 
     const updatedAppointments = [...appointments, appointment];
     setAppointments(updatedAppointments);
-    sessionStorage.setItem('appointments', JSON.stringify(updatedAppointments));
     setShowNewAppointmentModal(false);
     setNewAppointment({ title: 'Career Guidance' });
   };

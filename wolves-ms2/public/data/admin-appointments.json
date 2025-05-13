@@ -1,0 +1,58 @@
+{
+  "appointments": [
+    {
+      "id": "1",
+      "title": "Career Guidance",
+      "status": "pending",
+      "senderEmail": "admin@guc.edu.eg",
+      "receiverEmail": "student1@example.com",
+      "date": "2024-03-20",
+      "time": "10:00 AM"
+    },
+    {
+      "id": "2",
+      "title": "Report Clarifications",
+      "status": "pending",
+      "senderEmail": "admin@guc.edu.eg",
+      "receiverEmail": "student2@example.com",
+      "date": "2024-03-21",
+      "time": "11:00 AM"
+    },
+    {
+      "id": "3",
+      "title": "Career Guidance",
+      "status": "pending",
+      "senderEmail": "student1@example.com",
+      "receiverEmail": "admin@guc.edu.eg",
+      "date": "2024-03-22",
+      "time": "2:00 PM"
+    },
+    {
+      "id": "4",
+      "title": "Report Clarifications",
+      "status": "pending",
+      "senderEmail": "student2@example.com",
+      "receiverEmail": "admin@guc.edu.eg",
+      "date": "2024-03-23",
+      "time": "3:00 PM"
+    },
+    {
+      "id": "5",
+      "title": "Career Guidance",
+      "status": "scheduled",
+      "senderEmail": "admin@guc.edu.eg",
+      "receiverEmail": "student1@example.com",
+      "date": "2024-03-24",
+      "time": "10:00 AM"
+    },
+    {
+      "id": "6",
+      "title": "Report Clarifications",
+      "status": "scheduled",
+      "senderEmail": "student2@example.com",
+      "receiverEmail": "admin@guc.edu.eg",
+      "date": "2024-03-25",
+      "time": "11:00 AM"
+    }
+  ]
+} 

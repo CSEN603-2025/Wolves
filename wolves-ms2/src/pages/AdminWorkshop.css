@@ -1,0 +1,86 @@
+.admin-workshop-page {
+  min-height: 100vh;
+  background: var(--base-bg);
+  padding-bottom: 2rem;
+}
+
+.workshop-details-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+
+.workshop-details-container h1 {
+  color: var(--grotto);
+  font-size: 2rem;
+  margin-bottom: 1.2rem;
+}
+
+.workshop-meta {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  margin-bottom: 1.5rem;
+}
+
+.workshop-section {
+  margin-bottom: 1.5rem;
+}
+
+.workshop-section h3 {
+  color: var(--grotto);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.workshop-section p, .workshop-agenda {
+  color: var(--text-color);
+  font-size: 1.05rem;
+  margin: 0;
+  white-space: pre-line;
+}
+
+.workshop-agenda {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  padding: 1rem;
+  font-family: inherit;
+  font-size: 1.02rem;
+  margin-top: 0.5rem;
+}
+
+.not-found {
+  text-align: center;
+  color: #d32f2f;
+  font-size: 1.2rem;
+  margin-top: 3rem;
+}
+
+.workshop-actions-row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  justify-content: flex-end;
+}
+
+.workshop-form input,
+.workshop-form textarea {
+  background: #f8fafc;
+  color: #222;
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  padding: 0.75rem;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.workshop-form input:focus,
+.workshop-form textarea:focus {
+  outline: none;
+  border-color: var(--grotto);
+  box-shadow: 0 0 0 2px var(--baby);
+} 

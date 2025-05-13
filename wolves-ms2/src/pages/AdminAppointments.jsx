@@ -7,54 +7,42 @@ import './AdminAppointments.css';
 
 const AdminAppointments = () => {
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState('received');
+  const [activeTab, setActiveTab] = useState('sent');
   const [appointments, setAppointments] = useState([]);
   const [showNewAppointmentModal, setShowNewAppointmentModal] = useState(false);
   const [newAppointment, setNewAppointment] = useState({
-    title: 'Career Guidance',
-    studentEmail: ''
+    title: 'Career Guidance'
   });
 
-  // Add debugging for user object
-  const storedUser = sessionStorage.getItem('user');
-  console.log('Stored user:', storedUser);
-  const user = JSON.parse(storedUser) || { id: 'admin1', email: 'admin@guc.edu.eg' };
-  console.log('Parsed user:', user);
+  // Mock user data
+  const user = { id: 'admin1', email: 'admin@guc.edu.eg' };
 
   useEffect(() => {
-    // Load appointments from JSON file
-    fetch('/data/appointments.json')
+    // Load appointments from mock data
+    fetch('/data/admin-appointments.json')
       .then(response => response.json())
       .then(data => {
         console.log('Loaded appointments:', data.appointments);
         setAppointments(data.appointments);
-        sessionStorage.setItem('appointments', JSON.stringify(data.appointments));
       })
       .catch(error => {
         console.error('Error loading appointments:', error);
-        const storedAppointments = JSON.parse(sessionStorage.getItem('appointments')) || [];
-        setAppointments(storedAppointments);
+        setAppointments([]);
       });
   }, []);
 
   const filteredAppointments = appointments.filter(appointment => {
-    // Check if the appointment is for this admin (either as sender or receiver)
-    const isAdminAppointment = appointment.senderEmail === user.email || 
-                             appointment.receiverEmail === user.email;
-
-    if (!isAdminAppointment) return false;
-
     const isSender = appointment.senderEmail === user.email;
     const isReceiver = appointment.receiverEmail === user.email;
+    const isScheduledOrWaiting = appointment.status === 'scheduled' || appointment.status === 'waiting';
 
     switch (activeTab) {
       case 'sent':
-        return isSender;
+        return isSender && !isScheduledOrWaiting;
       case 'received':
-        return isReceiver;
+        return isReceiver && !isScheduledOrWaiting;
       case 'scheduled':
-        return (isSender || isReceiver) && 
-               (appointment.status === 'scheduled' || appointment.status === 'accepted');
+        return (isSender || isReceiver) && isScheduledOrWaiting;
       default:
         return false;
     }
@@ -63,11 +51,10 @@ const AdminAppointments = () => {
   const handleAccept = (appointmentId) => {
     const updatedAppointments = appointments.map(appointment =>
       appointment.id === appointmentId
-        ? { ...appointment, status: 'accepted' }
+        ? { ...appointment, status: 'scheduled' }
         : appointment
     );
     setAppointments(updatedAppointments);
-    sessionStorage.setItem('appointments', JSON.stringify(updatedAppointments));
   };
 
   const handleReject = (appointmentId) => {
@@ -77,17 +64,26 @@ const AdminAppointments = () => {
         : appointment
     );
     setAppointments(updatedAppointments);
-    sessionStorage.setItem('appointments', JSON.stringify(updatedAppointments));
   };
 
   const handleStartCall = (appointmentId) => {
-    // Will be implemented when we add the video call functionality
-    console.log('Starting call for appointment:', appointmentId);
+    console.log('Admin starting call for appointment:', appointmentId);
+    const updatedAppointments = appointments.map(appointment =>
+      appointment.id === appointmentId
+        ? { ...appointment, status: 'waiting' }
+        : appointment
+    );
+    setAppointments(updatedAppointments);
   };
 
   const handleAcceptCall = (appointmentId) => {
-    // Will be implemented when we add the video call functionality
-    console.log('Accepting call for appointment:', appointmentId);
+    console.log('Admin accepting call for appointment:', appointmentId);
+    const updatedAppointments = appointments.map(appointment =>
+      appointment.id === appointmentId
+        ? { ...appointment, status: 'scheduled' }
+        : appointment
+    );
+    setAppointments(updatedAppointments);
   };
 
   const handleNewAppointmentSubmit = (e) => {
@@ -102,8 +98,8 @@ const AdminAppointments = () => {
       status: 'pending',
       senderId: user.id,
       senderEmail: user.email,
-      receiverId: newAppointment.studentEmail.split('@')[0], // Use part of email as ID
-      receiverEmail: newAppointment.studentEmail,
+      receiverId: 'student1',
+      receiverEmail: 'student1@example.com',
       date: new Date().toISOString().split('T')[0],
       time: new Date().toLocaleTimeString()
     };
@@ -112,12 +108,8 @@ const AdminAppointments = () => {
 
     const updatedAppointments = [...appointments, appointment];
     setAppointments(updatedAppointments);
-    sessionStorage.setItem('appointments', JSON.stringify(updatedAppointments));
     setShowNewAppointmentModal(false);
-    setNewAppointment({
-      title: 'Career Guidance',
-      studentEmail: ''
-    });
+    setNewAppointment({ title: 'Career Guidance' });
   };
 
   return (
@@ -135,7 +127,7 @@ const AdminAppointments = () => {
             className="iv-btn primary"
             onClick={() => setShowNewAppointmentModal(true)}
           >
-            Schedule New Appointment
+            Request New Appointment
           </button>
         </div>
 
@@ -184,32 +176,22 @@ const AdminAppointments = () => {
       <Modal
         isOpen={showNewAppointmentModal}
         onClose={() => setShowNewAppointmentModal(false)}
-        title="Schedule New Appointment"
+        title="Request New Appointment"
       >
         <form onSubmit={handleNewAppointmentSubmit} className="appointment-form">
           <div className="form-group">
             <label>Appointment Type</label>
             <select
               value={newAppointment.title}
-              onChange={(e) => setNewAppointment({ ...newAppointment, title: e.target.value })}
+              onChange={(e) => setNewAppointment({ title: e.target.value })}
               required
             >
               <option value="Career Guidance">Career Guidance</option>
               <option value="Report Clarifications">Report Clarifications</option>
             </select>
           </div>
-          <div className="form-group">
-            <label>Student Email</label>
-            <input
-              type="email"
-              value={newAppointment.studentEmail}
-              onChange={(e) => setNewAppointment({ ...newAppointment, studentEmail: e.target.value })}
-              required
-              placeholder="Enter student email"
-            />
-          </div>
           <button type="submit" className="iv-btn primary">
-            Schedule Appointment
+            Submit Request
           </button>
         </form>
       </Modal>
