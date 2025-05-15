@@ -65,12 +65,12 @@
   },
   {
     "id": 7,
-    "name": "Mohamed Khaled",
-    "email": "mohamed.khaled@guc.edu.eg",
+    "name": "Hania Samer",
+    "email": "hania.samer@guc.edu.eg",
     "password": "pass",
-    "major": "IET",
+    "major": "BI",
     "status": "Basic",
-    "completedMonths": 1
+    "completedMonths": 3
     ,"semester": "2"
   },
   {

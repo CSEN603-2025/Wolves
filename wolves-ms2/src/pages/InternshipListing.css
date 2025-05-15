@@ -241,4 +241,91 @@
     opacity: 0.6;
     cursor: not-allowed;
   }
+
+  .edit-input {
+    width: 100%;
+    padding: 8px;
+    margin: 4px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+  }
+
+  .edit-textarea {
+    width: 100%;
+    padding: 8px;
+    margin: 4px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+    resize: vertical;
+  }
+
+  .edit-actions {
+    display: flex;
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  .save-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+  }
+
+  .save-button:hover {
+    background-color: #45a049;
+  }
+
+  .cancel-button {
+    background-color: #f44336;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+  }
+
+  .cancel-button:hover {
+    background-color: #da190b;
+  }
+
+  .listing-actions {
+    display: flex;
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  .edit-button {
+    background-color: #2196F3;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+  }
+
+  .edit-button:hover {
+    background-color: #0b7dda;
+  }
+
+  .delete-button {
+    background-color: #f44336;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+  }
+
+  .delete-button:hover {
+    background-color: #da190b;
+  }
   

@@ -4,16 +4,17 @@ import TopBar from '../components/TopBar';
 import Modal from '../components/Modal';
 import Notifications from '../components/Notifications';
 import './AdminHome.css';
-import scadLogo from '../assets/scad-logo.png';
 import notificationIcon from '../assets/icons/notif-icon.png';
 import homeIcon from '../assets/icons/home-icon.png';
 import logoutIcon from '../assets/icons/logout-icon.png';
+import AdminNotifications from '../components/AdminNotifications';
 
 import studentIcon from '../assets/icons/interns-icon.png';
 import companyIcon from '../assets/icons/companies-icon.png';
 import internshipIcon from '../assets/icons/internships-icon.png';
 import workshopIcon from '../assets/icons/workshop-icon.png';
 import reportsIcon from '../assets/icons/eval-icon.png';
+import appointmentIcon from '../assets/icons/appointment-icon.png';
 
 const MODAL_WIDTH = 340; // should match min-width in Notifications.css
 
@@ -39,10 +40,10 @@ const AdminHome = () => {
     () => JSON.parse(sessionStorage.getItem('admin-notifs')) || []
   );
   const [cycleStart, setCycleStart] = useState(
-    () => sessionStorage.getItem('cycleStart') || '5-1-2025'
+    () => sessionStorage.getItem('cycleStart') || '2025-05-01'
   );
   const [cycleEnd, setCycleEnd] = useState(
-    () => sessionStorage.getItem('cycleEnd') || '9-1-2025'
+    () => sessionStorage.getItem('cycleEnd') || '2025-09-01'
   );
 
   // Modal state
@@ -80,8 +81,8 @@ const AdminHome = () => {
     import('../data/students.json').then(m => setStudentsCount(m.default.length));
     import('../data/reports.json').then(m => setReportsCount(m.default.length));
     import('../data/workshops.json').then(m => {
-      setWorkshops(m.default);
-      sessionStorage.setItem('admin-workshops', JSON.stringify(m.default));
+      setWorkshops(m.default.workshops || []);
+      sessionStorage.setItem('admin-workshops', JSON.stringify(m.default.workshops || []));
     });
     import('../data/admin-notifications.json').then(m => {
       setNotifications(m.default);
@@ -143,6 +144,10 @@ const AdminHome = () => {
         <img src={reportsIcon} alt="Reports" className="sidebar-icon" />
         <span>Reports</span>
       </Link>
+      <Link to="/admin-appointments" className="sidebar-item">
+        <img src={appointmentIcon} alt="apointments" className="sidebar-icon" />
+        <span>Appointments</span>
+      </Link>
       <Link to="/admin/notifications" className="sidebar-item">
         <img src={notificationIcon} alt="Notifications" className="sidebar-icon" />
         <span>Notifications</span>
@@ -157,15 +162,8 @@ const AdminHome = () => {
   return (
     <div className="admin-home-page">
       <TopBar showSearch={false} menuItems={menuItems}>
-        <button
-          className="topbar-button"
-          ref={notifBtnRef}
-          onClick={handleNotifClick}
-        >
-          <img src={notificationIcon} alt="Notifications" className="topbar-icon" />
-          <span>Notifications</span>
-        </button>
-        <button className="topbar-button" onClick={()=> navigate('/admin-appointments')}>
+        <AdminNotifications />
+        <button className="topbar-button" onClick={()=> navigate('/admin-home')}>
           <img src={homeIcon} alt="Dashboard" className="topbar-icon" />
           <span>Dashboard</span>
         </button>

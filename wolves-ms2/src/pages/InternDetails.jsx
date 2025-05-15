@@ -1,12 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate }   from 'react-router-dom';
-import TopBar                        from '../components/TopBar';
-import ProfileOverview               from '../components/ProfileOverview';
-import applicationsData              from '../data/interns.json';
-import studentsData                  from '../data/students.json';
-import internshipsData               from '../data/internships.json';
-import evaluationsData               from '../data/evaluations.json';
+import React, { useState, useEffect, useRef } from 'react';
+import { useParams, useNavigate, Link }      from 'react-router-dom';
+import TopBar                                from '../components/TopBar';
+import ProfileOverview                       from '../components/ProfileOverview';
+import applicationsData                      from '../data/interns.json';
+import studentsData                          from '../data/students.json';
+import internshipsData                       from '../data/internships.json';
+import evaluationsData                       from '../data/evaluations.json';
 import './InternDetails.css';
+
+import ApplicationIcon from '../assets/icons/application-icon.png';
+import MyPosts     from '../assets/icons/posts-icon.png';
+import Interns     from '../assets/icons/interns-icon.png';
+import NotificationIcon from '../assets/icons/notif-icon.png';
+import HomeIcon from '../assets/icons/home-icon.png';
+import LogoutIcon from '../assets/icons/logout-icon.png';
+import CompanyNotifications from '../components/CompanyNotifications';
+const MODAL_WIDTH = 340; // should match min-width in Notifications.css
 
 export default function InternDetails() {
   const { id }       = useParams();
@@ -15,9 +24,10 @@ export default function InternDetails() {
   // look up the application
   const application = applicationsData
     .find(a => String(a.id) === id) || {};
-  // only proceed if they've completed
+  
+  // Check if the intern exists and has a valid status
   useEffect(() => {
-    if (application.status !== 'Internship Complete') {
+    if (!application || !['Current Intern', 'Internship Complete'].includes(application.status)) {
       navigate('/company-interns', { replace: true });
     }
   }, [application, navigate]);
@@ -27,57 +37,100 @@ export default function InternDetails() {
   const internship = internshipsData
     .find(i => String(i.id) === String(application.internshipId)) || {};
 
-  // initial evals for *this* intern
-  const [evals, setEvals] = useState(
-    evaluationsData.filter(ev => String(ev.internshipId) === id)
+  // Initialize evaluation state with a single evaluation if the internship is complete
+  const [evaluation, setEvaluation] = useState(
+    application.status === 'Internship Complete' 
+      ? evaluationsData.find(ev => String(ev.internshipId) === id) || { text: '' }
+      : { text: '' }
   );
-  const [newText, setNewText]         = useState('');
-  const [editingId, setEditingId]     = useState(null);
-  const [editingText, setEditingText] = useState('');
-
-  // Add
-  const handleAdd = e => {
-    e.preventDefault();
-    if (!newText.trim()) return;
-    const nextId = Math.max(0, ...evals.map(e => e.id)) + 1;
-    setEvals([
-      ...evals,
-      { id: nextId, internshipId: id, text: newText.trim() }
-    ]);
-    setNewText('');
-  };
+  const [isEditing, setIsEditing] = useState(false);
+  const [editText, setEditText] = useState('');
 
   // Start editing
-  const startEdit = ev => {
-    setEditingId(ev.id);
-    setEditingText(ev.text);
+  const startEdit = () => {
+    setIsEditing(true);
+    setEditText(evaluation.text);
   };
+
+  // Cancel editing
   const cancelEdit = () => {
-    setEditingId(null);
-    setEditingText('');
+    setIsEditing(false);
+    setEditText('');
   };
-  // Save edit
-  const saveEdit = e => {
+
+  // Save evaluation
+  const saveEvaluation = e => {
     e.preventDefault();
-    setEvals(evals.map(ev =>
-      ev.id === editingId ? { ...ev, text: editingText } : ev
-    ));
-    cancelEdit();
+    if (!editText.trim()) return;
+    
+    setEvaluation({ ...evaluation, text: editText.trim() });
+    setIsEditing(false);
+    setEditText('');
   };
-  // Delete
-  const deleteEval = id => {
-    setEvals(evals.filter(ev => ev.id !== id));
+
+  const [showNotifications, setShowNotifications] = useState(false);
+  const [notifPosition, setNotifPosition] = useState(null);
+  const notifBtnRef = useRef(null);
+
+  const handleNotifClick = (e) => {
+    const rect = notifBtnRef.current.getBoundingClientRect();
+    let left = rect.right - MODAL_WIDTH;
+    if (left < 8) left = 8; // prevent going off the left edge
+    setNotifPosition({
+      top: rect.bottom + 8, // 8px below the button
+      left,
+    });
+    setShowNotifications(true);
   };
+
+  const menuItems = (
+    <>
+      <Link to="/company-home" className="sidebar-item">
+        <img src={HomeIcon} alt="Dashboard" className="sidebar-icon" />
+        <span>Dashboard</span>
+      </Link>
+      <Link to="/company-posts" className="sidebar-item">
+        <img src={MyPosts} alt="My posts" className="sidebar-icon" />
+        <span>My Posts</span>
+      </Link>
+      <Link to="/company-applications" className="sidebar-item">
+        <img src={ApplicationIcon} alt="Applications" className="sidebar-icon" />
+        <span>Applications</span>
+      </Link>
+      <Link to="/company-interns" className="sidebar-item">
+        <img src={Interns} alt="Interns" className="sidebar-icon" />
+        <span>Interns</span>
+      </Link>
+      <Link to="/admin/notifications" className="sidebar-item">
+        <img src={NotificationIcon} alt="Notifications" className="sidebar-icon" />
+        <span>Notifications</span>
+      </Link>
+      <Link to="/login" className="sidebar-item">
+        <img src={LogoutIcon} alt="Logout" className="sidebar-icon" />
+        <span>Logout</span>
+      </Link>
+    </>
+  );
 
   return (
     <div className="intern-details-dashboard">
-      <TopBar showSearch={false}>
+      <TopBar showSearch={false} menuItems={menuItems}>
+        <CompanyNotifications />
         <button
-          className="intern-back-btn"
-          onClick={() => navigate(-1)}
+          className="topbar-button"
+          ref={notifBtnRef}
+          onClick={handleNotifClick}
         >
-          <span className="chevron-left" />
-          <span className="topbar-button">Back</span>
+          <img src={NotificationIcon} alt="Notifications" className="topbar-icon" />
+          <span>Notifications</span>
+        </button>
+        <button className="topbar-button" onClick={()=> navigate('/company-home')}>
+          <img src={HomeIcon} alt="Dashboard" className="topbar-icon" />
+          <span>Dashboard</span>
+        </button>
+        <button className="topbar-button" onClick={()=> navigate('/login')}>
+          <img src={LogoutIcon} alt="logout" className="topbar-icon" />
+          <span>Logout</span>
         </button>
       </TopBar>
 
@@ -97,6 +150,15 @@ export default function InternDetails() {
         </aside>
 
         <section className="intern-details-content">
+          <div>
+            <button
+              type="button"
+              className="back-btn"
+              onClick={() => navigate(-1)}
+            >
+              Back
+            </button>
+          </div>
           <h2 className="intern-details-title">
             Intern Overview — {internship.title} @ {internship.company}
           </h2>
@@ -142,51 +204,43 @@ export default function InternDetails() {
             </ul>
           </div>
 
-          {/** ———————————— Evaluation CRUD ———————————— **/}
-          <div className="intern-details-eval-section">
-            <h3>Evaluations</h3>
-            <ul className="eval-list">
-              {evals.map(ev => (
-                <li key={ev.id} className="eval-card">
-                  {editingId === ev.id ? (
-                    <form onSubmit={saveEdit} className="eval-form">
-                      <textarea
-                        value={editingText}
-                        onChange={e => setEditingText(e.target.value)}
-                        required
-                      />
-                      <div className="eval-form-buttons">
-                        <button type="submit">Save</button>
-                        <button type="button" onClick={cancelEdit}>
-                          Cancel
-                        </button>
-                      </div>
-                    </form>
-                  ) : (
+          {/** ———————————— Single Evaluation ———————————— **/}
+          {application.status === 'Internship Complete' && (
+            <div className="intern-details-eval-section">
+              <h3>Evaluation</h3>
+              {isEditing ? (
+                <form onSubmit={saveEvaluation} className="eval-form">
+                  <textarea
+                    value={editText}
+                    onChange={e => setEditText(e.target.value)}
+                    placeholder="Enter your evaluation..."
+                    required
+                  />
+                  <div className="eval-form-buttons">
+                    <button type="submit">Save</button>
+                    <button type="button" onClick={cancelEdit}>
+                      Cancel
+                    </button>
+                  </div>
+                </form>
+              ) : (
+                <div className="eval-card">
+                  {evaluation.text ? (
                     <>
-                      <p className="eval-text">{ev.text}</p>
+                      <p className="eval-text">{evaluation.text}</p>
                       <div className="eval-buttons">
-                        <button onClick={() => startEdit(ev)}>Edit</button>
-                        <button onClick={() => deleteEval(ev.id)}>
-                          Delete
-                        </button>
+                        <button onClick={startEdit}>Edit</button>
                       </div>
                     </>
+                  ) : (
+                    <button onClick={startEdit} className="add-eval-btn">
+                      Add Evaluation
+                    </button>
                   )}
-                </li>
-              ))}
-            </ul>
-
-            <form onSubmit={handleAdd} className="eval-add-form">
-              <textarea
-                value={newText}
-                onChange={e => setNewText(e.target.value)}
-                placeholder="Add a new evaluation…"
-                required
-              />
-              <button type="submit">Add Evaluation</button>
-            </form>
-          </div>
+                </div>
+              )}
+            </div>
+          )}
         </section>
       </div>
     </div>

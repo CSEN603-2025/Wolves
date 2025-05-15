@@ -1,51 +1,78 @@
 [
   {
     "id": 1,
-    "studentId": "1",
-    "title": "Application Status Update",
-    "body": "Your application for Microsoft Software Engineering Internship has been reviewed.",
-    "date": "2025-03-15 14:30"
+    "title": "New Internship Cycle Starting Soon",
+    "body": "The new internship cycle will begin on May 1st, 2025. Get ready to start applying!",
+    "date": "2025-04-15T10:00:00",
+    "type": "cycle",
+    "clickable": false
   },
   {
     "id": 2,
-    "studentId": "1",
-    "title": "New Internship Opportunity",
-    "body": "New internship positions available at Google matching your profile.",
-    "date": "2025-03-14 09:15"
+    "title": "New Internship Cycle Started",
+    "body": "The internship cycle has begun! You can now start applying for internships.",
+    "date": "2025-05-01T10:00:00",
+    "type": "cycle",
+    "clickable": false
   },
   {
     "id": 3,
-    "studentId": "1",
-    "title": "Report Submission Reminder",
-    "body": "Don't forget to submit your internship report for QNB by next week.",
-    "date": "2025-03-13 16:45"
+    "title": "Report Status Update",
+    "body": "Your internship report has been accepted. Great job!",
+    "date": "2025-05-15T10:10:00",
+    "type": "report",
+    "clickable": false
   },
   {
     "id": 4,
-    "studentId": "2",
-    "title": "Workshop Invitation",
-    "body": "You're invited to attend 'Career Development Workshop' next Monday.",
-    "date": "2025-03-12 11:20"
+    "title": "Report Status Update",
+    "body": "Your internship report has been flagged. Click to view comments and appeal if needed.",
+    "date": "2025-05-15T10:20:00",
+    "type": "report",
+    "clickable": true,
+    "link": "/student-internships",
+    "status": "flagged",
+    "comments": "Please provide more details about your learning outcomes and project contributions."
   },
   {
     "id": 5,
-    "studentId": "2",
-    "title": "Profile Update Required",
-    "body": "Please update your skills and experience in your profile.",
-    "date": "2025-03-11 13:10"
+    "title": "Report Status Update",
+    "body": "Your internship report has been rejected. Click to view comments and appeal if needed.",
+    "date": "2025-05-15T10:30:00",
+    "type": "report",
+    "clickable": true,
+    "link": "/student-internships",
+    "status": "rejected",
+    "comments": "The report lacks sufficient technical depth and project details."
   },
   {
     "id": 6,
-    "studentId": "1",
-    "title": "Interview Scheduled",
-    "body": "Your interview with Microsoft has been scheduled for next Tuesday at 2 PM.",
-    "date": "2025-03-10 15:30"
+    "title": "Appointment Accepted",
+    "body": "Your appointment for Career Guidance has been accepted for March 22, 2024 at 2:00 PM.",
+    "date": "2025-05-15T10:40:00",
+    "type": "appointment",
+    "clickable": true,
+    "link": "/student-appointments"
   },
   {
     "id": 7,
-    "studentId": "2",
-    "title": "Application Accepted",
-    "body": "Congratulations! Your application for the Marketing Internship at Nestle has been accepted.",
-    "date": "2025-03-09 10:45"
+    "title": "Incoming Call",
+    "body": "You have an incoming call for Report Clarifications on March 23, 2024 at 3:00 PM.",
+    "date": "2025-05-15T10:50:00",
+    "type": "call",
+    "clickable": true,
+    "link": "/student-appointments",
+    "callId": "4"
+  },
+  {
+    "id": 8,
+    "title": "Upcoming Workshop",
+    "body": "Live Q&A with Alumni is starting soon on June 15, 2024 at 3:00 PM.",
+    "date": "2025-05-15T11:00:00",
+    "type": "workshop",
+    "clickable": true,
+    "link": "/workshop/7",
+    "workshopId": "7",
+    "isPro": true
   }
 ] 

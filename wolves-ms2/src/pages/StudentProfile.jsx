@@ -318,15 +318,15 @@ const StudentProfile = () => {
         return (
           <div className="views-section">
             <h3>Who's Viewed My Profile</h3>
-            <div className="companies-grid">
+            <div className="sp-companies-grid">
               {companiesViewed.map(c => (
-                <div key={c} className="company-card">
+                <div key={c} className="sp-company-card">
                   <img
                     src={companyLogos[c]}
                     alt={c}
-                    className="company-logo"
+                    className="sp-company-logo"
                   />
-                  <span className="company-name">{c}</span>
+                  <span className="sp-company-name">{c}</span>
                 </div>
               ))}
             </div>

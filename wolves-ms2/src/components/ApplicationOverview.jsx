@@ -13,11 +13,21 @@ const ApplicationOverview = ({
   const navigate = useNavigate();
   const statusKey = status.toLowerCase().replace(/\s+/g, '-');
 
+  const handleClick = () => {
+    if (basePath === 'company-interns') {
+      // For interns, navigate to intern details
+      navigate(`/company-interns/${id}`);
+    } else {
+      // For applications, navigate to application details
+      navigate(`/${basePath}/${id}`);
+    }
+  };
+
   return (
     <button
       type="button"
       className="appov-card-row"
-      onClick={() => navigate(`/${basePath}/${id}`)}
+      onClick={handleClick}
     >
       <div className="appov-info">
         <h3 className="appov-student">{studentName}</h3>
