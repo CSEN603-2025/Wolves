@@ -4,18 +4,24 @@ import './SearchBar.css';
 import searchIcon from '../assets/icons/search-logo.png';
 import searchArrow from '../assets/icons/search-arrow.png';
 
-const SearchBar = ({ onSearch, companySearch = false }) => {
-  const [title, setTitle] = useState('');
-  const [company, setCompany] = useState('');
+const SearchBar = ({ 
+  onSearch, 
+  companySearch = false,
+  placeholderPrimary = "Job title...",
+  placeholderSecondary = "Company...",
+  showSecondary = true
+}) => {
+  const [primary, setPrimary] = useState('');
+  const [secondary, setSecondary] = useState('');
 
   const handleClear = (setter) => () => setter('');
 
   const handleSubmit = e => {
     e.preventDefault();
     if (companySearch) {
-      if (onSearch) onSearch(title); // Only pass the company name
+      if (onSearch) onSearch(primary); // Only pass the primary field
     } else {
-      if (onSearch) onSearch(title, company);
+      if (onSearch) onSearch(primary, secondary);
     }
   };
 
@@ -25,38 +31,38 @@ const SearchBar = ({ onSearch, companySearch = false }) => {
         <img src={searchIcon} alt="Search" className="icon-image" />
         <input
           type="text"
-          value={title}
-          onChange={e => setTitle(e.target.value)}
-          placeholder={companySearch ? "Company..." : "Job title..."}
+          value={primary}
+          onChange={e => setPrimary(e.target.value)}
+          placeholder={placeholderPrimary}
           className="search-field refined"
         />
-        {title && (
+        {primary && (
           <button
             type="button"
             className="clear-btn"
-            onClick={handleClear(setTitle)}
+            onClick={handleClear(setPrimary)}
           >
             ×
           </button>
         )}
       </div>
 
-      {!companySearch && <div className="separator" />}
+      {showSecondary && <div className="separator" />}
 
-      {!companySearch && (
+      {showSecondary && (
         <div className="search-field-wrapper">
           <input
             type="text"
-            value={company}
-            onChange={e => setCompany(e.target.value)}
-            placeholder="Company..."
+            value={secondary}
+            onChange={e => setSecondary(e.target.value)}
+            placeholder={placeholderSecondary}
             className="search-field refined"
           />
-          {company && (
+          {secondary && (
             <button
               type="button"
               className="clear-btn"
-              onClick={handleClear(setCompany)}
+              onClick={handleClear(setSecondary)}
             >
               ×
             </button>

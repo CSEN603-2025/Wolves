@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import {Link} from 'react-router-dom'
 import './StudentHome.css';
 
 import { useAuth } from '../context/AuthContext';
@@ -8,13 +9,17 @@ import Filter from '../components/Filter';
 import InternshipCard from '../components/InternshipCard';
 import ProfileOverview from '../components/ProfileOverview';
 import Notifications from '../components/Notifications';
+import StudentNotifications from '../components/StudentNotifications';
 
-import internshipIcon  from '../assets/icons/internships-icon.png';
 import applicationIcon from '../assets/icons/application-icon.png';
 import evalIcon        from '../assets/icons/eval-icon.png';
-import notifIcon       from '../assets/icons/notif-icon.png';
 import profileIcon     from '../assets/icons/profile-icon.png';
-import HomeIcon        from '../assets/icons/home-icon.png';
+import notificationIcon from '../assets/icons/notif-icon.png';
+import homeIcon from '../assets/icons/home-icon.png';
+import logoutIcon from '../assets/icons/logout-icon.png';
+import internshipIcon from '../assets/icons/internships-icon.png';
+import workshopIcon from '../assets/icons/workshop-icon.png';
+import appointmentIcon from '../assets/icons/appointment-icon.png';
 
 import internshipsData from '../data/internships.json';
 
@@ -144,36 +149,95 @@ const StudentHome = () => {
     // 5) ONLY show "not applied"
     .filter(i => i.status === 'not applied');
 
+  const [showNotifications, setShowNotifications] = useState(false);
+  const [notifPosition, setNotifPosition] = useState(null);
+  const handleNotifClick = (e) => {
+    const rect = notifBtnRef.current.getBoundingClientRect();
+    let left = rect.right - MODAL_WIDTH;
+    if (left < 8) left = 8; // prevent going off the left edge
+    setNotifPosition({
+      top: rect.bottom + 8, // 8px below the button
+      left,
+    });
+    setShowNotifications(true);
+  };
+
+    const isPro=user.status==='Pro'?true:false;
+
+    const menuItems=isPro?[
+      <Link to="/student-home" className="sidebar-item">
+        <img src={homeIcon} alt="dashboard" className="sidebar-icon" />
+        <span>Dashboard</span>
+        </Link>,
+        <Link to="/all-internships" className="sidebar-item">
+        <img src={internshipIcon} alt="Internships" className="sidebar-icon" />
+        <span>All Internships</span>
+        </Link>,
+        <Link to="/student-applications" className="sidebar-item">
+          <img src={applicationIcon} alt="applications" className="sidebar-icon" />
+          <span>My Applications</span>
+        </Link>,
+        <Link to="/student-internships" className="sidebar-item">
+          <img src={evalIcon} alt="eval" className="sidebar-icon" />
+          <span>My Internships & Reports</span>
+        </Link>,
+        <Link to="/student-appointments" className="sidebar-item">
+          <img src={appointmentIcon} alt="Appointments" className="sidebar-icon" />
+          <span>Appointments</span>
+        </Link>,
+        <Link to="/student-workshops" className="sidebar-item">
+        <img src={workshopIcon} alt="Workshops" className="sidebar-icon" />
+        <span>Workshops</span>
+        </Link>,
+        <Link to="/student-profile" className="sidebar-item">
+        <img src={profileIcon} alt="profile" className="sidebar-icon" />
+        <span>Profile</span>
+        </Link>,
+        <Link to="/login" className="sidebar-item">
+          <img src={logoutIcon} alt="Logout" className="sidebar-icon" />
+          <span>Logout</span>
+        </Link>
+        ] : [<Link to="/student-home" className="sidebar-item">
+          <img src={homeIcon} alt="dashboard" className="sidebar-icon" />
+          <span>Dashboard</span>
+          </Link>,
+          <Link to="/all-internships" className="sidebar-item">
+          <img src={internshipIcon} alt="Internships" className="sidebar-icon" />
+          <span>All Internships</span>
+          </Link>,
+          <Link to="/student-applications" className="sidebar-item">
+            <img src={applicationIcon} alt="applications" className="sidebar-icon" />
+            <span>My Applications</span>
+          </Link>,
+          <Link to="/student-internships" className="sidebar-item">
+            <img src={evalIcon} alt="eval" className="sidebar-icon" />
+            <span>My Internships & Reports</span>
+          </Link>,
+          <Link to="/student-profile" className="sidebar-item">
+          <img src={profileIcon} alt="profile" className="sidebar-icon" />
+          <span>Profile</span>
+          </Link>,
+          <Link to="/login" className="sidebar-item">
+            <img src={logoutIcon} alt="Logout" className="sidebar-icon" />
+            <span>Logout</span>
+          </Link>];
+
+
   return (
     <div className="dashboard-container">
-      <TopBar onSearch={handleSearch}>
-        <button className="topbar-button" onClick={() => navigate('/all-internships')}>
-          <img src={internshipIcon}  alt="Internships"  className="topbar-icon" />
-          <span>Internships</span>
+      <TopBar onSearch={handleSearch} menuItems={menuItems}>
+        <StudentNotifications />
+        <button className="topbar-button" onClick={()=> navigate('/student-home')}>
+          <img src={homeIcon} alt="Dashboard" className="topbar-icon" />
+          <span>Dashboard</span>
         </button>
-        <button className="topbar-button" onClick={()=> navigate('/student-applications')}>
-          <img src={applicationIcon} alt="Applications"  className="topbar-icon" />
-          <span>Applications</span>
-        </button>
-        <button className="topbar-button" onClick={() => navigate('/student-internships')}>
-          <img src={evalIcon}        alt="My Internships"   className="topbar-icon" />
-          <span>My Internships</span>
-        </button>
-        <button 
-          className="topbar-button"
-          ref={notifBtnRef}
-          onClick={handleNotificationClick}
-        >
-          <img src={notifIcon}       alt="Notifications" className="topbar-icon" />
-          <span>Notifications</span>
-        </button>
-        <button className="topbar-button" onClick={() => navigate('/student-profile')}>
-          <img src={profileIcon}     alt="Profile"       className="topbar-icon" />
+        <button className="topbar-button" onClick={()=> navigate('/student-profile')}>
+          <img src={profileIcon} alt="profile" className="topbar-icon" />
           <span>Profile</span>
         </button>
-        <button className="topbar-button" onClick={() => navigate('/student-appointments')}>
-          <img src={HomeIcon}     alt="home"       className="topbar-icon" />
-          <span>Home</span>
+        <button className="topbar-button" onClick={()=> navigate('/login')}>
+          <img src={logoutIcon} alt="logout" className="topbar-icon" />
+          <span>Logout</span>
         </button>
       </TopBar>
 
@@ -198,15 +262,6 @@ const StudentHome = () => {
             profileUrl={'/student-profile'}
             profilePicture={user.profilePicture}
           >
-            <button className="po-btn">
-              <img src={notifIcon} alt="" /> Notifications
-            </button>
-            <button className="po-btn">
-              <img src={applicationIcon} alt="" /> Applications
-            </button>
-            <button className="po-btn">
-              <img src={evalIcon} alt="" /> Evaluations
-            </button>
           </ProfileOverview>
         </aside>
 

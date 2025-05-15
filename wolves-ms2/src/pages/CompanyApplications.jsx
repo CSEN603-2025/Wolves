@@ -1,24 +1,45 @@
-import React, { useState } from 'react';
-import { useNavigate }      from 'react-router-dom';
+import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate, Link }      from 'react-router-dom';
 import TopBar               from '../components/TopBar';
 import Filter               from '../components/Filter';
 import ApplicationOverview  from '../components/ApplicationOverview';
 import applicationsData     from '../data/applications.json';
 import internshipsData      from '../data/internships.json';
 import studentsData         from '../data/students.json';
-
-import applicationIcon from '../assets/icons/application-icon.png';
-import notifIcon       from '../assets/icons/notif-icon.png';
+import './CompanyApplications.css';
+import ApplicationIcon from '../assets/icons/application-icon.png';
 import MyPosts     from '../assets/icons/posts-icon.png';
 import Interns     from '../assets/icons/interns-icon.png';
-import HomeIcon        from '../assets/icons/home-icon.png';
-
-import './CompanyApplications.css';
+import NotificationIcon from '../assets/icons/notif-icon.png';
+import HomeIcon from '../assets/icons/home-icon.png';
+import LogoutIcon from '../assets/icons/logout-icon.png';
+import CompanyNotifications from '../components/CompanyNotifications';
+const MODAL_WIDTH = 340; // should match min-width in Notifications.css
 
 const CompanyApplications = () => {
   const navigate = useNavigate();
 
-  const baseList = applicationsData;
+  const [applications, setApplications] = useState(() => {
+    const stored = sessionStorage.getItem('applications');
+    return stored ? JSON.parse(stored) : applicationsData;
+  });
+
+  // Listen for application updates
+  useEffect(() => {
+    const handleApplicationsUpdate = () => {
+      const stored = sessionStorage.getItem('applications');
+      if (stored) {
+        setApplications(JSON.parse(stored));
+      }
+    };
+
+    window.addEventListener('applications-updated', handleApplicationsUpdate);
+    return () => {
+      window.removeEventListener('applications-updated', handleApplicationsUpdate);
+    };
+  }, []);
+
+  const baseList = applications;
 
   const internshipOptions = Array.from(
     new Set(baseList.map(a => String(a.internshipId)))
@@ -50,28 +71,61 @@ const CompanyApplications = () => {
       };
     });
 
+    const [showNotifications, setShowNotifications] = useState(false);
+  const [notifPosition, setNotifPosition] = useState(null);
+  const notifBtnRef = useRef(null);
+
+  const handleNotifClick = (e) => {
+    const rect = notifBtnRef.current.getBoundingClientRect();
+    let left = rect.right - MODAL_WIDTH;
+    if (left < 8) left = 8; // prevent going off the left edge
+    setNotifPosition({
+      top: rect.bottom + 8, // 8px below the button
+      left,
+    });
+    setShowNotifications(true);
+  };
+
+    const menuItems = (
+      <>
+        <Link to="/company-home" className="sidebar-item">
+          <img src={HomeIcon} alt="Dashboard" className="sidebar-icon" />
+          <span>Dashboard</span>
+        </Link>
+        <Link to="/company-posts" className="sidebar-item">
+          <img src={MyPosts} alt="My posts" className="sidebar-icon" />
+          <span>My Posts</span>
+        </Link>
+        <Link to="/company-applications" className="sidebar-item">
+          <img src={ApplicationIcon} alt="Applications" className="sidebar-icon" />
+          <span>Applications</span>
+        </Link>
+        <Link to="/company-interns" className="sidebar-item">
+          <img src={Interns} alt="Interns" className="sidebar-icon" />
+          <span>Interns</span>
+        </Link>
+        <Link to="/admin/notifications" className="sidebar-item">
+          <img src={NotificationIcon} alt="Notifications" className="sidebar-icon" />
+          <span>Notifications</span>
+        </Link>
+        <Link to="/login" className="sidebar-item">
+          <img src={LogoutIcon} alt="Logout" className="sidebar-icon" />
+          <span>Logout</span>
+        </Link>
+      </>
+    );
+
   return (
     <div className="company-apps-container">
-      <TopBar showSearch={false}>
-      <button className="topbar-button" onClick={()=> navigate('/company-posts')}>
-          <img src={MyPosts} alt="my-posts"  className="topbar-icon" />
-          <span>My Posts</span>
+      <TopBar showSearch={false} menuItems={menuItems}>
+      <CompanyNotifications />
+        <button className="topbar-button" onClick={()=> navigate('/company-home')}>
+          <img src={HomeIcon} alt="Dashboard" className="topbar-icon" />
+          <span>Dashboard</span>
         </button>
-        <button className="topbar-button" onClick={()=> navigate('/company-applications')}>
-          <img src={applicationIcon} alt="Applications"  className="topbar-icon" />
-          <span>Applications</span>
-        </button>
-        <button className="topbar-button" onClick={() => navigate('/company-interns')}>
-          <img src={Interns}     alt="interns"       className="topbar-icon" />
-          <span>Interns</span>
-        </button>
-        <button className="topbar-button" onClick={() => navigate('/company-home')}>
-          <img src={notifIcon}     alt="notifications"       className="topbar-icon" />
-          <span>Notifications</span>
-        </button>
-        <button className="topbar-button" onClick={() => navigate('/company-home')}>
-          <img src={HomeIcon}     alt="home"       className="topbar-icon" />
-          <span>Home</span>
+        <button className="topbar-button" onClick={()=> navigate('/login')}>
+          <img src={LogoutIcon} alt="logout" className="topbar-icon" />
+          <span>Logout</span>
         </button>
       </TopBar>
 

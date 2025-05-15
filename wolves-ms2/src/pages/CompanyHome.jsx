@@ -1,21 +1,26 @@
 // File: src/pages/CompanyHome.jsx
-import React, { useState ,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import './StudentHome.css';
 import { useAuth } from '../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import TopBar from '../components/TopBar';
 import Filter from '../components/Filter';
 import InternshipCard from '../components/InternshipCard';
 import ProfileOverview from '../components/ProfileOverview';
+import CompanyNotifications from '../components/CompanyNotifications';
 
-import applicationIcon from '../assets/icons/application-icon.png';
-import notifIcon       from '../assets/icons/notif-icon.png';
+import ApplicationIcon from '../assets/icons/application-icon.png';
 import MyPosts     from '../assets/icons/posts-icon.png';
 import Interns     from '../assets/icons/interns-icon.png';
-import HomeIcon        from '../assets/icons/home-icon.png';
+import NotificationIcon from '../assets/icons/notif-icon.png';
+import NewNotificationIcon from '../assets/icons/new-notif-icon.png';
+import HomeIcon from '../assets/icons/home-icon.png';
+import LogoutIcon from '../assets/icons/logout-icon.png';
 
 import internshipsData from '../data/internships.json';
+
+const MODAL_WIDTH = 340; // should match min-width in Notifications.css
 
 const CompanyHome = () => {
   const { user } = useAuth();
@@ -51,28 +56,46 @@ const CompanyHome = () => {
         (filters.paid === 'Paid' ? i.paid : !i.paid))
     );
 
+  const menuItems = (
+    <>
+      <Link to="/company-home" className="sidebar-item">
+        <img src={HomeIcon} alt="Dashboard" className="sidebar-icon" />
+        <span>Dashboard</span>
+      </Link>
+      <Link to="/company-posts" className="sidebar-item">
+        <img src={MyPosts} alt="My posts" className="sidebar-icon" />
+        <span>My Posts</span>
+      </Link>
+      <Link to="/company-applications" className="sidebar-item">
+        <img src={ApplicationIcon} alt="Applications" className="sidebar-icon" />
+        <span>Applications</span>
+      </Link>
+      <Link to="/company-interns" className="sidebar-item">
+        <img src={Interns} alt="Interns" className="sidebar-icon" />
+        <span>Interns</span>
+      </Link>
+      <Link to="/admin/notifications" className="sidebar-item">
+        <img src={NotificationIcon} alt="Notifications" className="sidebar-icon" />
+        <span>Notifications</span>
+      </Link>
+      <Link to="/login" className="sidebar-item">
+        <img src={LogoutIcon} alt="Logout" className="sidebar-icon" />
+        <span>Logout</span>
+      </Link>
+    </>
+  );
+
   return (
     <div className="dashboard-container">
-      <TopBar onSearch={handleSearch}>
-        <button className="topbar-button" onClick={()=> navigate('/company-posts')}>
-          <img src={MyPosts} alt="my-posts"  className="topbar-icon" />
-          <span>My Posts</span>
+      <TopBar onSearch={handleSearch} menuItems={menuItems}>
+        <CompanyNotifications />
+        <button className="topbar-button" onClick={()=> navigate('/company-home')}>
+          <img src={HomeIcon} alt="Dashboard" className="topbar-icon" />
+          <span>Dashboard</span>
         </button>
-        <button className="topbar-button" onClick={()=> navigate('/company-applications')}>
-          <img src={applicationIcon} alt="Applications"  className="topbar-icon" />
-          <span>Applications</span>
-        </button>
-        <button className="topbar-button" onClick={() => navigate('/company-interns')}>
-          <img src={Interns}     alt="interns"       className="topbar-icon" />
-          <span>Interns</span>
-        </button>
-        <button className="topbar-button" onClick={() => navigate('/company-home')}>
-          <img src={notifIcon}     alt="notifications"       className="topbar-icon" />
-          <span>Notifications</span>
-        </button>
-        <button className="topbar-button" onClick={() => navigate('/company-home')}>
-          <img src={HomeIcon}     alt="home"       className="topbar-icon" />
-          <span>Home</span>
+        <button className="topbar-button" onClick={()=> navigate('/login')}>
+          <img src={LogoutIcon} alt="logout" className="topbar-icon" />
+          <span>Logout</span>
         </button>
       </TopBar>
 
@@ -91,15 +114,6 @@ const CompanyHome = () => {
             hideMajor={true}
             hideProgress={true}
           >
-            <button className="po-btn" onClick={()=> navigate('/')}>
-              <img src={MyPosts} alt="" /> My Posts
-            </button>
-            <button className="po-btn" onClick={()=> navigate('/')}>
-              <img src={applicationIcon} alt="" /> Applications
-            </button>
-            <button className="po-btn" onClick={()=> navigate('/')}>
-              <img src={Interns} alt="" /> Interns & Evaluations
-            </button>
           </ProfileOverview>
         </aside>
 

@@ -1,13 +1,28 @@
-import React, { useState } from 'react';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import React, { useState, useRef } from 'react';
+import { useLocation, useNavigate, useParams,Link } from 'react-router-dom';
 import TopBar from '../components/TopBar';
 import Modal from '../components/Modal';
 import './AdminWorkshop.css';
+import notificationIcon from '../assets/icons/notif-icon.png';
+import homeIcon from '../assets/icons/home-icon.png';
+import logoutIcon from '../assets/icons/logout-icon.png';
+
+import studentIcon from '../assets/icons/interns-icon.png';
+import companyIcon from '../assets/icons/companies-icon.png';
+import internshipIcon from '../assets/icons/internships-icon.png';
+import workshopIcon from '../assets/icons/workshop-icon.png';
+import reportsIcon from '../assets/icons/eval-icon.png';
+import appointmentIcon from '../assets/icons/appointment-icon.png';
+
+const MODAL_WIDTH = 340; // should match min-width in Notifications.css
 
 const AdminWorkshop = () => {
   const { id } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
+  const [showNotifications, setShowNotifications] = useState(false);
+  const [notifPosition, setNotifPosition] = useState(null);
+  const notifBtnRef = useRef(null);
   // Try to get workshop from navigation state, else from sessionStorage
   let initialWorkshop = location.state?.workshop;
   if (!initialWorkshop) {
@@ -55,11 +70,78 @@ const AdminWorkshop = () => {
     navigate(-1);
   };
 
-  console.log('AdminWorkshop id:', id, 'workshop:', workshop);
+  const handleNotifClick = (e) => {
+    const rect = notifBtnRef.current.getBoundingClientRect();
+    let left = rect.right - MODAL_WIDTH;
+    if (left < 8) left = 8; // prevent going off the left edge
+    setNotifPosition({
+      top: rect.bottom + 8, // 8px below the button
+      left,
+    });
+    setShowNotifications(true);
+  };
+
+  const menuItems = (
+    <>
+      <Link to="/admin-home" className="sidebar-item">
+        <img src={homeIcon} alt="Dashboard" className="sidebar-icon" />
+        <span>Dashboard</span>
+      </Link>
+      <Link to="/admin-home/companies" className="sidebar-item">
+        <img src={companyIcon} alt="Companies" className="sidebar-icon" />
+        <span>Companies</span>
+      </Link>
+      <Link to="/admin-home/internships" className="sidebar-item">
+        <img src={internshipIcon} alt="Internships" className="sidebar-icon" />
+        <span>Internships</span>
+      </Link>
+      <Link to="/admin/students" className="sidebar-item">
+        <img src={studentIcon} alt="Students" className="sidebar-icon" />
+        <span>Students</span>
+      </Link>
+      <Link to="/admin/workshops" className="sidebar-item">
+        <img src={workshopIcon} alt="Workshops" className="sidebar-icon" />
+        <span>Workshops</span>
+      </Link>
+      <Link to="/admin/reports" className="sidebar-item">
+        <img src={reportsIcon} alt="Reports" className="sidebar-icon" />
+        <span>Reports</span>
+      </Link>
+      <Link to="/admin-appointments" className="sidebar-item">
+        <img src={appointmentIcon} alt="apointments" className="sidebar-icon" />
+        <span>Appointments</span>
+      </Link>
+      <Link to="/admin/notifications" className="sidebar-item">
+        <img src={notificationIcon} alt="Notifications" className="sidebar-icon" />
+        <span>Notifications</span>
+      </Link>
+      <Link to="/login" className="sidebar-item">
+        <img src={logoutIcon} alt="Logout" className="sidebar-icon" />
+        <span>Logout</span>
+      </Link>
+    </>
+  );
 
   return (
     <div className="admin-workshop-page">
-      <TopBar showSearch={false} />
+      <TopBar showSearch={false} menuItems={menuItems}>
+      <button
+          className="topbar-button"
+          ref={notifBtnRef}
+          onClick={handleNotifClick}
+        >
+          <img src={notificationIcon} alt="Notifications" className="topbar-icon" />
+          <span>Notifications</span>
+        </button>
+        <button className="topbar-button" onClick={()=> navigate('/admin-home')}>
+          <img src={homeIcon} alt="Dashboard" className="topbar-icon" />
+          <span>Dashboard</span>
+        </button>
+        <button className="topbar-button" onClick={()=> navigate('/login')}>
+          <img src={logoutIcon} alt="logout" className="topbar-icon" />
+          <span>Logout</span>
+        </button>
+      </TopBar>
       <div className="workshop-details-container">
         <div className="workshop-actions-row">
           <button className="iv-btn secondary" onClick={() => navigate(-1)}>Back</button>

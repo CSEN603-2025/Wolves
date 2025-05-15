@@ -1,0 +1,73 @@
+[
+  {
+    "id": 1,
+    "title": "Registration Successful",
+    "body": "Welcome to the GUC Internship Platform! Your company account has been successfully registered.",
+    "date": "2025-02-15T10:00:00",
+    "type": "registration",
+    "clickable": false
+  },
+  {
+    "id": 2,
+    "title": "New Application Received",
+    "body": "Student Yahia Hesham has applied to your Frontend Development Intern position.",
+    "date": "2025-02-15T10:10:00",
+    "type": "application",
+    "clickable": true,
+    "link": "/company-applications/1"
+  },
+  {
+    "id": 3,
+    "title": "New Application Received",
+    "body": "Student Ahmed Ibrahim has applied to your Frontend Development Intern position.",
+    "date": "2025-02-15T10:20:00",
+    "type": "application",
+    "clickable": true,
+    "link": "/company-applications/2"
+  },
+  {
+    "id": 4,
+    "title": "New Application Received",
+    "body": "Student Marwan Yasser has applied to your Frontend Development Intern position.",
+    "date": "2025-02-15T10:30:00",
+    "type": "application",
+    "clickable": true,
+    "link": "/company-applications/4"
+  },
+  {
+    "id": 5,
+    "title": "New Application Received",
+    "body": "Student Ahmed Ibrahim has applied to your Backend Development Intern position.",
+    "date": "2025-02-15T10:40:00",
+    "type": "application",
+    "clickable": true,
+    "link": "/company-applications/7"
+  },
+  {
+    "id": 6,
+    "title": "New Application Received",
+    "body": "Student Ahmed Hany has applied to your Backend Development Intern position.",
+    "date": "2025-02-15T10:50:00",
+    "type": "application",
+    "clickable": true,
+    "link": "/company-applications/8"
+  },
+  {
+    "id": 7,
+    "title": "New Application Received",
+    "body": "Student Yahia Hesham has applied to your Data Analytics Intern position.",
+    "date": "2025-02-15T11:00:00",
+    "type": "application",
+    "clickable": true,
+    "link": "/company-applications/11"
+  },
+  {
+    "id": 8,
+    "title": "New Application Received",
+    "body": "Student Yahia Hesham has applied to your Network Operations Intern position.",
+    "date": "2025-02-15T11:10:00",
+    "type": "application",
+    "clickable": true,
+    "link": "/company-applications/16"
+  }
+] 

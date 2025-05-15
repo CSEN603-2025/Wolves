@@ -19,14 +19,21 @@ const InternshipCard = ({
   hideStatus =false,
   viewCount=false,
   evaluation,
-  count
+  count,
+  onEdit,
+  onDelete
 }) => {
   const navigate = useNavigate();
   const logoSrc = require(`../assets/companies/${logo}`);
   const srcLocation = useLocation();
   const { user } = useAuth();
 
-  const handleClick = () => {
+  const handleClick = (e) => {
+    // Don't navigate if clicking edit/delete buttons
+    if (e.target.closest('.card-actions')) {
+      return;
+    }
+
     if (evaluation === 'Internship Complete') {
       navigate(
         `/student-internships/${id}`, 
@@ -43,7 +50,7 @@ const InternshipCard = ({
           `/admin-home/internships/${id}`,
           { state: { from: srcLocation.pathname } }
         );
-      } else {
+      } else if (user?.role === 'company') {
         navigate(
           `/company-posts/${id}`,
           { state: { from: srcLocation.pathname } }
@@ -52,8 +59,27 @@ const InternshipCard = ({
     }
   };
 
+  const handleEdit = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (onEdit) {
+      onEdit(id);
+    }
+  };
+
+  const handleDelete = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (onDelete) {
+      onDelete(id);
+    }
+  };
+
   // build a CSS‐friendly class from status text
   const statusClass = status.toLowerCase().replace(/\s+/g, '-');
+
+  // Check if this internship should show edit/delete buttons
+  const showEditDelete = [1, 2, 3, 4].includes(Number(id));
 
   return (
     <button
