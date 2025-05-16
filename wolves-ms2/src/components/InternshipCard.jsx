@@ -21,7 +21,8 @@ const InternshipCard = ({
   evaluation,
   count,
   onEdit,
-  onDelete
+  onDelete,
+  onClick
 }) => {
   const navigate = useNavigate();
   const logoSrc = require(`../assets/companies/${logo}`);
@@ -41,11 +42,19 @@ const InternshipCard = ({
       );
     } else {
       if (user?.role === 'student') {
-        navigate(
-          `/student-internships/${id}`,
-          { state: { from: srcLocation.pathname } }
-        );
-      } else if (user?.role === 'admin') {
+        if (evaluation === 'Internship Complete') {
+          navigate(
+            `/student-internships/${id}`,
+            { state: { from: srcLocation.pathname } }
+          );
+        } else {
+          navigate(
+            `/internships/${id}`,
+            { state: { from: srcLocation.pathname } }
+          );
+        }
+      } else 
+     if (user?.role === 'admin') {
         navigate(
           `/admin-home/internships/${id}`,
           { state: { from: srcLocation.pathname } }
@@ -85,7 +94,7 @@ const InternshipCard = ({
     <button
       type="button"
       className="internship-card-row"
-      onClick={handleClick}
+      onClick={onClick ? onClick : handleClick}
     >
       <div className="logo-wrapper">
         <img

@@ -14,11 +14,24 @@ import profileIcon     from '../assets/icons/profile-icon.png';
 import HomeIcon     from '../assets/icons/home-icon.png';
 
 const InternshipListing = () => {
+  console.log('InternshipListing rendered');
   const { id }         = useParams();
-  const internship     = internshipsData.find(i => String(i.id) === id);
+  // Get internships from sessionStorage if available
+  let internshipsArr = [];
+  const stored = sessionStorage.getItem('internships');
+  if (stored) {
+    internshipsArr = JSON.parse(stored);
+  } else {
+    internshipsArr = [...internshipsData];
+  }
+  const internship = internshipsArr.find(i => String(i.id) === id);
   const { user }       = useAuth();
   const navigate       = useNavigate();
   const srcLocation = useLocation();
+
+  // Get evaluation status from location state if available, fallback to internship status
+  const evaluationStatus = srcLocation.state?.evaluation || internship?.status;
+  const isStudentInternshipsRoute = srcLocation.pathname.startsWith('/student-internships/');
 
   // modal + form state...
   const [showModal, setShowModal]         = useState(false);
@@ -46,6 +59,11 @@ const InternshipListing = () => {
 
   const logoSrc = require(`../assets/companies/${logo}`);
 
+  // Only show evaluation section if on /student-internships/:id and evaluationStatus === 'Internship Complete'
+  // Add a debug log for evaluationStatus
+  console.log('evaluationStatus:', evaluationStatus);
+  const showEvaluation = isStudentInternshipsRoute && evaluationStatus === 'Internship Complete';
+
   const handleOpenModal = () => {
     setShowModal(true);
     setSubmitMessage(null);
@@ -67,36 +85,18 @@ const InternshipListing = () => {
     setTimeout(() => {
       setSubmitting(false);
       setSubmitMessage('Your application has been submitted!');
+      // Update status in sessionStorage
+      let updatedArr = internshipsArr.map(i =>
+        String(i.id) === String(id) ? { ...i, status: 'pending' } : i
+      );
+      sessionStorage.setItem('internships', JSON.stringify(updatedArr));
     }, 1200);
   };
 
   return (
     <div className="listing-page">
       <TopBar showSearch={false}>
-        <button className="topbar-button" onClick={() => navigate('/all-internships')}>
-          <img src={internshipIcon}  alt="Internships"  className="topbar-icon" />
-          <span>Internships</span>
-        </button>
-        <button className="topbar-button" onClick={()=> navigate('/student-applications')}>
-          <img src={applicationIcon} alt="Applications"  className="topbar-icon" />
-          <span>Applications</span>
-        </button>
-        <button className="topbar-button" onClick={() => navigate('/student-internships')}>
-          <img src={evalIcon}        alt="My Internships"   className="topbar-icon" />
-          <span>My Internships</span>
-        </button>
-        <button className="topbar-button">
-          <img src={notifIcon}       alt="Notifications" className="topbar-icon" />
-          <span>Notifications</span>
-        </button>
-        <button className="topbar-button" onClick={() => navigate('/student-profile')}>
-          <img src={profileIcon}     alt="Profile"       className="topbar-icon" />
-          <span>Profile</span>
-        </button>
-          <button className="topbar-button" onClick={() => navigate('/student-home')}>
-          <img src={HomeIcon}     alt="home"       className="topbar-icon" />
-          <span>Home</span>
-        </button>
+        
       </TopBar>
 
       <main className="listing-main">
@@ -146,6 +146,14 @@ const InternshipListing = () => {
             : <div className={`status-badge status-${newStatus.toLowerCase().replace(' ','-')}`}>
                 {newStatus}
               </div>
+        )}
+
+        {/* Only show evaluation section if showEvaluation is true */}
+        {showEvaluation && (
+          <section className="listing-section">
+            <h3>Evaluation</h3>
+            {/* Evaluation content here */}
+          </section>
         )}
       </main>
 

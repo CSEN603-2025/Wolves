@@ -9,18 +9,16 @@ import applicationsData     from '../data/company-student.json';
 import internshipsData      from '../data/student-internships.json';
 import './StudentInternships.css';
 
-import internshipIcon  from '../assets/icons/internships-icon.png';
-import applicationIcon from '../assets/icons/application-icon.png';
-import evalIcon        from '../assets/icons/eval-icon.png';
-import notifIcon       from '../assets/icons/notif-icon.png';
 import profileIcon     from '../assets/icons/profile-icon.png';
-import HomeIcon        from '../assets/icons/home-icon.png';
+import notificationIcon from '../assets/icons/notif-icon.png';
+import homeIcon from '../assets/icons/home-icon.png';
+import logoutIcon from '../assets/icons/logout-icon.png';
 
 export default function StudentInternships() {
   const { user } = useAuth();
   const navigate = useNavigate();
 
-  // 1) Merge current student’s applications with internship details
+  // 1) Merge current student's applications with internship details
   const mergedList = applicationsData
     .filter(a => String(a.studentId) === String(user.id))
     .map(a => {
@@ -68,32 +66,21 @@ export default function StudentInternships() {
       item.status === statusFilter
     );
 
+
   return (
     <div className="si-dashboard">
       <TopBar onSearch={handleSearch}>
-        <button className="topbar-button" onClick={() => navigate('/all-internships')}>
-            <img src={internshipIcon}  alt="Internships"  className="topbar-icon" />
-            <span>Internships</span>
+      <button className="topbar-button" onClick={()=> navigate('/student-home')}>
+          <img src={homeIcon} alt="Dashboard" className="topbar-icon" />
+          <span>Dashboard</span>
         </button>
-        <button className="topbar-button" onClick={()=> navigate('/student-applications')}>
-            <img src={applicationIcon} alt="Applications"  className="topbar-icon" />
-            <span>Applications</span>
+        <button className="topbar-button" onClick={()=> navigate('/student-profile')}>
+          <img src={profileIcon} alt="profile" className="topbar-icon" />
+          <span>Profile</span>
         </button>
-        <button className="topbar-button" onClick={() => navigate('/student-internships')}>
-            <img src={evalIcon}        alt="My Internships"   className="topbar-icon" />
-            <span>My Internships</span>
-        </button>
-        <button className="topbar-button">
-            <img src={notifIcon}       alt="Notifications" className="topbar-icon" />
-            <span>Notifications</span>
-        </button>
-        <button className="topbar-button" onClick={() => navigate('/student-profile')}>
-            <img src={profileIcon}     alt="Profile"       className="topbar-icon" />
-            <span>Profile</span>
-        </button>
-            <button className="topbar-button" onClick={() => navigate('/student-home')}>
-            <img src={HomeIcon}     alt="home"       className="topbar-icon" />
-            <span>Home</span>
+        <button className="topbar-button" onClick={()=> navigate('/login')}>
+          <img src={logoutIcon} alt="logout" className="topbar-icon" />
+          <span>Logout</span>
         </button>
       </TopBar>
 
@@ -115,7 +102,12 @@ export default function StudentInternships() {
         <div className="si-list">
           {displayed.length > 0 ? (
             displayed.map(item => (
-              <InternshipCard key={item.id} {...item} evaluation={item.status}/>
+              <InternshipCard
+                key={item.id}
+                {...item}
+                evaluation={item.status}
+                onClick={() => navigate(`/student-internships/${item.id}`, { state: { evaluation: item.status } })}
+              />
             ))
           ) : (
             <p className="si-no-results">

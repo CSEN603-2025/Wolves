@@ -1,4 +1,4 @@
-.company-card {
+.ccard-card {
   position: relative;
   overflow: hidden;
   font-family: 'Inter', sans-serif;
@@ -20,7 +20,7 @@
     box-shadow 0.2s ease,
     background 0.3s ease;
 }
-.company-card::after {
+.ccard-card::after {
   content: "";
   position: absolute;
   top: 0; left: -120%;
@@ -31,21 +31,21 @@
   transition: left 0.6s ease;
   pointer-events: none;
 }
-.company-card:focus, .company-card:hover {
+.ccard-card:focus, .ccard-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 24px rgba(24,154,180,0.13);
   background-color: #054a7a;
 }
-.company-card:focus::after, .company-card:hover::after {
+.ccard-card:focus::after, .ccard-card:hover::after {
   left: 120%;
 }
-.company-card-header {
+.ccard-header {
   display: flex;
   align-items: center;
   gap: 1.5rem;
   justify-content: flex-start;
 }
-.company-logo {
+.ccard-logo {
   width: 72px;
   height: 72px;
   object-fit: contain;
@@ -53,24 +53,24 @@
   background: #fff;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
-.company-info {
+.ccard-info {
   flex: 1;
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
 }
-.company-name {
+.ccard-name {
   margin: 0;
   font-size: 1.2rem;
   font-weight: 700;
   color: #fff;
 }
-.company-industry {
+.ccard-industry {
   font-size: 1rem;
   color: var(--baby-blue);
   font-weight: 500;
 }
-.company-size-label {
+.ccard-size-label {
   padding: 0.4rem 1rem;
   border-radius: 12px;
   font-size: 0.95rem;
@@ -82,28 +82,28 @@
   border: 2px solid #75e6da;
   text-transform: capitalize;
 }
-.size-small { background: #38bdf8; color: #fff; border-color: #38bdf8; }
-.size-medium { background: #facc15; color: #05445e; border-color: #facc15; }
-.size-large { background: #a78bfa; color: #05445e; border-color: #a78bfa; }
-.size-corporate { background: #ef4444; color: #fff; border-color: #ef4444; }
-.company-card-meta {
+.ccard-size-small { background: #38bdf8; color: #fff; border-color: #38bdf8; }
+.ccard-size-medium { background: #facc15; color: #05445e; border-color: #facc15; }
+.ccard-size-large { background: #a78bfa; color: #05445e; border-color: #a78bfa; }
+.ccard-size-corporate { background: #ef4444; color: #fff; border-color: #ef4444; }
+.ccard-meta {
   display: flex;
   gap: 2rem;
   font-size: 0.98rem;
   opacity: 0.85;
   margin-left: 90px;
 }
-.company-email {
+.ccard-email {
   color: #e0f7fa;
 }
-.company-card-actions {
+.ccard-actions {
   display: flex;
   gap: 0.5rem;
 }
-.company-location {
+.ccard-location {
   color: #b2e0ef;
 }
-.company-size {
+.ccard-size {
   color: #e0f7fa;
 }
 .iv-btn.danger {
@@ -115,15 +115,15 @@
   background: #b91c1c;
 }
 @media (max-width: 600px) {
-  .company-card {
+  .ccard-card {
     padding: 1rem;
   }
-  .company-card-header {
+  .ccard-header {
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
   }
-  .company-card-meta {
+  .ccard-meta {
     margin-left: 0;
   }
 } 

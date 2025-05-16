@@ -5,11 +5,13 @@ import CompanyCard from '../components/CompanyCard';
 import Filter from '../components/Filter';
 import SearchBar from '../components/SearchBar';
 import './AdminCompanies.css';
-
+import AdminNotifications from '../components/AdminNotifications';
+import Notifications from '../components/Notifications';
 import scadLogo from '../assets/scad-logo.png';
 import notificationIcon from '../assets/icons/notif-icon.png';
 import homeIcon from '../assets/icons/home-icon.png';
 import logoutIcon from '../assets/icons/logout-icon.png';
+import statsIcon from '../assets/icons/stats-icon.png';
 
 import studentIcon from '../assets/icons/interns-icon.png';
 import companyIcon from '../assets/icons/companies-icon.png';
@@ -31,27 +33,34 @@ const AdminCompanies = () => {
   const [showNotifications, setShowNotifications] = useState(false);
   const [notifPosition, setNotifPosition] = useState(null);
   const notifBtnRef = useRef(null);
+  const [notifications, setNotifications] = useState(
+    () => JSON.parse(sessionStorage.getItem('admin-notifs')) || []
+  );
 
   // Load data from sessionStorage or initialize from JSON files
   useEffect(() => {
     const loadData = async () => {
-      let applyingData = JSON.parse(sessionStorage.getItem('admin-applying-companies'));
-      let registeredData = JSON.parse(sessionStorage.getItem('admin-companies'));
+      console.log('loadData function called'); // Debug log
+      let applyingCompaniesData = JSON.parse(sessionStorage.getItem('admin-applying-companies'));
+      let registeredCompaniesData = JSON.parse(sessionStorage.getItem('admin-registered-companies'));
 
-      if (!applyingData) {
+      console.log('SessionStorage registeredCompaniesData:', registeredCompaniesData); // Debug log
+
+      if (!applyingCompaniesData) {
         const module = await import('../data/applying-companies.json');
-        applyingData = module.default;
-        sessionStorage.setItem('admin-applying-companies', JSON.stringify(applyingData));
+        applyingCompaniesData = module.default;
+        sessionStorage.setItem('admin-applying-companies', JSON.stringify(applyingCompaniesData));
       }
 
-      if (!registeredData) {
+      if (!registeredCompaniesData) {
         const module = await import('../data/companies.json');
-        registeredData = module.default;
-        sessionStorage.setItem('admin-companies', JSON.stringify(registeredData));
+        registeredCompaniesData = module.default;
+        console.log('Loaded registered data from companies.json:', registeredCompaniesData); // Debug log
+        sessionStorage.setItem('admin-registered-companies', JSON.stringify(registeredCompaniesData));
       }
 
-      setApplying(applyingData);
-      setRegistered(registeredData);
+      setApplying(applyingCompaniesData);
+      setRegistered(registeredCompaniesData);
     };
 
     loadData();
@@ -60,10 +69,10 @@ const AdminCompanies = () => {
   // Listen for changes in sessionStorage
   useEffect(() => {
     const handleStorageChange = () => {
-      const applyingData = JSON.parse(sessionStorage.getItem('admin-applying-companies')) || [];
-      const registeredData = JSON.parse(sessionStorage.getItem('admin-companies')) || [];
-      setApplying(applyingData);
-      setRegistered(registeredData);
+      const applyingCompaniesData = JSON.parse(sessionStorage.getItem('admin-applying-companies')) || [];
+      const registeredCompaniesData = JSON.parse(sessionStorage.getItem('admin-registered-companies')) || [];
+      setApplying(applyingCompaniesData);
+      setRegistered(registeredCompaniesData);
     };
 
     // Listen for both storage events and custom events
@@ -126,9 +135,9 @@ const AdminCompanies = () => {
         <img src={appointmentIcon} alt="apointments" className="sidebar-icon" />
         <span>Appointments</span>
       </Link>
-      <Link to="/admin/notifications" className="sidebar-item">
-        <img src={notificationIcon} alt="Notifications" className="sidebar-icon" />
-        <span>Notifications</span>
+      <Link to="/admin-home/stats" className="sidebar-item">
+        <img src={statsIcon} alt="stats" className="sidebar-icon" />
+        <span>Statistics</span>
       </Link>
       <Link to="/login" className="sidebar-item">
         <img src={logoutIcon} alt="Logout" className="sidebar-icon" />
@@ -140,14 +149,7 @@ const AdminCompanies = () => {
   return (
     <div className="admin-companies-page">
       <TopBar showSearch={false} menuItems={menuItems}>
-      <button
-          className="topbar-button"
-          ref={notifBtnRef}
-          onClick={handleNotifClick}
-        >
-          <img src={notificationIcon} alt="Notifications" className="topbar-icon" />
-          <span>Notifications</span>
-        </button>
+      <AdminNotifications />
         <button className="topbar-button" onClick={()=> navigate('/admin-home')}>
           <img src={homeIcon} alt="Dashboard" className="topbar-icon" />
           <span>Dashboard</span>
@@ -157,17 +159,31 @@ const AdminCompanies = () => {
           <span>Logout</span>
         </button>
       </TopBar>
+      <Notifications isOpen={showNotifications} onClose={() => setShowNotifications(false)} position={notifPosition}>
+        {notifications && notifications.length > 0 ? (
+          notifications.map((notif, idx) => (
+            <div className="notif-card" key={notif.id || idx} tabIndex={0}>
+              <div className="notif-title">{notif.title}</div>
+              <div className="notif-body">{notif.body}</div>
+              <div className="notif-email">{notif.email || notif.senderEmail}</div>
+              <div className="notif-date">{notif.date}</div>
+            </div>
+          ))
+        ) : (
+          <div className="notif-empty">No notifications to show.</div>
+        )}
+      </Notifications>
       <main className="admin-companies-main">
         <h1 className="admin-companies-title">Companies</h1>
         <div className="admin-companies-tabs">
           <button
-            className={`iv-btn${tab === 'applying' ? ' primary' : ' secondary'}`}
+            className={`tab-btn${tab === 'applying' ? ' active' : ''}`}
             onClick={() => setTab('applying')}
           >
             Applying Companies
           </button>
           <button
-            className={`iv-btn${tab === 'registered' ? ' primary' : ' secondary'}`}
+            className={`tab-btn${tab === 'registered' ? ' active' : ''}`}
             onClick={() => setTab('registered')}
           >
             Registered Companies
@@ -177,7 +193,7 @@ const AdminCompanies = () => {
           <section className="admin-companies-section">
             <div className="admin-companies-filters">
               <div className="admin-companies-search">
-                <SearchBar onSearch={(name) => handleSearch(name)} companySearch={true}/>
+                <SearchBar onSearch={(name) => handleSearch(name)} companySearch={true} showSecondary={false} placeholderPrimary="Company Name" />
               </div>
               <Filter title="Industry" value={industry} onChange={e => setIndustry(e.target.value)}>
                 <option value="">All</option>
@@ -195,13 +211,16 @@ const AdminCompanies = () => {
         )}
         {tab === 'registered' && (
           <section className="admin-companies-section">
-            {registered.length ? registered.map(company => (
-              <CompanyCard
-                key={company.id}
-                company={company}
-                onClick={null}
-              />
-            )) : <div className="admin-companies-no-results">No registered companies found.</div>}
+            {registered.length ? registered.map(company => {
+              console.log('Company being passed to CompanyCard:', company); // Debug log
+              return (
+                <CompanyCard
+                  key={company.id}
+                  company={company}
+                  onClick={() => navigate(`/admin-home/companies/${company.id}`)}
+                />
+              );
+            }) : <div className="admin-companies-no-results">No registered companies found.</div>}
           </section>
         )}
       </main>

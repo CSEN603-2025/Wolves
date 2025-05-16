@@ -4,6 +4,10 @@ import TopBar from '../components/TopBar';
 import AppointmentCard from '../components/AppointmentCard';
 import Modal from '../components/Modal';
 import './StudentAppointments.css';
+import profileIcon     from '../assets/icons/profile-icon.png';
+import notificationIcon from '../assets/icons/notif-icon.png';
+import homeIcon from '../assets/icons/home-icon.png';
+import logoutIcon from '../assets/icons/logout-icon.png';
 
 const StudentAppointments = () => {
   const navigate = useNavigate();
@@ -115,8 +119,17 @@ const StudentAppointments = () => {
   return (
     <div className="appointments-page">
       <TopBar showSearch={false}>
-        <button className="iv-btn secondary" onClick={() => navigate(-1)}>
-          Back
+      <button className="topbar-button" onClick={()=> navigate('/student-home')}>
+          <img src={homeIcon} alt="Dashboard" className="topbar-icon" />
+          <span>Dashboard</span>
+        </button>
+        <button className="topbar-button" onClick={()=> navigate('/student-profile')}>
+          <img src={profileIcon} alt="profile" className="topbar-icon" />
+          <span>Profile</span>
+        </button>
+        <button className="topbar-button" onClick={()=> navigate('/login')}>
+          <img src={logoutIcon} alt="logout" className="topbar-icon" />
+          <span>Logout</span>
         </button>
       </TopBar>
 

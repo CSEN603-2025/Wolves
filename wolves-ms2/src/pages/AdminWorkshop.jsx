@@ -6,6 +6,7 @@ import './AdminWorkshop.css';
 import notificationIcon from '../assets/icons/notif-icon.png';
 import homeIcon from '../assets/icons/home-icon.png';
 import logoutIcon from '../assets/icons/logout-icon.png';
+import statsIcon from '../assets/icons/stats-icon.png';
 
 import studentIcon from '../assets/icons/interns-icon.png';
 import companyIcon from '../assets/icons/companies-icon.png';
@@ -13,7 +14,8 @@ import internshipIcon from '../assets/icons/internships-icon.png';
 import workshopIcon from '../assets/icons/workshop-icon.png';
 import reportsIcon from '../assets/icons/eval-icon.png';
 import appointmentIcon from '../assets/icons/appointment-icon.png';
-
+import AdminNotifications from '../components/AdminNotifications';
+import Notifications from '../components/Notifications';
 const MODAL_WIDTH = 340; // should match min-width in Notifications.css
 
 const AdminWorkshop = () => {
@@ -23,6 +25,9 @@ const AdminWorkshop = () => {
   const [showNotifications, setShowNotifications] = useState(false);
   const [notifPosition, setNotifPosition] = useState(null);
   const notifBtnRef = useRef(null);
+  const [notifications, setNotifications] = useState(
+    () => JSON.parse(sessionStorage.getItem('admin-notifs')) || []
+  );
   // Try to get workshop from navigation state, else from sessionStorage
   let initialWorkshop = location.state?.workshop;
   if (!initialWorkshop) {
@@ -111,9 +116,9 @@ const AdminWorkshop = () => {
         <img src={appointmentIcon} alt="apointments" className="sidebar-icon" />
         <span>Appointments</span>
       </Link>
-      <Link to="/admin/notifications" className="sidebar-item">
-        <img src={notificationIcon} alt="Notifications" className="sidebar-icon" />
-        <span>Notifications</span>
+      <Link to="/admin-home/stats" className="sidebar-item">
+        <img src={statsIcon} alt="stats" className="sidebar-icon" />
+        <span>Statistics</span>
       </Link>
       <Link to="/login" className="sidebar-item">
         <img src={logoutIcon} alt="Logout" className="sidebar-icon" />
@@ -125,14 +130,7 @@ const AdminWorkshop = () => {
   return (
     <div className="admin-workshop-page">
       <TopBar showSearch={false} menuItems={menuItems}>
-      <button
-          className="topbar-button"
-          ref={notifBtnRef}
-          onClick={handleNotifClick}
-        >
-          <img src={notificationIcon} alt="Notifications" className="topbar-icon" />
-          <span>Notifications</span>
-        </button>
+        <AdminNotifications />
         <button className="topbar-button" onClick={()=> navigate('/admin-home')}>
           <img src={homeIcon} alt="Dashboard" className="topbar-icon" />
           <span>Dashboard</span>
@@ -142,9 +140,31 @@ const AdminWorkshop = () => {
           <span>Logout</span>
         </button>
       </TopBar>
+      <Notifications isOpen={showNotifications} onClose={() => setShowNotifications(false)} position={notifPosition}>
+        {notifications && notifications.length > 0 ? (
+          notifications.map((notif, idx) => (
+            <div className="notif-card" key={notif.id || idx} tabIndex={0}>
+              <div className="notif-title">{notif.title}</div>
+              <div className="notif-body">{notif.body}</div>
+              <div className="notif-email">{notif.email || notif.senderEmail}</div>
+              <div className="notif-date">{notif.date}</div>
+            </div>
+          ))
+        ) : (
+          <div className="notif-empty">No notifications to show.</div>
+        )}
+      </Notifications>
       <div className="workshop-details-container">
+        <div>
+        <button
+              type="button"
+              className="back-btn"
+              onClick={() => navigate(-1)}
+            >
+              Back
+            </button>
+        </div>
         <div className="workshop-actions-row">
-          <button className="iv-btn secondary" onClick={() => navigate(-1)}>Back</button>
           <button className="iv-btn" onClick={() => setEditMode(true)}>Edit</button>
           <button className="iv-btn reject" onClick={() => setShowDeleteModal(true)}>Delete</button>
         </div>

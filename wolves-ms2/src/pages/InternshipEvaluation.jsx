@@ -7,12 +7,10 @@ import coursesData from '../data/courses.json';
 import { jsPDF } from 'jspdf';
 import './InternshipEvaluation.css';
 
-import internshipIcon  from '../assets/icons/internships-icon.png';
-import applicationIcon from '../assets/icons/application-icon.png';
-import evalIcon        from '../assets/icons/eval-icon.png';
-import notifIcon       from '../assets/icons/notif-icon.png';
 import profileIcon     from '../assets/icons/profile-icon.png';
-import HomeIcon     from '../assets/icons/home-icon.png';
+import notificationIcon from '../assets/icons/notif-icon.png';
+import homeIcon from '../assets/icons/home-icon.png';
+import logoutIcon from '../assets/icons/logout-icon.png';
 
 
 const TABS = ['Evaluation', 'Report', 'Courses', 'Finalize'];
@@ -75,6 +73,8 @@ const InternshipEvaluation = () => {
       </div>
     );
   }
+
+  const showEvaluationTab = internship.status === 'Internship Complete';
 
   // --- Handlers --------------------------------------------------------------
 
@@ -253,29 +253,17 @@ const InternshipEvaluation = () => {
   return (
     <div className="internship-eval-page">
       <TopBar showSearch={false}>
-        <button className="topbar-button" onClick={() => navigate('/all-internships')}>
-            <img src={internshipIcon}  alt="Internships"  className="topbar-icon" />
-            <span>Internships</span>
+      <button className="topbar-button" onClick={()=> navigate('/student-home')}>
+          <img src={homeIcon} alt="Dashboard" className="topbar-icon" />
+          <span>Dashboard</span>
         </button>
-        <button className="topbar-button" onClick={()=> navigate('/student-applications')}>
-            <img src={applicationIcon} alt="Applications"  className="topbar-icon" />
-            <span>Applications</span>
+        <button className="topbar-button" onClick={()=> navigate('/student-profile')}>
+          <img src={profileIcon} alt="profile" className="topbar-icon" />
+          <span>Profile</span>
         </button>
-        <button className="topbar-button" onClick={() => navigate('/student-internships')}>
-            <img src={evalIcon}        alt="My Internships"   className="topbar-icon" />
-            <span>My Internships</span>
-        </button>
-        <button className="topbar-button">
-            <img src={notifIcon}       alt="Notifications" className="topbar-icon" />
-            <span>Notifications</span>
-        </button>
-        <button className="topbar-button" onClick={() => navigate('/student-profile')}>
-            <img src={profileIcon}     alt="Profile"       className="topbar-icon" />
-            <span>Profile</span>
-        </button>
-        <button className="topbar-button" onClick={() => navigate('/student-home')}>
-            <img src={HomeIcon}     alt="home"       className="topbar-icon" />
-            <span>Home</span>
+        <button className="topbar-button" onClick={()=> navigate('/login')}>
+          <img src={logoutIcon} alt="logout" className="topbar-icon" />
+          <span>Logout</span>
         </button>
       </TopBar>
 
@@ -322,194 +310,198 @@ const InternshipEvaluation = () => {
         )}
         {error && <div className="error-text">{error}</div>}
 
-        {/* --- Tabs --- */}
-        <nav className="iv-tabs-bar" aria-label="Evaluation Tabs">
-          {TABS.map(tab => (
-            <button
-              key={tab}
-              type="button"
-              className={`iv-tab-btn${activeTab === tab ? ' active' : ''}`}
-              onClick={() => {
-                setActiveTab(tab);
-                setError('');
-                setSuccessMsg('');
-              }}
-              aria-current={activeTab === tab ? 'page' : undefined}
-            >
-              {tab}
-            </button>
-          ))}
-        </nav>
+        {/* --- Tabs and Tab Content --- */}
+        {showEvaluationTab && (
+          <>
+            <nav className="iv-tabs-bar" aria-label="Evaluation Tabs">
+              {TABS.map(tab => (
+                <button
+                  key={tab}
+                  type="button"
+                  className={`iv-tab-btn${activeTab === tab ? ' active' : ''}`}
+                  onClick={() => {
+                    setActiveTab(tab);
+                    setError('');
+                    setSuccessMsg('');
+                  }}
+                  aria-current={activeTab === tab ? 'page' : undefined}
+                >
+                  {tab}
+                </button>
+              ))}
+            </nav>
 
-        <div className="tab-content">
-          {/* Evaluation Tab */}
-          {activeTab === 'Evaluation' && (
-            <section className="eval-section eval-card-section">
-              {(isEditingEval || !evaluations.length) && (
-                <>
-                  <textarea
-                    className="eval-input"
-                    value={evalComment}
-                    onChange={e => setEvalComment(e.target.value)}
-                    placeholder="Your thoughts…"
-                  />
-                  <div className="checkbox-row">
-                    <input
-                      type="checkbox"
-                      id="rec"
-                      checked={evalRecommend}
-                      onChange={e => setEvalRecommend(e.target.checked)}
-                    />
-                    <label htmlFor="rec">Recommend to other students</label>
+            <div className="tab-content">
+              {/* Evaluation Tab */}
+              {activeTab === 'Evaluation' && (
+                <section className="eval-section eval-card-section">
+                  {(isEditingEval || !evaluations.length) && (
+                    <>
+                      <textarea
+                        className="eval-input"
+                        value={evalComment}
+                        onChange={e => setEvalComment(e.target.value)}
+                        placeholder="Your thoughts…"
+                      />
+                      <div className="checkbox-row">
+                        <input
+                          type="checkbox"
+                          id="rec"
+                          checked={evalRecommend}
+                          onChange={e => setEvalRecommend(e.target.checked)}
+                        />
+                        <label htmlFor="rec">Recommend to other students</label>
+                      </div>
+                      <button
+                        className="iv-btn primary"
+                        onClick={handleAddOrUpdateEval}
+                      >
+                        {isEditingEval ? 'Update' : 'Submit'}
+                      </button>
+                      {isEditingEval && (
+                        <button
+                          className="iv-btn secondary"
+                          onClick={() => {
+                            setIsEditingEval(false);
+                            setEvalComment('');
+                            setEvalRecommend(false);
+                            setError('');
+                          }}
+                        >
+                          Cancel
+                        </button>
+                      )}
+                    </>
+                  )}
+                  {evaluations[0] && !isEditingEval && (
+                    <div className="iv-eval-card eval-card-section">
+                      <p className="eval-text">{evaluations[0].comment}</p>
+                      <button
+                        className="iv-btn secondary"
+                        onClick={handleEditEval}
+                      >
+                        Edit
+                      </button>
+                      <button
+                        className="delete-btn"
+                        onClick={handleDeleteEval}
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  )}
+                </section>
+              )}
+
+              {/* Report Tab */}
+              {activeTab === 'Report' && (
+                <section className="report-section eval-card-section">
+                  {(isEditingReport || !reports.length) && (
+                    <>
+                      <input
+                        type="text"
+                        className="eval-input"
+                        value={reportTitle}
+                        onChange={e => setReportTitle(e.target.value)}
+                        placeholder="Title"
+                      />
+                      <textarea
+                        className="eval-input"
+                        value={reportIntro}
+                        onChange={e => setReportIntro(e.target.value)}
+                        placeholder="Introduction…"
+                      />
+                      <textarea
+                        className="eval-input"
+                        value={reportBody}
+                        onChange={e => setReportBody(e.target.value)}
+                        placeholder="Body…"
+                      />
+                      <input
+                        type="text"
+                        className="eval-input"
+                        value={mainSupervisor}
+                        onChange={e => setMainSupervisor(e.target.value)}
+                        placeholder="Main Supervisor"
+                      />
+                      <button
+                        className="iv-btn primary"
+                        onClick={handleAddOrUpdateReport}
+                      >
+                        {isEditingReport ? 'Update Report' : 'Save Report'}
+                      </button>
+                      {isEditingReport && (
+                        <button
+                          className="iv-btn secondary"
+                          onClick={() => {
+                            setIsEditingReport(false);
+                            setReportTitle('');
+                            setReportIntro('');
+                            setReportBody('');
+                            setMainSupervisor('');
+                            setError('');
+                          }}
+                        >
+                          Cancel
+                        </button>
+                      )}
+                    </>
+                  )}
+                  {reports[0] && !isEditingReport && (
+                    <div className="iv-eval-card eval-card-section">
+                      <h4 className="report-title">{reports[0].title}</h4>
+                      <p className="report-intro">{reports[0].intro}</p>
+                      <p className="report-body">{reports[0].body}</p>
+                      <p className="report-supervisor"><strong>Supervisor:</strong> {reports[0].mainSupervisor}</p>
+                      <button
+                        className="iv-btn secondary"
+                        onClick={handleEditReport}
+                      >
+                        Edit
+                      </button>
+                      <button
+                        className="delete-btn"
+                        onClick={handleDeleteReport}
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  )}
+                </section>
+              )}
+
+              {/* Courses Tab */}
+              {activeTab === 'Courses' && (
+                <section className="courses-section eval-card-section">
+                  <div className="courses-grid">
+                    {coursesData.map(c => (
+                      <label key={c.id} className="course-checkbox">
+                        <input
+                          type="checkbox"
+                          checked={selectedCourses.includes(c.id)}
+                          onChange={() => toggleCourse(c.id)}
+                        />
+                        {c.name}
+                      </label>
+                    ))}
                   </div>
-                  <button
-                    className="iv-btn primary"
-                    onClick={handleAddOrUpdateEval}
-                  >
-                    {isEditingEval ? 'Update' : 'Submit'}
-                  </button>
-                  {isEditingEval && (
-                    <button
-                      className="iv-btn secondary"
-                      onClick={() => {
-                        setIsEditingEval(false);
-                        setEvalComment('');
-                        setEvalRecommend(false);
-                        setError('');
-                      }}
-                    >
-                      Cancel
-                    </button>
-                  )}
-                </>
+                </section>
               )}
-              {evaluations[0] && !isEditingEval && (
-                <div className="iv-eval-card eval-card-section">
-                  <p className="eval-text">{evaluations[0].comment}</p>
-                  <button
-                    className="iv-btn secondary"
-                    onClick={handleEditEval}
-                  >
-                    Edit
-                  </button>
-                  <button
-                    className="delete-btn"
-                    onClick={handleDeleteEval}
-                  >
-                    Delete
-                  </button>
-                </div>
-              )}
-            </section>
-          )}
 
-          {/* Report Tab */}
-          {activeTab === 'Report' && (
-            <section className="report-section eval-card-section">
-              {(isEditingReport || !reports.length) && (
-                <>
-                  <input
-                    type="text"
-                    className="eval-input"
-                    value={reportTitle}
-                    onChange={e => setReportTitle(e.target.value)}
-                    placeholder="Title"
-                  />
-                  <textarea
-                    className="eval-input"
-                    value={reportIntro}
-                    onChange={e => setReportIntro(e.target.value)}
-                    placeholder="Introduction…"
-                  />
-                  <textarea
-                    className="eval-input"
-                    value={reportBody}
-                    onChange={e => setReportBody(e.target.value)}
-                    placeholder="Body…"
-                  />
-                  <input
-                    type="text"
-                    className="eval-input"
-                    value={mainSupervisor}
-                    onChange={e => setMainSupervisor(e.target.value)}
-                    placeholder="Main Supervisor"
-                  />
-                  <button
-                    className="iv-btn primary"
-                    onClick={handleAddOrUpdateReport}
-                  >
-                    {isEditingReport ? 'Update Report' : 'Save Report'}
+              {/* Finalize Tab */}
+              {activeTab === 'Finalize' && (
+                <section className="finalize-section eval-card-section">
+                  <button className="iv-btn primary" onClick={handleFinalize}>
+                    Download PDF
                   </button>
-                  {isEditingReport && (
-                    <button
-                      className="iv-btn secondary"
-                      onClick={() => {
-                        setIsEditingReport(false);
-                        setReportTitle('');
-                        setReportIntro('');
-                        setReportBody('');
-                        setMainSupervisor('');
-                        setError('');
-                      }}
-                    >
-                      Cancel
-                    </button>
-                  )}
-                </>
+                  <button className="iv-btn primary" style={{marginLeft:'1rem'}} onClick={handleSubmitReport}>
+                    Submit Report
+                  </button>
+                </section>
               )}
-              {reports[0] && !isEditingReport && (
-                <div className="iv-eval-card eval-card-section">
-                  <h4 className="report-title">{reports[0].title}</h4>
-                  <p className="report-intro">{reports[0].intro}</p>
-                  <p className="report-body">{reports[0].body}</p>
-                  <p className="report-supervisor"><strong>Supervisor:</strong> {reports[0].mainSupervisor}</p>
-                  <button
-                    className="iv-btn secondary"
-                    onClick={handleEditReport}
-                  >
-                    Edit
-                  </button>
-                  <button
-                    className="delete-btn"
-                    onClick={handleDeleteReport}
-                  >
-                    Delete
-                  </button>
-                </div>
-              )}
-            </section>
-          )}
-
-          {/* Courses Tab */}
-          {activeTab === 'Courses' && (
-            <section className="courses-section eval-card-section">
-              <div className="courses-grid">
-                {coursesData.map(c => (
-                  <label key={c.id} className="course-checkbox">
-                    <input
-                      type="checkbox"
-                      checked={selectedCourses.includes(c.id)}
-                      onChange={() => toggleCourse(c.id)}
-                    />
-                    {c.name}
-                  </label>
-                ))}
-              </div>
-            </section>
-          )}
-
-          {/* Finalize Tab */}
-          {activeTab === 'Finalize' && (
-            <section className="finalize-section eval-card-section">
-              <button className="iv-btn primary" onClick={handleFinalize}>
-                Download PDF
-              </button>
-              <button className="iv-btn primary" style={{marginLeft:'1rem'}} onClick={handleSubmitReport}>
-                Submit Report
-              </button>
-            </section>
-          )}
-        </div>
+            </div>
+          </>
+        )}
       </main>
     </div>
   );

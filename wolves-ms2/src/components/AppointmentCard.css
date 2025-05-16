@@ -1,15 +1,41 @@
 .appointment-card {
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  border-radius: 12px;
-  padding: 1.5rem;
-  transition: all 0.2s ease;
-  margin-bottom: 1rem;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+  width: 95%;
+  max-width: 1000px;
+  background-color: var(--navy-blue);
+  color: white;
+  border: none;
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  transition:
+    transform   0.2s ease,
+    box-shadow  0.2s ease,
+    background  0.3s ease;
+}
+
+.appointment-card::after {
+  content: "";
+  position: absolute;
+  top: 0; left: -120%;
+  width: 120%;
+  height: 100%;
+  background: rgba(255,255,255,0.15);
+  transform: skewX(-25deg);
+  transition: left 0.6s ease;
+  pointer-events: none;
 }
 
 .appointment-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  background-color: #054a7a;
+}
+
+.appointment-card:hover::after {
+  left: 120%;
 }
 
 .appointment-header {
@@ -20,16 +46,18 @@
 }
 
 .appointment-header h3 {
-  color: var(--grotto);
-  font-size: 1.25rem;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 700;
   margin: 0;
 }
 
 .status-badge {
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  font-size: 0.875rem;
+  display: inline-block;
+  font-size: 0.85rem;
   font-weight: 600;
+  padding: 0.4rem 0.8rem;
+  border-radius: 12px;
 }
 
 .status-badge.pending {
@@ -57,7 +85,7 @@
 }
 
 .description {
-  color: var(--text-color);
+  color: #e2e8f0;
   margin-bottom: 1rem;
   line-height: 1.5;
 }
@@ -75,12 +103,12 @@
 }
 
 .metadata-item .label {
-  color: var(--text-muted);
+  color: #e2e8f0;
   font-size: 0.875rem;
 }
 
 .metadata-item .value {
-  color: var(--text-color);
+  color: #fff;
   font-weight: 500;
 }
 
