@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate,Link } from 'react-router-dom';
-import ReportCard from '../components/ReportCard';
+import FacultyReport from '../components/FacultyReport';
 import TopBar from '../components/TopBar';
 import Filter from '../components/Filter';
 import reportsData from '../data/reports.json';
@@ -8,7 +8,6 @@ import './AdminReports.css';
 import notificationIcon from '../assets/icons/notif-icon.png';
 import homeIcon from '../assets/icons/home-icon.png';
 import logoutIcon from '../assets/icons/logout-icon.png';
-import statsIcon from '../assets/icons/stats-icon.png';
 
 import studentIcon from '../assets/icons/interns-icon.png';
 import companyIcon from '../assets/icons/companies-icon.png';
@@ -16,13 +15,12 @@ import internshipIcon from '../assets/icons/internships-icon.png';
 import workshopIcon from '../assets/icons/workshop-icon.png';
 import reportsIcon from '../assets/icons/eval-icon.png';
 import appointmentIcon from '../assets/icons/appointment-icon.png';
-import AdminNotifications from '../components/AdminNotifications';
-import Notifications from '../components/Notifications';
+
 const getUnique = (arr, key) => [...new Set(arr.map(item => item[key]))];
 const MODAL_WIDTH = 340; // should match min-width in Notifications.css
 
 
-const AdminReports = () => {
+const FacultyReports = () => {
   // Turning Point 1: session-persisted reports
   const [reports, setReports] = useState(() =>
     JSON.parse(sessionStorage.getItem('admin-reports')) || reportsData
@@ -37,9 +35,6 @@ const AdminReports = () => {
   const [showNotifications, setShowNotifications] = useState(false);
   const [notifPosition, setNotifPosition] = useState(null);
   const notifBtnRef = useRef(null);
-  const [notifications, setNotifications] = useState(
-    () => JSON.parse(sessionStorage.getItem('admin-notifs')) || []
-  );
 
   const majors = getUnique(reports, 'major');
   const statuses = getUnique(reports, 'status');
@@ -62,37 +57,13 @@ const AdminReports = () => {
 
   const menuItems = (
     <>
-      <Link to="/admin-home" className="sidebar-item">
+      <Link to="/faculty-home" className="sidebar-item">
         <img src={homeIcon} alt="Dashboard" className="sidebar-icon" />
         <span>Dashboard</span>
       </Link>
-      <Link to="/admin-home/companies" className="sidebar-item">
-        <img src={companyIcon} alt="Companies" className="sidebar-icon" />
-        <span>Companies</span>
-      </Link>
-      <Link to="/admin-home/internships" className="sidebar-item">
-        <img src={internshipIcon} alt="Internships" className="sidebar-icon" />
-        <span>Internships</span>
-      </Link>
-      <Link to="/admin/students" className="sidebar-item">
-        <img src={studentIcon} alt="Students" className="sidebar-icon" />
-        <span>Students</span>
-      </Link>
-      <Link to="/admin/workshops" className="sidebar-item">
-        <img src={workshopIcon} alt="Workshops" className="sidebar-icon" />
-        <span>Workshops</span>
-      </Link>
-      <Link to="/admin/reports" className="sidebar-item">
+      <Link to="/faculty/reports" className="sidebar-item">
         <img src={reportsIcon} alt="Reports" className="sidebar-icon" />
         <span>Reports</span>
-      </Link>
-      <Link to="/admin-appointments" className="sidebar-item">
-        <img src={appointmentIcon} alt="apointments" className="sidebar-icon" />
-        <span>Appointments</span>
-      </Link>
-      <Link to="/admin-home/stats" className="sidebar-item">
-        <img src={statsIcon} alt="stats" className="sidebar-icon" />
-        <span>Statistics</span>
       </Link>
       <Link to="/login" className="sidebar-item">
         <img src={logoutIcon} alt="Logout" className="sidebar-icon" />
@@ -104,8 +75,7 @@ const AdminReports = () => {
   return (
     <div className="admin-reports-page">
       <TopBar showSearch={false} menuItems={menuItems}>
-        <AdminNotifications />
-        <button className="topbar-button" onClick={()=> navigate('/admin-home')}>
+        <button className="topbar-button" onClick={()=> navigate('/faculty-home')}>
           <img src={homeIcon} alt="Dashboard" className="topbar-icon" />
           <span>Dashboard</span>
         </button>
@@ -114,20 +84,6 @@ const AdminReports = () => {
           <span>Logout</span>
         </button>
       </TopBar>
-      <Notifications isOpen={showNotifications} onClose={() => setShowNotifications(false)} position={notifPosition}>
-        {notifications && notifications.length > 0 ? (
-          notifications.map((notif, idx) => (
-            <div className="notif-card" key={notif.id || idx} tabIndex={0}>
-              <div className="notif-title">{notif.title}</div>
-              <div className="notif-body">{notif.body}</div>
-              <div className="notif-email">{notif.email || notif.senderEmail}</div>
-              <div className="notif-date">{notif.date}</div>
-            </div>
-          ))
-        ) : (
-          <div className="notif-empty">No notifications to show.</div>
-        )}
-      </Notifications>
       <div className="admin-reports-content">
         <h1 className="admin-reports-title">Internship Reports</h1>
         <div className="admin-reports-filters-row">
@@ -150,10 +106,10 @@ const AdminReports = () => {
         </div>
         <div className="admin-reports-list">
           {filteredReports.length ? filteredReports.map(report => (
-            <ReportCard
+            <FacultyReport
               key={report.id}
               report={report}
-              onClick={() => navigate(`/admin/reports/${report.id}`)}
+              onClick={() => navigate(`/faculty/reports/${report.id}`)}
             />
           )) : <div className="no-reports">No reports found.</div>}
         </div>
@@ -162,4 +118,4 @@ const AdminReports = () => {
   );
 };
 
-export default AdminReports; 
+export default FacultyReports; 

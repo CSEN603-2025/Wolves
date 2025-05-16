@@ -6,12 +6,10 @@ import Filter                from '../components/Filter';
 import InternshipCard        from '../components/InternshipCard';
 import internshipsData       from '../data/internships.json';
 
-import internshipIcon  from '../assets/icons/internships-icon.png';
-import applicationIcon from '../assets/icons/application-icon.png';
-import evalIcon        from '../assets/icons/eval-icon.png';
-import notifIcon       from '../assets/icons/notif-icon.png';
 import profileIcon     from '../assets/icons/profile-icon.png';
-import HomeIcon        from '../assets/icons/home-icon.png';
+import notificationIcon from '../assets/icons/notif-icon.png';
+import homeIcon from '../assets/icons/home-icon.png';
+import logoutIcon from '../assets/icons/logout-icon.png';
 
 import './AllInternships.css';
 
@@ -82,29 +80,17 @@ const AllInternships = () => {
   return (
     <div className="dashboard-container">
       <TopBar onSearch={handleSearch}>
-        <button className="topbar-button" onClick={() => navigate('/all-internships')}>
-          <img src={internshipIcon}  alt="Internships"  className="topbar-icon" />
-          <span>Internships</span>
+      <button className="topbar-button" onClick={()=> navigate('/student-home')}>
+          <img src={homeIcon} alt="Dashboard" className="topbar-icon" />
+          <span>Dashboard</span>
         </button>
-        <button className="topbar-button" onClick={()=> navigate('/student-applications')}>
-          <img src={applicationIcon} alt="Applications"  className="topbar-icon" />
-          <span>Applications</span>
-        </button>
-        <button className="topbar-button" onClick={() => navigate('/student-internships')}>
-          <img src={evalIcon}        alt="My Internships"   className="topbar-icon" />
-          <span>My Internships</span>
-        </button>
-        <button className="topbar-button">
-          <img src={notifIcon}       alt="Notifications" className="topbar-icon" />
-          <span>Notifications</span>
-        </button>
-        <button className="topbar-button" onClick={() => navigate('/student-profile')}>
-          <img src={profileIcon}     alt="Profile"       className="topbar-icon" />
+        <button className="topbar-button" onClick={()=> navigate('/student-profile')}>
+          <img src={profileIcon} alt="profile" className="topbar-icon" />
           <span>Profile</span>
         </button>
-          <button className="topbar-button" onClick={() => navigate('/student-home')}>
-          <img src={HomeIcon}     alt="home"       className="topbar-icon" />
-          <span>Home</span>
+        <button className="topbar-button" onClick={()=> navigate('/login')}>
+          <img src={logoutIcon} alt="logout" className="topbar-icon" />
+          <span>Logout</span>
         </button>
       </TopBar>
 
@@ -143,7 +129,13 @@ const AllInternships = () => {
 
             <div className="internship-cards">
               {displayed.length
-                ? displayed.map(i => <InternshipCard key={i.id} {...i} />)
+                ? displayed.map(i => (
+                    <InternshipCard
+                      key={i.id}
+                      {...i}
+                      onClick={() => navigate(`/internship/${i.id}`)}
+                    />
+                  ))
                 : <p className="no-results">No internships match your filters.</p>
               }
             </div>

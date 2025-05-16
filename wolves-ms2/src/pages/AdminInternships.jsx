@@ -9,13 +9,15 @@ import internshipsData       from '../data/internships.json';
 import notificationIcon from '../assets/icons/notif-icon.png';
 import homeIcon from '../assets/icons/home-icon.png';
 import logoutIcon from '../assets/icons/logout-icon.png';
-
+import statsIcon from '../assets/icons/stats-icon.png';
 import studentIcon from '../assets/icons/interns-icon.png';
 import companyIcon from '../assets/icons/companies-icon.png';
 import internshipIcon from '../assets/icons/internships-icon.png';
 import workshopIcon from '../assets/icons/workshop-icon.png';
 import reportsIcon from '../assets/icons/eval-icon.png';
 import appointmentIcon from '../assets/icons/appointment-icon.png';
+import AdminNotifications from '../components/AdminNotifications';
+import Notifications from '../components/Notifications';
 import './AllInternships.css';
 
 const MODAL_WIDTH = 340; // should match min-width in Notifications.css
@@ -26,6 +28,9 @@ const AdminInternships = () => {
   const [showNotifications, setShowNotifications] = useState(false);
   const [notifPosition, setNotifPosition] = useState(null);
   const notifBtnRef = useRef(null);
+  const [notifications, setNotifications] = useState(
+    () => JSON.parse(sessionStorage.getItem('admin-notifs')) || []
+  );
 
   // No department filtering here
   const baseList = internshipsData;
@@ -128,10 +133,10 @@ const AdminInternships = () => {
         <img src={appointmentIcon} alt="apointments" className="sidebar-icon" />
         <span>Appointments</span>
       </Link>
-        <Link to="/admin/notifications" className="sidebar-item">
-          <img src={notificationIcon} alt="Notifications" className="sidebar-icon" />
-          <span>Notifications</span>
-        </Link>
+      <Link to="/admin-home/stats" className="sidebar-item">
+        <img src={statsIcon} alt="stats" className="sidebar-icon" />
+        <span>Statistics</span>
+      </Link>
         <Link to="/login" className="sidebar-item">
           <img src={logoutIcon} alt="Logout" className="sidebar-icon" />
           <span>Logout</span>
@@ -142,14 +147,7 @@ const AdminInternships = () => {
   return (
     <div className="dashboard-container">
       <TopBar onSearch={handleSearch} menuItems={menuItems}>
-      <button
-          className="topbar-button"
-          ref={notifBtnRef}
-          onClick={handleNotifClick}
-        >
-          <img src={notificationIcon} alt="Notifications" className="topbar-icon" />
-          <span>Notifications</span>
-        </button>
+        <AdminNotifications />
         <button className="topbar-button" onClick={()=> navigate('/admin-home')}>
           <img src={homeIcon} alt="Dashboard" className="topbar-icon" />
           <span>Dashboard</span>
@@ -159,6 +157,20 @@ const AdminInternships = () => {
           <span>Logout</span>
         </button>
       </TopBar>
+      <Notifications isOpen={showNotifications} onClose={() => setShowNotifications(false)} position={notifPosition}>
+        {notifications && notifications.length > 0 ? (
+          notifications.map((notif, idx) => (
+            <div className="notif-card" key={notif.id || idx} tabIndex={0}>
+              <div className="notif-title">{notif.title}</div>
+              <div className="notif-body">{notif.body}</div>
+              <div className="notif-email">{notif.email || notif.senderEmail}</div>
+              <div className="notif-date">{notif.date}</div>
+            </div>
+          ))
+        ) : (
+          <div className="notif-empty">No notifications to show.</div>
+        )}
+      </Notifications>
 
       <div className="main-content">
         <section className="internship-section">
@@ -179,17 +191,6 @@ const AdminInternships = () => {
               <Filter title="Pay" value={filters.paid} onChange={handleFilter('paid')}>
                 <option value="">All</option>
                 {payOptions.map(p => <option key={p} value={p}>{p}</option>)}
-              </Filter>
-
-              <Filter
-                title="Application Status"
-                value={filters.status}
-                onChange={handleFilter('status')}
-              >
-                <option value="">All</option>
-                {statusOptions.map(st => (
-                  <option key={st} value={st}>{st.charAt(0).toUpperCase() + st.slice(1)}</option>
-                ))}
               </Filter>
             </div>
 

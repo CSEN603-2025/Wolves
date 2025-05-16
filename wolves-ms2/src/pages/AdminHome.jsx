@@ -15,6 +15,7 @@ import internshipIcon from '../assets/icons/internships-icon.png';
 import workshopIcon from '../assets/icons/workshop-icon.png';
 import reportsIcon from '../assets/icons/eval-icon.png';
 import appointmentIcon from '../assets/icons/appointment-icon.png';
+import statsIcon from '../assets/icons/stats-icon.png';
 
 const MODAL_WIDTH = 340; // should match min-width in Notifications.css
 
@@ -107,17 +108,6 @@ const AdminHome = () => {
     setIsModalOpen(false);
   };
 
-  const handleNotifClick = (e) => {
-    const rect = notifBtnRef.current.getBoundingClientRect();
-    let left = rect.right - MODAL_WIDTH;
-    if (left < 8) left = 8; // prevent going off the left edge
-    setNotifPosition({
-      top: rect.bottom + 8, // 8px below the button
-      left,
-    });
-    setShowNotifications(true);
-  };
-
   const menuItems = (
     <>
       <Link to="/admin-home" className="sidebar-item">
@@ -148,9 +138,9 @@ const AdminHome = () => {
         <img src={appointmentIcon} alt="apointments" className="sidebar-icon" />
         <span>Appointments</span>
       </Link>
-      <Link to="/admin/notifications" className="sidebar-item">
-        <img src={notificationIcon} alt="Notifications" className="sidebar-icon" />
-        <span>Notifications</span>
+      <Link to="/admin-home/stats" className="sidebar-item">
+        <img src={statsIcon} alt="stats" className="sidebar-icon" />
+        <span>Statistics</span>
       </Link>
       <Link to="/login" className="sidebar-item">
         <img src={logoutIcon} alt="Logout" className="sidebar-icon" />

@@ -7,23 +7,23 @@ const CompanyCard = ({ company, onClick }) => {
   const sizeLabel = company.size ? capitalize(company.size) : '';
   return (
     <div
-      className="company-card glassy clickable"
+      className="ccard-card glassy clickable"
       tabIndex={0}
       onClick={onClick}
       onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && onClick && onClick()}
       role="button"
       style={{ cursor: 'pointer' }}
     >
-      <div className="company-card-header">
-        <img src={require(`../assets/companies/${company.logo || 'valeo-logo.png'}`)} alt={company.name} className="company-logo" />
-        <div className="company-info">
-          <h3 className="company-name">{company.name}</h3>
-          <div className="company-industry">{company.industry}</div>
+      <div className="ccard-header">
+        <img src={require(`../assets/companies/${company.logo || 'valeo-logo.png'}`)} alt={company.name} className="ccard-logo" />
+        <div className="ccard-info">
+          <h3 className="ccard-name">{company.name}</h3>
+          <div className="ccard-industry">{company.industry}</div>
         </div>
-        {sizeLabel && <div className={`company-size-label size-${company.size}`}>{sizeLabel}</div>}
+        {sizeLabel && <div className={`ccard-size-label ccard-size-${company.size}`}>{sizeLabel}</div>}
       </div>
-      <div className="company-card-meta">
-        <span className="company-email">{company.email}</span>
+      <div className="ccard-meta">
+        <span className="ccard-email">{company.email}</span>
       </div>
     </div>
   );

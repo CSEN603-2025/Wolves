@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useRef } from 'react';
+import { useAuth } from '../context/AuthContext';
 import { useParams, useNavigate } from 'react-router-dom';
+import{Link} from 'react-router-dom';
 import TopBar from '../components/TopBar';
 import mockWorkshops from '../data/student-workshops.json';
 import './StudentWorkshop.css';
@@ -9,9 +11,20 @@ import endCallIcon from '../assets/icons/end-call-icon.png';
 import LiveModal from '../components/LiveModal';
 import { FaStar } from 'react-icons/fa';
 import jsPDF from 'jspdf';
+import applicationIcon from '../assets/icons/application-icon.png';
+import evalIcon        from '../assets/icons/eval-icon.png';
+import profileIcon     from '../assets/icons/profile-icon.png';
+import notificationIcon from '../assets/icons/notif-icon.png';
+import homeIcon from '../assets/icons/home-icon.png';
+import logoutIcon from '../assets/icons/logout-icon.png';
+import internshipIcon from '../assets/icons/internships-icon.png';
+import workshopIcon from '../assets/icons/workshop-icon.png';
+import appointmentIcon from '../assets/icons/appointment-icon.png';
+import StudentNotifications from '../components/StudentNotifications';
 
 const StudentWorkshop = () => {
   const { id } = useParams();
+  const { user } = useAuth();
   const navigate = useNavigate();
   const [workshop, setWorkshop] = useState(null);
   const [showLiveModal, setShowLiveModal] = useState(false);
@@ -28,7 +41,34 @@ const StudentWorkshop = () => {
   const [recordingNoteInput, setRecordingNoteInput] = useState('');
   const [feedbackRating, setFeedbackRating] = useState(0);
   const [feedbackGiven, setFeedbackGiven] = useState(false);
+  const [notifications, setNotifications] = useState(() =>
+    JSON.parse(sessionStorage.getItem('student-notifications')) || []
+  );
+  const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
+  const [notificationsPosition, setNotificationsPosition] = useState(null);
+  const notifBtnRef = useRef(null);
 
+  useEffect(() => {
+    // Load notifications from JSON file
+    fetch('/data/student-notifications.json')
+      .then(response => response.json())
+      .then(data => {
+        // Filter notifications for current student
+        const studentNotifications = data.filter(notif => 
+          String(notif.studentId) === String(user.id)
+        );
+        setNotifications(studentNotifications);
+        // Store in sessionStorage for persistence
+        sessionStorage.setItem('student-notifications', JSON.stringify(studentNotifications));
+      })
+      .catch(error => {
+        console.error('Error loading notifications:', error);
+        // Fallback to sessionStorage if fetch fails
+        const storedNotifications = JSON.parse(sessionStorage.getItem('student-notifications')) || [];
+        setNotifications(storedNotifications);
+      });
+  }, [user.id]);
+  const isPro=user.status==='Pro'?true:false;
   useEffect(() => {
     // Try to load from sessionStorage first
     const stored = sessionStorage.getItem('workshops');
@@ -72,7 +112,21 @@ const StudentWorkshop = () => {
   if (!workshop) {
     return (
       <div className="student-workshop-page">
-        <TopBar showSearch={false} />
+        <TopBar showSearch={false} menuItems={menuItems}>
+        <StudentNotifications />
+        <button className="topbar-button" onClick={()=> navigate('/student-home')}>
+          <img src={homeIcon} alt="Dashboard" className="topbar-icon" />
+          <span>Dashboard</span>
+        </button>
+        <button className="topbar-button" onClick={()=> navigate('/student-profile')}>
+          <img src={profileIcon} alt="profile" className="topbar-icon" />
+          <span>Profile</span>
+        </button>
+        <button className="topbar-button" onClick={()=> navigate('/login')}>
+          <img src={logoutIcon} alt="logout" className="topbar-icon" />
+          <span>Logout</span>
+        </button>
+      </TopBar>
         <div className="not-found">Workshop not found.</div>
       </div>
     );
@@ -115,6 +169,64 @@ const StudentWorkshop = () => {
         return null;
     }
   };
+
+  const menuItems=isPro?[
+    <Link to="/student-home" className="sidebar-item">
+      <img src={homeIcon} alt="dashboard" className="sidebar-icon" />
+      <span>Dashboard</span>
+      </Link>,
+      <Link to="/all-internships" className="sidebar-item">
+      <img src={internshipIcon} alt="Internships" className="sidebar-icon" />
+      <span>All Internships</span>
+      </Link>,
+      <Link to="/student-applications" className="sidebar-item">
+        <img src={applicationIcon} alt="applications" className="sidebar-icon" />
+        <span>My Applications</span>
+      </Link>,
+      <Link to="/student-internships" className="sidebar-item">
+        <img src={evalIcon} alt="eval" className="sidebar-icon" />
+        <span>My Internships & Reports</span>
+      </Link>,
+      <Link to="/student-appointments" className="sidebar-item">
+        <img src={appointmentIcon} alt="Appointments" className="sidebar-icon" />
+        <span>Appointments</span>
+      </Link>,
+      <Link to="/student-workshops" className="sidebar-item">
+      <img src={workshopIcon} alt="Workshops" className="sidebar-icon" />
+      <span>Workshops</span>
+      </Link>,
+      <Link to="/student-profile" className="sidebar-item">
+      <img src={profileIcon} alt="profile" className="sidebar-icon" />
+      <span>Profile</span>
+      </Link>,
+      <Link to="/login" className="sidebar-item">
+        <img src={logoutIcon} alt="Logout" className="sidebar-icon" />
+        <span>Logout</span>
+      </Link>
+      ] : [<Link to="/student-home" className="sidebar-item">
+        <img src={homeIcon} alt="dashboard" className="sidebar-icon" />
+        <span>Dashboard</span>
+        </Link>,
+        <Link to="/all-internships" className="sidebar-item">
+        <img src={internshipIcon} alt="Internships" className="sidebar-icon" />
+        <span>All Internships</span>
+        </Link>,
+        <Link to="/student-applications" className="sidebar-item">
+          <img src={applicationIcon} alt="applications" className="sidebar-icon" />
+          <span>My Applications</span>
+        </Link>,
+        <Link to="/student-internships" className="sidebar-item">
+          <img src={evalIcon} alt="eval" className="sidebar-icon" />
+          <span>My Internships & Reports</span>
+        </Link>,
+        <Link to="/student-profile" className="sidebar-item">
+        <img src={profileIcon} alt="profile" className="sidebar-icon" />
+        <span>Profile</span>
+        </Link>,
+        <Link to="/login" className="sidebar-item">
+          <img src={logoutIcon} alt="Logout" className="sidebar-icon" />
+          <span>Logout</span>
+        </Link>];
 
   // Handlers (to be implemented)
   const handleRegister = (workshopId) => {
@@ -231,12 +343,28 @@ const StudentWorkshop = () => {
   if (workshop.status === 'concluded') {
     return (
       <div className="student-workshop-page">
-        <TopBar showSearch={false}>
-          <button className="iv-btn secondary" onClick={() => navigate(-1)}>
-            Back
-          </button>
-        </TopBar>
+        <TopBar showSearch={false} menuItems={menuItems}>
+        <button className="topbar-button" onClick={()=> navigate('/student-home')}>
+          <img src={homeIcon} alt="Dashboard" className="topbar-icon" />
+          <span>Dashboard</span>
+        </button>
+        <button className="topbar-button" onClick={()=> navigate('/student-profile')}>
+          <img src={profileIcon} alt="profile" className="topbar-icon" />
+          <span>Profile</span>
+        </button>
+        <button className="topbar-button" onClick={()=> navigate('/login')}>
+          <img src={logoutIcon} alt="logout" className="topbar-icon" />
+          <span>Logout</span>
+        </button>
+      </TopBar>
         <div className="workshop-details-container">
+        <button
+          type="button"
+          className="back-btn"
+          onClick={() => navigate(-1)}
+        >
+          Back
+        </button>
           <h1>{workshop.name}</h1>
           <div className="workshop-meta">
             <span><strong>Date:</strong> {workshop.startDate} {workshop.startTime} - {workshop.endDate} {workshop.endTime}</span>
@@ -277,12 +405,29 @@ const StudentWorkshop = () => {
 
   return (
     <div className="student-workshop-page">
-      <TopBar showSearch={false}>
-        <button className="iv-btn secondary" onClick={() => navigate(-1)}>
-          Back
+      <TopBar showSearch={false} menuItems={menuItems}>
+        <StudentNotifications />
+        <button className="topbar-button" onClick={()=> navigate('/student-home')}>
+          <img src={homeIcon} alt="Dashboard" className="topbar-icon" />
+          <span>Dashboard</span>
+        </button>
+        <button className="topbar-button" onClick={()=> navigate('/student-profile')}>
+          <img src={profileIcon} alt="profile" className="topbar-icon" />
+          <span>Profile</span>
+        </button>
+        <button className="topbar-button" onClick={()=> navigate('/login')}>
+          <img src={logoutIcon} alt="logout" className="topbar-icon" />
+          <span>Logout</span>
         </button>
       </TopBar>
       <div className="workshop-details-container">
+        <button
+          type="button"
+          className="back-btn"
+          onClick={() => navigate(-1)}
+        >
+          Back
+        </button>
         <h1>{workshop.name}</h1>
         <div className="workshop-meta">
           <span><strong>Date:</strong> {workshop.startDate} {workshop.startTime} - {workshop.endDate} {workshop.endTime}</span>

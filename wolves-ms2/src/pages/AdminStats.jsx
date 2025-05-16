@@ -12,6 +12,9 @@ import reportsIcon from '../assets/icons/eval-icon.png';
 import appointmentIcon from '../assets/icons/appointment-icon.png';
 import notificationIcon from '../assets/icons/notif-icon.png';
 import samplePDF from '../assets/docs/sample.pdf';
+import AdminNotifications from '../components/AdminNotifications';
+import Notifications from '../components/Notifications';
+import statsIcon from '../assets/icons/stats-icon.png';
 
 // Mock data
 const mockStats = {
@@ -37,19 +40,48 @@ const mockStats = {
   ]
 };
 
-const FacultyHome = () => {
+const AdminStats = () => {
   const navigate = useNavigate();
   const [selectedCycle, setSelectedCycle] = useState('2025-Summer');
+  const [notifications, setNotifications] = useState(
+    () => JSON.parse(sessionStorage.getItem('admin-notifs')) || []
+  );
+  const [showNotifications, setShowNotifications] = useState(false);
+  const [notifPosition, setNotifPosition] = useState(null);
 
   const menuItems = (
     <>
-      <Link to="/faculty-home" className="sidebar-item">
+      <Link to="/admin-home" className="sidebar-item">
         <img src={homeIcon} alt="Dashboard" className="sidebar-icon" />
         <span>Dashboard</span>
       </Link>
-      <Link to="/faculty/reports" className="sidebar-item">
+      <Link to="/admin-home/companies" className="sidebar-item">
+        <img src={companyIcon} alt="Companies" className="sidebar-icon" />
+        <span>Companies</span>
+      </Link>
+      <Link to="/admin-home/internships" className="sidebar-item">
+        <img src={internshipIcon} alt="Internships" className="sidebar-icon" />
+        <span>Internships</span>
+      </Link>
+      <Link to="/admin/students" className="sidebar-item">
+        <img src={studentIcon} alt="Students" className="sidebar-icon" />
+        <span>Students</span>
+      </Link>
+      <Link to="/admin/workshops" className="sidebar-item">
+        <img src={workshopIcon} alt="Workshops" className="sidebar-icon" />
+        <span>Workshops</span>
+      </Link>
+      <Link to="/admin/reports" className="sidebar-item">
         <img src={reportsIcon} alt="Reports" className="sidebar-icon" />
         <span>Reports</span>
+      </Link>
+      <Link to="/admin-appointments" className="sidebar-item">
+        <img src={appointmentIcon} alt="Appointments" className="sidebar-icon" />
+        <span>Appointments</span>
+      </Link>
+      <Link to="/admin-home/stats" className="sidebar-item">
+        <img src={statsIcon} alt="stats" className="sidebar-icon" />
+        <span>Statistics</span>
       </Link>
       <Link to="/login" className="sidebar-item">
         <img src={logoutIcon} alt="Logout" className="sidebar-icon" />
@@ -61,7 +93,8 @@ const FacultyHome = () => {
   return (
     <div className="admin-stats-page">
       <TopBar showSearch={false} menuItems={menuItems}>
-        <button className="topbar-button" onClick={() => navigate('/faculty-home')}>
+        <AdminNotifications />
+        <button className="topbar-button" onClick={() => navigate('/admin-home')}>
           <img src={homeIcon} alt="Dashboard" className="topbar-icon" />
           <span>Dashboard</span>
         </button>
@@ -70,10 +103,24 @@ const FacultyHome = () => {
           <span>Logout</span>
         </button>
       </TopBar>
+      <Notifications isOpen={showNotifications} onClose={() => setShowNotifications(false)} position={notifPosition}>
+        {notifications && notifications.length > 0 ? (
+          notifications.map((notif, idx) => (
+            <div className="notif-card" key={notif.id || idx} tabIndex={0}>
+              <div className="notif-title">{notif.title}</div>
+              <div className="notif-body">{notif.body}</div>
+              <div className="notif-email">{notif.email || notif.senderEmail}</div>
+              <div className="notif-date">{notif.date}</div>
+            </div>
+          ))
+        ) : (
+          <div className="notif-empty">No notifications to show.</div>
+        )}
+      </Notifications>
 
       <main className="admin-stats-main">
         <div className="stats-header">
-          <h1>Faculty Dashboard</h1>
+          <h1>Statistics Dashboard</h1>
           <div className="cycle-selector">
             <select 
               value={selectedCycle} 
@@ -184,4 +231,4 @@ const FacultyHome = () => {
   );
 };
 
-export default FacultyHome; 
+export default AdminStats; 

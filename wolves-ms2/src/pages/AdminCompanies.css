@@ -15,8 +15,10 @@
 
 .admin-companies-tabs {
   display: flex;
-  gap: 2rem;
-  margin-bottom: 2rem;
+  gap: 20px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .admin-companies-section {
@@ -40,4 +42,23 @@
 .admin-companies-no-results {
   color: #b2e0ef;
   margin-top: 2rem;
+}
+
+.tab-btn {
+  padding: 10px 20px;
+  border: none;
+  background: none;
+  color: #666;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab-btn:hover {
+  color: #1a237e;
+}
+
+.tab-btn.active {
+  color: #1a237e;
+  border-bottom: 2px solid #1a237e;
 } 

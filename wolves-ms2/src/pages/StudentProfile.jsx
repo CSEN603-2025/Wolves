@@ -6,7 +6,9 @@ import TopBar from '../components/TopBar';
 import ProfileOverview from '../components/ProfileOverview';
 import { useAuth } from '../context/AuthContext';
 
-import internshipIcon from '../assets/icons/internships-icon.png';
+import notificationIcon from '../assets/icons/notif-icon.png';
+import homeIcon from '../assets/icons/home-icon.png';
+import logoutIcon from '../assets/icons/logout-icon.png';
 import applicationIcon from '../assets/icons/application-icon.png';
 import evalIcon from '../assets/icons/eval-icon.png';
 import notifIcon from '../assets/icons/notif-icon.png';
@@ -341,20 +343,17 @@ const StudentProfile = () => {
   return (
     <div className="profile-page">
       <TopBar showSearch={false}>
-        <button className="topbar-button" onClick={() => navigate('/all-internships')}>
-          <img src={internshipIcon} alt="Internships" className="topbar-icon"/><span>Internships</span>
+      <button className="topbar-button" onClick={()=> navigate('/student-home')}>
+          <img src={homeIcon} alt="Dashboard" className="topbar-icon" />
+          <span>Dashboard</span>
         </button>
-        <button className="topbar-button" onClick={() => navigate('/student-applications')}>
-          <img src={applicationIcon} alt="Applications" className="topbar-icon"/><span>Applications</span>
+        <button className="topbar-button" onClick={()=> navigate('/student-profile')}>
+          <img src={profileIcon} alt="profile" className="topbar-icon" />
+          <span>Profile</span>
         </button>
-        <button className="topbar-button" onClick={() => navigate('/evaluations')}>
-          <img src={evalIcon} alt="Evaluations" className="topbar-icon"/><span>Evaluations</span>
-        </button>
-        <button className="topbar-button" onClick={() => navigate('/notifications')}>
-          <img src={notifIcon} alt="Notifications" className="topbar-icon"/><span>Notifications</span>
-        </button>
-        <button className="topbar-button" onClick={() => navigate('/student-profile')}>
-          <img src={profileIcon} alt="Profile" className="topbar-icon"/><span>Profile</span>
+        <button className="topbar-button" onClick={()=> navigate('/login')}>
+          <img src={logoutIcon} alt="logout" className="topbar-icon" />
+          <span>Logout</span>
         </button>
       </TopBar>
 

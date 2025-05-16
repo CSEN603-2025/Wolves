@@ -10,6 +10,7 @@ import InternshipCard from '../components/InternshipCard';
 import ProfileOverview from '../components/ProfileOverview';
 import Notifications from '../components/Notifications';
 import StudentNotifications from '../components/StudentNotifications';
+import CompanyCard from '../components/CompanyCard';
 
 import applicationIcon from '../assets/icons/application-icon.png';
 import evalIcon        from '../assets/icons/eval-icon.png';
@@ -22,6 +23,7 @@ import workshopIcon from '../assets/icons/workshop-icon.png';
 import appointmentIcon from '../assets/icons/appointment-icon.png';
 
 import internshipsData from '../data/internships.json';
+import companiesData from '../data/companies.json';
 
 const MODAL_WIDTH = 340; // should match min-width in Notifications.css
 
@@ -225,7 +227,7 @@ const StudentHome = () => {
 
   return (
     <div className="dashboard-container">
-      <TopBar onSearch={handleSearch} menuItems={menuItems}>
+      <TopBar showSearch={false} menuItems={menuItems}>
         <StudentNotifications />
         <button className="topbar-button" onClick={()=> navigate('/student-home')}>
           <img src={homeIcon} alt="Dashboard" className="topbar-icon" />
@@ -268,46 +270,10 @@ const StudentHome = () => {
         <section className="internship-section">
           <h2 className="section-title">Suggested for you!</h2>
 
-          <div className="filters-bar">
-            <Filter
-              title="Industry"
-              value={filters.industry}
-              onChange={handleFilter('industry')}
-            >
-              <option value="">All</option>
-              {industries.map(ind => (
-                <option key={ind} value={ind}>{ind}</option>
-              ))}
-            </Filter>
-
-            <Filter
-              title="Duration"
-              value={filters.duration}
-              onChange={handleFilter('duration')}
-            >
-              <option value="">All</option>
-              {durations.map(dur => (
-                <option key={dur} value={dur}>{dur}</option>
-              ))}
-            </Filter>
-
-            <Filter
-              title="Pay"
-              value={filters.paid}
-              onChange={handleFilter('paid')}
-            >
-              <option value="">All</option>
-              {payOptions.map(p => (
-                <option key={p} value={p}>{p}</option>
-              ))}
-            </Filter>
-          </div>
-
-          <div className="internship-cards">
-            {displayed.length
-              ? displayed.map(i => <InternshipCard key={i.id} {...i} />)
-              : <p className="no-results">No internships match your filters.</p>
-            }
+          <div className="company-cards">
+            {companiesData.slice(0, 8).map(company => (
+              <CompanyCard key={company.id} company={company} onClick={() => navigate(`/admin-home/companies/${company.id}`)} />
+            ))}
           </div>
         </section>
       </div>

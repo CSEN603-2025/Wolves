@@ -99,10 +99,6 @@ const CompanyInterns = () => {
         <img src={Interns} alt="Interns" className="sidebar-icon" />
         <span>Interns</span>
       </Link>
-      <Link to="/admin/notifications" className="sidebar-item">
-        <img src={NotificationIcon} alt="Notifications" className="sidebar-icon" />
-        <span>Notifications</span>
-      </Link>
       <Link to="/login" className="sidebar-item">
         <img src={LogoutIcon} alt="Logout" className="sidebar-icon" />
         <span>Logout</span>
