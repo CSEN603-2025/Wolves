@@ -48,6 +48,68 @@ const StudentWorkshop = () => {
   const [notificationsPosition, setNotificationsPosition] = useState(null);
   const notifBtnRef = useRef(null);
 
+  const isPro = user.status === 'Pro' ? true : false;
+
+  const menuItems = isPro ? [
+    <Link to="/student-home" className="sidebar-item">
+      <img src={homeIcon} alt="dashboard" className="sidebar-icon" />
+      <span>Dashboard</span>
+    </Link>,
+    <Link to="/all-internships" className="sidebar-item">
+      <img src={internshipIcon} alt="Internships" className="sidebar-icon" />
+      <span>All Internships</span>
+    </Link>,
+    <Link to="/student-applications" className="sidebar-item">
+      <img src={applicationIcon} alt="applications" className="sidebar-icon" />
+      <span>My Applications</span>
+    </Link>,
+    <Link to="/student-internships" className="sidebar-item">
+      <img src={evalIcon} alt="eval" className="sidebar-icon" />
+      <span>My Internships & Reports</span>
+    </Link>,
+    <Link to="/student-appointments" className="sidebar-item">
+      <img src={appointmentIcon} alt="Appointments" className="sidebar-icon" />
+      <span>Appointments</span>
+    </Link>,
+    <Link to="/student-workshops" className="sidebar-item">
+      <img src={workshopIcon} alt="Workshops" className="sidebar-icon" />
+      <span>Workshops</span>
+    </Link>,
+    <Link to="/student-profile" className="sidebar-item">
+      <img src={profileIcon} alt="profile" className="sidebar-icon" />
+      <span>Profile</span>
+    </Link>,
+    <Link to="/login" className="sidebar-item">
+      <img src={logoutIcon} alt="Logout" className="sidebar-icon" />
+      <span>Logout</span>
+    </Link>
+  ] : [
+    <Link to="/student-home" className="sidebar-item">
+      <img src={homeIcon} alt="dashboard" className="sidebar-icon" />
+      <span>Dashboard</span>
+    </Link>,
+    <Link to="/all-internships" className="sidebar-item">
+      <img src={internshipIcon} alt="Internships" className="sidebar-icon" />
+      <span>All Internships</span>
+    </Link>,
+    <Link to="/student-applications" className="sidebar-item">
+      <img src={applicationIcon} alt="applications" className="sidebar-icon" />
+      <span>My Applications</span>
+    </Link>,
+    <Link to="/student-internships" className="sidebar-item">
+      <img src={evalIcon} alt="eval" className="sidebar-icon" />
+      <span>My Internships & Reports</span>
+    </Link>,
+    <Link to="/student-profile" className="sidebar-item">
+      <img src={profileIcon} alt="profile" className="sidebar-icon" />
+      <span>Profile</span>
+    </Link>,
+    <Link to="/login" className="sidebar-item">
+      <img src={logoutIcon} alt="Logout" className="sidebar-icon" />
+      <span>Logout</span>
+    </Link>
+  ];
+
   useEffect(() => {
     // Load notifications from JSON file
     fetch('/data/student-notifications.json')
@@ -68,7 +130,7 @@ const StudentWorkshop = () => {
         setNotifications(storedNotifications);
       });
   }, [user.id]);
-  const isPro=user.status==='Pro'?true:false;
+
   useEffect(() => {
     // Try to load from sessionStorage first
     const stored = sessionStorage.getItem('workshops');
@@ -169,64 +231,6 @@ const StudentWorkshop = () => {
         return null;
     }
   };
-
-  const menuItems=isPro?[
-    <Link to="/student-home" className="sidebar-item">
-      <img src={homeIcon} alt="dashboard" className="sidebar-icon" />
-      <span>Dashboard</span>
-      </Link>,
-      <Link to="/all-internships" className="sidebar-item">
-      <img src={internshipIcon} alt="Internships" className="sidebar-icon" />
-      <span>All Internships</span>
-      </Link>,
-      <Link to="/student-applications" className="sidebar-item">
-        <img src={applicationIcon} alt="applications" className="sidebar-icon" />
-        <span>My Applications</span>
-      </Link>,
-      <Link to="/student-internships" className="sidebar-item">
-        <img src={evalIcon} alt="eval" className="sidebar-icon" />
-        <span>My Internships & Reports</span>
-      </Link>,
-      <Link to="/student-appointments" className="sidebar-item">
-        <img src={appointmentIcon} alt="Appointments" className="sidebar-icon" />
-        <span>Appointments</span>
-      </Link>,
-      <Link to="/student-workshops" className="sidebar-item">
-      <img src={workshopIcon} alt="Workshops" className="sidebar-icon" />
-      <span>Workshops</span>
-      </Link>,
-      <Link to="/student-profile" className="sidebar-item">
-      <img src={profileIcon} alt="profile" className="sidebar-icon" />
-      <span>Profile</span>
-      </Link>,
-      <Link to="/login" className="sidebar-item">
-        <img src={logoutIcon} alt="Logout" className="sidebar-icon" />
-        <span>Logout</span>
-      </Link>
-      ] : [<Link to="/student-home" className="sidebar-item">
-        <img src={homeIcon} alt="dashboard" className="sidebar-icon" />
-        <span>Dashboard</span>
-        </Link>,
-        <Link to="/all-internships" className="sidebar-item">
-        <img src={internshipIcon} alt="Internships" className="sidebar-icon" />
-        <span>All Internships</span>
-        </Link>,
-        <Link to="/student-applications" className="sidebar-item">
-          <img src={applicationIcon} alt="applications" className="sidebar-icon" />
-          <span>My Applications</span>
-        </Link>,
-        <Link to="/student-internships" className="sidebar-item">
-          <img src={evalIcon} alt="eval" className="sidebar-icon" />
-          <span>My Internships & Reports</span>
-        </Link>,
-        <Link to="/student-profile" className="sidebar-item">
-        <img src={profileIcon} alt="profile" className="sidebar-icon" />
-        <span>Profile</span>
-        </Link>,
-        <Link to="/login" className="sidebar-item">
-          <img src={logoutIcon} alt="Logout" className="sidebar-icon" />
-          <span>Logout</span>
-        </Link>];
 
   // Handlers (to be implemented)
   const handleRegister = (workshopId) => {

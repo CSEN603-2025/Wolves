@@ -17,7 +17,9 @@ const TopBar = ({
   const location = useLocation();
   
   // List of paths where sidebar should be hidden
-  const hideSidebarPaths = ['/', '/login', '/register-company'];
+  const hideSidebarPaths = ['/', '/login', '/register-company','/student-profile','/all-internships',
+    '/internships/:id','/student-applications','/student-internships','/student-report/:id','/student-appointments',
+    '/student-workshops','/workshop/:id'];
   
   // Check if current path should hide sidebar
   const shouldHideSidebar = hideSidebarPaths.includes(location.pathname);

@@ -33,7 +33,7 @@ const VideoCall = ({
   const timerRef = useRef(null);
 
   // Choose remote video based on user type
-  const remoteVideoSrc = isAdmin ? STUDENT_VIDEO_SRC : ADMIN_VIDEO_SRC;
+  const remoteVideoSrc = isAdmin ? ADMIN_VIDEO_SRC : STUDENT_VIDEO_SRC;
 
   // Setup webcam/mic
   useEffect(() => {

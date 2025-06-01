@@ -7,7 +7,9 @@ const Sidebar = ({ isOpen, onClose, children }) => {
   const location = useLocation();
   
   // List of paths where sidebar should be hidden
-  const hiddenPaths = ['/', '/login', '/register-company'];
+  const hiddenPaths = ['/', '/login', '/register-company','/student-profile','/all-internships',
+    '/internships/:id','/student-applications','/student-internships','/student-report/:id','/student-appointments',
+    '/student-workshops','/workshop/:id'];
   
   // If current path is in hiddenPaths, don't render the sidebar
   if (hiddenPaths.includes(location.pathname)) {

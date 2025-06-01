@@ -69,7 +69,7 @@ const CompanyDetails = () => {
 
   const handleAccept = () => {
     const applying = JSON.parse(sessionStorage.getItem('admin-applying-companies')) || [];
-    const registered = JSON.parse(sessionStorage.getItem('admin-companies')) || [];
+    const registered = JSON.parse(sessionStorage.getItem('admin-registered-companies')) || [];
     
     const found = applying.find(c => String(c.id) === id);
     if (found) {
@@ -80,7 +80,7 @@ const CompanyDetails = () => {
       
       // Update sessionStorage
       sessionStorage.setItem('admin-applying-companies', JSON.stringify(newApplying));
-      sessionStorage.setItem('admin-companies', JSON.stringify(newRegistered));
+      sessionStorage.setItem('admin-registered-companies', JSON.stringify(newRegistered));
       
       // Dispatch custom event for immediate update
       window.dispatchEvent(new Event('companies-updated'));

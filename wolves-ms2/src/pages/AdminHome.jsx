@@ -252,7 +252,7 @@ const AdminHome = () => {
           <div className="recent-notifs-list">
             {notifications && notifications.length > 0 ? (
               notifications.slice(0, 5).map((notif, idx) => (
-                <div className="notif-card" key={notif.id || idx} tabIndex={0} onClick={go('/admin/notifications')}>
+                <div className="notif-card" key={notif.id || idx} tabIndex={0}>
                   <div className="notif-title">{notif.title}</div>
                   <div className="notif-body">{notif.body}</div>
                   <div className="notif-date">{notif.date}</div>
@@ -262,9 +262,6 @@ const AdminHome = () => {
               <div className="notif-empty">No notifications to show.</div>
             )}
           </div>
-          <button className="iv-btn secondary view-all-notifs" onClick={go('/admin/notifications')}>
-            View All Notifications
-          </button>
         </section>
       </main>
     </div>
