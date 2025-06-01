@@ -92,22 +92,22 @@ const AppointmentCard = ({
           );
         }
         // If the current user is the receiver of the call request
-        return (
-          <div className="appointment-actions">
-            <button
-              className="iv-btn accept"
-              onClick={handleAcceptCall}
-            >
-              Accept Call
-            </button>
-            <button
-              className="iv-btn reject"
-              onClick={() => onReject(id)}
-            >
-              Reject Call
-            </button>
-          </div>
-        );
+        // return (
+        //   <div className="appointment-actions">
+        //     <button
+        //       className="iv-btn accept"
+        //       onClick={handleAcceptCall}
+        //     >
+        //       Accept Call
+        //     </button>
+        //     <button
+        //       className="iv-btn reject"
+        //       onClick={() => onReject(id)}
+        //     >
+        //       Reject Call
+        //     </button>
+        //   </div>
+        // );
 
       case 'waiting':
         if (isSender) {

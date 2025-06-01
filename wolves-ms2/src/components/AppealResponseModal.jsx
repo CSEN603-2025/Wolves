@@ -49,8 +49,8 @@ const AppealResponseModal = ({
               </div>
             </form>
             <div className="arm-modal-footer">
-              <button className="arm-modal-button arm-modal-button-primary" type="submit">Submit Response</button>
-              <button className="arm-modal-button arm-modal-button-secondary" onClick={onClose}>Close</button>
+              <button className="iv-btn iv-btn-primary" type="submit">Submit Response</button>
+              <button className="iv-btn iv-btn-primary" onClick={onClose}>Close</button>
             </div>
           </div>
         </div>

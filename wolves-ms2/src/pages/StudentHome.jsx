@@ -272,7 +272,7 @@ const StudentHome = () => {
 
           <div className="company-cards">
             {companiesData.slice(0, 8).map(company => (
-              <CompanyCard key={company.id} company={company} onClick={() => navigate(`/admin-home/companies/${company.id}`)} />
+              <CompanyCard key={company.id} company={company} />
             ))}
           </div>
         </section>

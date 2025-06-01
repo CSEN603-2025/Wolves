@@ -325,10 +325,12 @@ const CompanyIL = () => {
             <button onClick={handleCancel} className="cancel-button">Cancel</button>
           </div>
         ) : (
-          <div className="listing-actions">
-            <button onClick={handleEdit} className="edit-button">Edit Post</button>
-            <button onClick={handleDelete} className="delete-button">Delete Post</button>
-          </div>
+          [1, 2, 3, 4].includes(Number(id)) && (
+            <div className="listing-actions">
+              <button onClick={handleEdit} className="edit-button">Edit Post</button>
+              <button onClick={handleDelete} className="delete-button">Delete Post</button>
+            </div>
+          )
         )}
       </main>
 
