@@ -1,70 +1,136 @@
-# Getting Started with Create React App
+# Wolves - Student Internship Management System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Wolves is a comprehensive web application designed to streamline the internship management process for students, companies, and educational institutions. The platform facilitates internship applications, workshop management, and provides a seamless experience for all stakeholders involved in the internship ecosystem.
 
-## Available Scripts
+## 📸 Screenshots & Demo
 
-In the project directory, you can run:
+[![Wolves Demo Video](src/assets/demo/pic1.png)](https://drive.google.com/file/d/1a91Av27RVmSw3Cu35nDWYFga0IOgCX7Q/view?usp=drive_link)
 
-### `npm start`
+### Key Features Showcase
+![Student Dashboard](src/assets/demo/pic1.png)
+![Internship Listings](src/assets/demo/pic2.png)
+![Workshop Interface](src/assets/demo/pic3.png)
+![Admin Dashboard](src/assets/demo/pic4.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🌟 Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### For Students
+- **Dashboard**
+  - Overview of applications, workshops, and appointments
+  - Quick access to upcoming events and deadlines
+  - Real-time notifications for application updates
+  - Performance metrics and progress tracking
 
-### `npm test`
+- **Internship Management**
+  - Browse and filter available internships
+  - Detailed internship listings with company information
+  - One-click application submission
+  - Track application status and receive feedback
+  - Download certificates and evaluation reports
+  - View internship history and performance metrics
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Workshop System**
+  - Browse and register for upcoming workshops
+  - Interactive live workshop sessions with real-time chat
+  - Access workshop recordings and materials
+  - Take and save notes during sessions
+  - Rate workshops and provide detailed feedback
+  - Download workshop certificates and completion records
 
-### `npm run build`
+- **Appointment System**
+  - Schedule meetings with faculty advisors
+  - View and manage appointment calendar
+  - Receive email notifications for upcoming appointments
+  - Track appointment history and meeting notes
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### For Companies
+- **Internship Management**
+  - Create and manage detailed internship listings
+  - Set application requirements and deadlines
+  - Review and filter applications
+  - Provide feedback and status updates
+  - Track intern performance and evaluations
+  - Generate internship reports and analytics
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### For Educational Institutions
+- **Student Management**
+  - Comprehensive student profiles and progress tracking
+  - Monitor internship applications and outcomes
+  - Track workshop participation and performance
+  - Generate student performance reports
 
-### `npm run eject`
+- **Workshop Administration**
+  - Create and schedule workshops
+  - Manage workshop registrations
+  - Track attendance and participation
+  - Generate workshop reports and analytics
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **Reporting System**
+  - Generate detailed internship reports
+  - Track student performance metrics
+  - Monitor company engagement
+  - Export data for analysis
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🛠️ Technology Stack
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- **Frontend**: React.js with modern hooks and context API
+- **Routing**: React Router DOM v7
+- **PDF Generation**: jsPDF for certificates and reports
+- **Testing**: Jest and React Testing Library
+- **Styling**: CSS3 with modern features and responsive design
+- **State Management**: React Context API
+- **UI Components**: Custom-built components with modern design patterns
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 🚀 Getting Started
 
-## Learn More
+### Prerequisites
+- Node.js (v14 or higher)
+- npm (v6 or higher)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Installation
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/wolves.git
+cd wolves
+```
 
-### Code Splitting
+2. Install dependencies:
+```bash
+npm install
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+3. Start the development server:
+```bash
+npm start
+```
 
-### Analyzing the Bundle Size
+The application will be available at `http://localhost:3000`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 📁 Project Structure
 
-### Making a Progressive Web App
+```
+wolves-ms2/
+├── src/
+│   ├── components/     # Reusable UI components
+│   │   ├── modals/    # Modal components
+│   │   ├── forms/     # Form components
+│   │   └── common/    # Common UI elements
+│   ├── pages/         # Page components
+│   │   ├── student/   # Student pages
+│   │   ├── company/   # Company pages
+│   │   └── admin/     # Admin pages
+│   ├── context/       # React context providers
+│   ├── data/          # Mock data and JSON files
+│   ├── assets/        # Images, icons, and other static files
+│   └── styles/        # Global styles and CSS files
+├── public/            # Static files
+└── package.json       # Project dependencies and scripts
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+## 👥 Authors
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Yahia Hesham Yahia
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
