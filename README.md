@@ -2,7 +2,7 @@
 
 Wolves is a comprehensive web application designed to streamline the internship management process for students, companies, and educational institutions. The platform facilitates internship applications, workshop management, and provides a seamless experience for all stakeholders involved in the internship ecosystem.
 
-## 📸 Screenshots & Demo
+## 📸 Demo Video
 
 [![Wolves Demo Video](wolves-ms2/src/assets/demo/pic0.png)](https://drive.google.com/file/d/1a91Av27RVmSw3Cu35nDWYFga0IOgCX7Q/view?usp=drive_link)
 
