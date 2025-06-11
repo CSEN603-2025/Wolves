@@ -8,9 +8,9 @@ Wolves is a comprehensive web application designed to streamline the internship 
 
 ### Key Features Showcase
 ![Student Dashboard](wolves-ms2/src/assets/demo/pic1.png)
-![Internship Listings](wolves-ms2/src/assets/demo/pic1.png)
-![Workshop Interface](wolves-ms2/src/assets/demo/pic1.png)
-![Admin Dashboard](wolves-ms2/src/assets/demo/pic1.png)
+![Internship Listings](wolves-ms2/src/assets/demo/pic2.png)
+![Workshop Interface](wolves-ms2/src/assets/demo/pic3.png)
+![Admin Dashboard](wolves-ms2/src/assets/demo/pic4.png)
 
 ## 🌟 Features
 
